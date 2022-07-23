@@ -1,3 +1,35 @@
+@import url('assets/styles/biker-animation.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Mahammad's part */
+@layer components {
+    .navbar-link {
+        @apply inline-block mr-10 text-black text-opacity-50 text-lg font-semibold hover:cursor-pointer
+    }
+
+    .navbar-icon {
+        @apply ml-6
+    }
+
+    .message-box-link {
+        @apply border-solid border-b-2 border-b-gray-100 pb-2 my-2
+    }
+
+    .footer-list-title {
+        @apply font-medium mt-10 mb-6
+    }
+
+    .footer-list-item {
+        @apply text-sm opacity-70 mb-3
+    }
+}
+
+.kids-section > div:nth-child(odd) {
+    background: linear-gradient(90deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%) !important;
+}
+.kids-section > div:nth-child(even){
+    background: linear-gradient(270deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%);
+}
