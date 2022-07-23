@@ -1,0 +1,23 @@
+.ride {
+    transform: scaleX(-1);
+    animation: biker-animation 5s ease-in-out infinite;
+    z-index: -10;
+}
+
+@keyframes biker-animation {
+    from {
+        margin-left: 0;
+    }
+
+    50% {
+        margin-left: 50%;
+    }
+
+    70% {
+        margin-left: 50%;
+    }
+
+    to {
+        margin-left: 110%;
+    }
+}
