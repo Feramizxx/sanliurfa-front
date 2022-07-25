@@ -3,6 +3,7 @@ import Logo from "../ui/Logo";
 import SocialMediaLink from "../ui/SocialMediaLink";
 import AppShop from "../ui/AppShop";
 import TheJavaChipLogo from "../ui/TheJavaChipLogo";
+import {NavLink} from "react-router-dom";
 
 const Footer = ({theme}) => {
 
@@ -40,10 +41,10 @@ const Footer = ({theme}) => {
                 <div>
                     <p className='footer-list-title'> Keçidlər </p>
                     <ul>
-                        <li className='footer-list-item'> <a href="#"> Əsas səhifə </a> </li>
-                        <li className='footer-list-item'> <a href="#"> Menyu </a> </li>
-                        <li className='footer-list-item'> <a href="#"> Kampaniyalar </a> </li>
-                        <li className='footer-list-item'> <a href="#"> Əlaqə </a> </li>
+                        <li className='footer-list-item'> <NavLink to={'/'}> Əsas səhifə </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'#'}> Menyu </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'#'}> Kampaniyalar </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'/contact'}> Əlaqə </NavLink> </li>
                     </ul>
                 </div>
                 <div>

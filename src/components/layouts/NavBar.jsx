@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from "../ui/Logo";
 import ProfileIcon from "../ui/ProfileIcon";
 import LanguagePicker from "../ui/LanguagePicker";
+import {NavLink} from "react-router-dom";
 
 const NavBar = () => {
     const [currentLink, setCurrentLink] = React.useState(1);
@@ -18,13 +19,13 @@ const NavBar = () => {
         <nav className='flex justify-around items-center z-10 bg-navbarBackground backdrop-blur-[72px]'>
             <Logo theme={'default'}/>
             <ul>
-                <li className={`navbar-link ${defineCurrentPage(1)}`} onClick={() => onLinkClick(1)}> <a href="#"> Əsas səhifə </a> </li>
-                <li className={`navbar-link ${defineCurrentPage(2)}`} onClick={() => onLinkClick(2)}> <a href="#"> Haqqımızda </a> </li>
-                <li className={`navbar-link ${defineCurrentPage(3)}`} onClick={() => onLinkClick(3)}> <a href="#"> Menyu </a> </li>
-                <li className={`navbar-link ${defineCurrentPage(4)}`} onClick={() => onLinkClick(4)}> <a href="#"> Kampaniyalar </a> </li>
-                <li className={`navbar-link ${defineCurrentPage(5)}`} onClick={() => onLinkClick(5)}> <a href="#"> Xəbərlər </a> </li>
-                <li className={`navbar-link ${defineCurrentPage(6)}`} onClick={() => onLinkClick(6)}> <a href="#"> Karyea </a> </li>
-                <li className={`navbar-link ${defineCurrentPage(7)}`} onClick={() => onLinkClick(7)}> <a href="#"> Əlaqə </a> </li>
+                <li className={`navbar-link ${defineCurrentPage(1)}`} onClick={() => onLinkClick(1)}> <NavLink to={'/'}> Əsas səhifə </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(2)}`} onClick={() => onLinkClick(2)}> <NavLink to={'#'}> Haqqımızda </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(3)}`} onClick={() => onLinkClick(3)}> <NavLink to={'#'}> Menyu </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(4)}`} onClick={() => onLinkClick(4)}> <NavLink to={'#'}> Kampaniyalar </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(5)}`} onClick={() => onLinkClick(5)}> <NavLink to={'#'}> Xəbərlər </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(6)}`} onClick={() => onLinkClick(6)}> <NavLink to={'#'}> Karyea </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(7)}`} onClick={() => onLinkClick(7)}> <NavLink to={'contact'}> Əlaqə </NavLink> </li>
             </ul>
             <ul>
                 <button className='navbar-icon'>
