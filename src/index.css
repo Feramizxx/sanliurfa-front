@@ -19,11 +19,23 @@
     }
 
     .footer-list-title {
-        @apply font-medium mt-10 mb-6
+        @apply font-bold mt-10 mb-6
     }
 
     .footer-list-item {
         @apply text-sm opacity-70 mb-3
+    }
+
+    .contact-input {
+        @apply block outline-0 rounded shadow-contact-input p-1 w-96 mb-6
+    }
+
+    .contact-title {
+        @apply text-3xl font-medium mb-8 font-Montserrat
+    }
+
+    .contact-data-list-item {
+        @apply flex items-center mb-12
     }
 }
 
