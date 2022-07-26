@@ -16,7 +16,7 @@ const Menu = () => {
                        className="font-light text-[32px] text-[#8F161A] underline decoration-2 underline-offset-2">Daha
                         çox</a>
                 </div>
-                <CategoriesCarousel />
+                <CategoriesCarousel theme={'white'} />
             </div>
             <div className="bg-red pt-20 pb-24 mb-6 relative">
                 <MealsCarousel />

@@ -31,8 +31,12 @@
                hover:text-[#8F161A] hover:font-semibold
     }
 
-    .menu-li-active {
+    .menu-li.menu-li-active {
         @apply text-[#8F161A] font-semibold
+    }
+
+    .menu-li.menu-li-red {
+        @apply text-white hover:text-white
     }
 }
 
