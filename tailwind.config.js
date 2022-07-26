@@ -29,7 +29,8 @@ module.exports = {
         primary: {
           text: "#8F161A",
           bg: "#BB2025",
-          border: "#8F161A"
+          border: "#8F161A",
+          gridHoverBackground: "rgba(0, 0, 0, 0.4);"
         },
         red: "#BB2025",
         heroBackgroundColor: "#BB2025",

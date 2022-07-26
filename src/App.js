@@ -8,6 +8,8 @@ import Menu from "./pages/menu/Menu";
 import Campaigns from "./pages/campaigns/Campaigns";
 import Contact from "./pages/contact/Contact";
 import Career from "./pages/career/Career";
+import About from "./pages/about/About";
+import News from "./pages/news/News";
 
 const App = () => {
     return (
@@ -15,8 +17,10 @@ const App = () => {
             <Header />
             <Routes>
                 <Route path='/' element={<Home/>}/>
+                <Route path='/about' element={<About/>}/>
                 <Route path='/menu' element={<Menu/>}/>
                 <Route path='/campaigns' element={<Campaigns/>}/>
+                <Route path='/news' element={<News/>}/>
                 <Route path='/contact' element={<Contact/>}/>
                 <Route path='/career' element={<Career/>}/>
             </Routes>

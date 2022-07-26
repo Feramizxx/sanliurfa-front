@@ -1,0 +1,31 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.about-section1{
+    background-image: url("../../assets/img/bgCooker.png");
+    background-repeat: no-repeat;
+    width:  100%;
+    background-size: contain;
+    background-position: 0;
+    
+}
+
+.about-section2{
+    background-image: url("../../assets/img/bg2.png");
+    background-repeat: no-repeat;
+    width:  100%;
+    background-size: 100% 85%;
+    background-position: 0;
+    
+}
+
+#marka-divbox div:nth-child(odd){
+    transform: translateY(-50px);
+}
+#marka-divbox div:nth-child(even){
+    transform: translateY(50px);
+}

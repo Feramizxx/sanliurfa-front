@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
+import {NavLink} from "react-router-dom";
 import CategoriesCarousel from "../../components/items/CategoriesCarousel";
 import MealsCarousel from "../../components/items/MealsCarousel";
 import Card from "../../components/items/Card";
@@ -12,9 +13,9 @@ const Menu = () => {
             <div className={'px-14'}>
                 <div className='flex justify-between items-end mb-8'>
                     <h2 className="font-bold text-[64px] text-[#BB2025]">Menyu</h2>
-                    <a href="#"
+                    <NavLink to="menu"
                        className="font-light text-[32px] text-[#8F161A] underline decoration-2 underline-offset-2">Daha
-                        çox</a>
+                        çox</NavLink>
                 </div>
                 <CategoriesCarousel theme={'white'} />
             </div>

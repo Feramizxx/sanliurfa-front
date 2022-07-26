@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*background-color: #BB2025;*/
+}
+
+#grid-item-text{
+ display: none;
+}
+#grid-Item-container:hover a{
+display: block;
+}
+
+
+
+
+@media screen and (max-width: 1023px) {
+    #news-grid{
+        grid-template-columns: auto auto auto !important;
+    }
+}
+@media screen and (max-width: 767px) {
+    #news-grid{
+        grid-template-columns: auto auto  !important;
+    }
+}
+@media screen and (max-width: 639px) {
+    #news-grid{
+        grid-template-columns: auto   !important;
+    }
+}
