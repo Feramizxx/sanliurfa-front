@@ -3,8 +3,8 @@ import CloseButton from "../../components/ui/CloseButton";
 
 const InfoBox = ({onClose}) => {
     return (
-        <div className='bg-white'>
-            <CloseButton theme={'default'} onClick={onClose}/>
+        <div className='bg-white relative'>
+            <CloseButton theme={'red'} close={onClose}/>
             <div>
                 <p> Satış təmsilcisi </p>
                 <div>
