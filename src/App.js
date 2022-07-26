@@ -4,6 +4,8 @@ import './index.css';
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
 import Home from "./pages/home/Home";
+import Menu from "./pages/menu/Menu";
+import Campaigns from "./pages/campaigns/Campaigns";
 
 const App = () => {
     const [] = useState();
@@ -15,6 +17,16 @@ const App = () => {
                 <Route path='/' element={
                     <>
                         <Home />
+                    </>
+                }/>
+                <Route path='/menu' element={
+                    <>
+                        <Menu />
+                    </>
+                }/>
+                <Route path='/campaigns' element={
+                    <>
+                        <Campaigns />
                     </>
                 }/>
             </Routes>
