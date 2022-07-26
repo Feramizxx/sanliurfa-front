@@ -6,31 +6,22 @@ import Footer from "./components/layouts/Footer";
 import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
 import Campaigns from "./pages/campaigns/Campaigns";
+import Contact from "./pages/contact/Contact";
+import Career from "./pages/career/Career";
 
 const App = () => {
-    const [] = useState();
-
     return (
         <BrowserRouter>
-            <Header currentLink={1} />
+            <Header />
             <Routes>
-                <Route path='/' element={
-                    <>
-                        <Home />
-                    </>
-                }/>
-                <Route path='/menu' element={
-                    <>
-                        <Menu />
-                    </>
-                }/>
-                <Route path='/campaigns' element={
-                    <>
-                        <Campaigns />
-                    </>
-                }/>
+                <Route path='/' element={<Home/>}/>
+                <Route path='/menu' element={<Menu/>}/>
+                <Route path='/campaigns' element={<Campaigns/>}/>
+                <Route path='/contact' element={<Contact/>}/>
+                <Route path='/career' element={<Career/>}/>
             </Routes>
-            <Footer />
+            <Footer theme={'default'}/>
+            {/* TODO fix footer's changing */}
         </BrowserRouter>
     );
 };

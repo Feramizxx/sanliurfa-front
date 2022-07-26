@@ -3,7 +3,7 @@ import React from 'react';
 const Language = ({language,isCurrent,isVisible,onClick}) => {
     return (
         <div style={{opacity: isVisible? '1' : '0'}} className={`flex
-            items-center justify-between bg-inherit shadow-black shadow-sm pr-1 rounded-lg
+            items-center justify-between bg-inherit shadow-black shadow-sm pr-1 rounded-3xl
             hover:cursor-pointer ${!isCurrent? 'absolute mt-1 opacity-1 transition-all delay-200': ''}
         `} onClick={onClick}>
             <img className='w-6 h-6 rounded-2xl mr-1' src={language === 'aze'? require('../../assets/img/az-flag.png') : ''} alt=""/>

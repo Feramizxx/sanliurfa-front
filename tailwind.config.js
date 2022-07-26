@@ -20,7 +20,8 @@ module.exports = {
         // => @media (max-width: 639px) { ... }
       },
       fontFamily: {
-        'Roboto': ['Roboto','system-ui']
+        'Roboto': ['Roboto','system-ui'],
+        'Montserrat': ['Montserrat', 'system-ui']
       },
       colors: {
         'opaque-red': 'rgba(187, 32, 37, 0.1)',
@@ -36,10 +37,16 @@ module.exports = {
       },
       backgroundImage: {
         'hero-pattern': "url('../assets/Children.png')",
+        'contact-form': "url('./assets/img/contact-form-bg.png')",
+        'contact-data': "url('./assets/img/contact-data-bg.png')",
+        'contact-page': "url('./assets/img/contact-page-bg.png')"
       },
       boxShadow: {
         counter: '0px 0px 6px rgba(0, 0, 0, 0.1)',
-        card: '0px 0px 17px rgba(0, 0, 0, 0.1)'
+        card: '0px 0px 17px rgba(0, 0, 0, 0.1)',
+        'contact-input': '0px 0px 5px 1px rgba(0, 0, 0, 0.1)',
+        'contact-form': '0px 0px 19px rgba(0, 0, 0, 0.15)',
+        'vacancy': '0px 0px 5px 1px rgba(0, 0, 0, 0.15)'
       }
     },
   },

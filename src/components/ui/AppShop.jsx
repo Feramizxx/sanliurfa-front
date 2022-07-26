@@ -1,14 +1,14 @@
 import React from 'react';
 
-const AppShop = ({logo, href, name, description, theme, className}) => {
+const AppShop = ({logo, href, name, description, theme, className, isBordered}) => {
     const themes = {
         white: {
             bg: 'white',
-            text: 'black'
+            text: 'black',
         },
         black: {
             bg: 'black',
-            text: 'white'
+            text: 'white',
         }
     }
 
@@ -19,6 +19,7 @@ const AppShop = ({logo, href, name, description, theme, className}) => {
             style={{
                 color: themes[theme].text,
                 backgroundColor: themes[theme].bg,
+                border: isBordered? '2px solid black' : 'none'
             }}
         >
             <img src={logo} alt="app-shop-logo" className='w-5 h-6'/>
