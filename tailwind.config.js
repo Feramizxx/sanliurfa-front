@@ -36,6 +36,10 @@ module.exports = {
       },
       backgroundImage: {
         'hero-pattern': "url('../assets/Children.png')",
+      },
+      boxShadow: {
+        counter: '0px 0px 6px rgba(0, 0, 0, 0.1)',
+        card: '0px 0px 17px rgba(0, 0, 0, 0.1)'
       }
     },
   },

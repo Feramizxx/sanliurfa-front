@@ -25,6 +25,15 @@
     .footer-list-item {
         @apply text-sm opacity-70 mb-3
     }
+
+    .menu-li {
+        @apply min-w-fit font-light text-3xl leading-9 mr-14 cursor-pointer transition-all duration-200
+               hover:text-[#8F161A] hover:font-semibold
+    }
+
+    .menu-li-active {
+        @apply text-[#8F161A] font-semibold
+    }
 }
 
 .kids-section > div:nth-child(odd) {
@@ -32,4 +41,22 @@
 }
 .kids-section > div:nth-child(even){
     background: linear-gradient(270deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%);
+}
+
+#menu-categories, #menu-meals, #meal-modal {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+#menu-categories::-webkit-scrollbar, #menu-meals::-webkit-scrollbar, #meal-modal::-webkit-scrollbar {
+    display: none; /*Safari & Chrome*/
+}
+
+.ReactModal__Content {
+    padding: 0 !important;
+    border-radius: 15px !important;
+}
+
+.ReactModal__Overlay {
+    z-index: 999 !important;
 }
