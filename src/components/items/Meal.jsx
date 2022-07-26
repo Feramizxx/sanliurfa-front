@@ -6,7 +6,7 @@ import Taste from "../ui/meal/Taste";
 
 const Meal = (props) => {
     return (
-        <div className={'relative bg-white rounded-[32px] w-[270px] mr-12'}>
+        <div className={`relative bg-white rounded-[32px] w-[270px] ${props.type === 'carousel' ? 'mr-12' : ''}`}>
             <Taste taste={props.data.vegan ? 'vegan' : (props.data.spicy ? 'spicy' : '')} type={'menu'} />
             <div className={'relative z-0'}>
                 <img src={props.data.picture} title={props.data.name} className={'rounded-[32px] mb-4'}/>

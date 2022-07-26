@@ -203,10 +203,10 @@ const Menu = () => {
                         <img src={Filter}/>
                     </div>
                 </div>
-                <ul id={'menu-meals'} className={'flex flex-wrap'}>
+                <ul id={'menu-meals'} className={'flex flex-wrap justify-between'}>
                     {meals.map((meal, i) => {
                         return (
-                            <li className={'flex mb-12'} key={i}><Meal data={meal} key={i} /></li>
+                            <li className={'flex mb-12'} key={i}><Meal data={meal} type={'list'} key={i} /></li>
                         )
                     })}
                 </ul>

@@ -91,7 +91,7 @@ const MealsCarousel = () => {
             <ul id={'menu-meals'} className={'flex overflow-x-scroll'}>
                 {meals.map((meal, i) => {
                     return (
-                        <li className={'flex'} key={i}><Meal data={meal} key={i} /></li>
+                        <li className={'flex'} key={i}><Meal data={meal} type={'carousel'} key={i} /></li>
                     )
                 })}
             </ul>
