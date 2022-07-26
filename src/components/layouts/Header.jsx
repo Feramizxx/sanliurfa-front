@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 
 const Header = () => {
     return (
-        <header className="font-Roboto fixed w-full z-10">
+        <header className="font-Roboto fixed w-full z-20">
             <div className={'flex'}>
                 <div className='w-full bg-white'>
                     <img className='ride w-6 h-6 my-2' src={require('../../assets/img/biker.png')} alt="biker"/>

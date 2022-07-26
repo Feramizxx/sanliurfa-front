@@ -4,7 +4,7 @@ import SocialMediaLink from "../../components/ui/SocialMediaLink";
 const ContactData = () => {
     return (
         <div className='bg-primary-bg p-10 text-white bg-contact-data bg-right bg-contain bg-no-repeat'>
-            <h1 className='contact-title'> Bizimlə əlaqə </h1>
+            <h1 className='title'> Bizimlə əlaqə </h1>
             <ul>
                 <li className='contact-data-list-item'>
                     <svg className='mr-4' width="27" height="36" viewBox="0 0 27 36" fill="none" xmlns="http://www.w3.org/2000/svg">

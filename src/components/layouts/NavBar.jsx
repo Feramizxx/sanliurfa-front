@@ -24,7 +24,7 @@ const NavBar = () => {
                 <li className={`navbar-link ${defineCurrentPage(3)}`} onClick={() => onLinkClick(3)}> <NavLink to={'#'}> Menyu </NavLink> </li>
                 <li className={`navbar-link ${defineCurrentPage(4)}`} onClick={() => onLinkClick(4)}> <NavLink to={'#'}> Kampaniyalar </NavLink> </li>
                 <li className={`navbar-link ${defineCurrentPage(5)}`} onClick={() => onLinkClick(5)}> <NavLink to={'#'}> Xəbərlər </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(6)}`} onClick={() => onLinkClick(6)}> <NavLink to={'#'}> Karyea </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(6)}`} onClick={() => onLinkClick(6)}> <NavLink to={'career'}> Karyea </NavLink> </li>
                 <li className={`navbar-link ${defineCurrentPage(7)}`} onClick={() => onLinkClick(7)}> <NavLink to={'contact'}> Əlaqə </NavLink> </li>
             </ul>
             <ul>

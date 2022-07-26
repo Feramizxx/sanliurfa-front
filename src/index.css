@@ -30,12 +30,16 @@
         @apply block outline-0 rounded shadow-contact-input p-1 w-96 mb-6
     }
 
-    .contact-title {
+    .title {
         @apply text-3xl font-medium mb-8 font-Montserrat
     }
 
     .contact-data-list-item {
         @apply flex items-center mb-12
+    }
+
+    .career-input {
+        @apply w-[61%] outline-none p-2 text-black rounded-[4px] mb-8 block
     }
 }
 

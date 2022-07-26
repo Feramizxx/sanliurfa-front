@@ -4,7 +4,7 @@ import AppShop from "../../components/ui/AppShop";
 class Mobile extends Component {
     render() {
         return (
-            <div className="pl-12 pt-12 pr-12">
+            <div className="pl-12 pt-12 pr-12 mb-20">
                 <div className="relative">
                     <div className="relative pl-6 pr-9 flex justify-between z-10">
                         <div className="w-3/5 flex flex-col justify-center">

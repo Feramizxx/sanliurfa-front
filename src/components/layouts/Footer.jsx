@@ -25,7 +25,7 @@ const Footer = ({theme}) => {
     }
 
     return (
-        <footer className={`font-Roboto mt-20`} style={{
+        <footer className={`font-Roboto`} style={{
             backgroundColor: themes[theme].bg,
             color: themes[theme].text
         }}>
