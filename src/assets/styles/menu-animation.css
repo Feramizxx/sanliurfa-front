@@ -1,0 +1,42 @@
+
+.menu-open {
+    animation: menu-opens 0.3s ease-in-out forwards;
+}
+
+.menu-close {
+    animation: menu-closes 0.3s ease-in-out forwards;
+}
+
+.close-button-appear {
+    animation: close-button-animation 0.3s ease-in-out forwards;
+}
+
+@keyframes menu-opens {
+    from {
+        top: -1000%;
+    }
+
+    to {
+        top: -0%;
+    }
+}
+
+@keyframes menu-closes {
+    from {
+        top: -10%;
+    }
+
+    to {
+        top: -1000%;
+    }
+}
+
+@keyframes close-button-animation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

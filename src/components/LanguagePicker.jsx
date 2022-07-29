@@ -26,7 +26,7 @@ const LanguagePicker = () => {
     }
 
     return (
-        <div className={'flex-row'}>
+        <div>
             {isCurrent?
                 <>
                     <Language isCurrent={isCurrent} language={'aze'} isVisible={isVisible.aze} onClick={() => onClick(true)}/>

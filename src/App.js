@@ -10,22 +10,24 @@ import Contact from "./pages/contact/Contact";
 import Career from "./pages/career/Career";
 import About from "./pages/about/About";
 import News from "./pages/news/News";
+import LayOut from "./components/layouts/LayOut";
+import Signup from "./pages/signup/Signup";
 
 const App = () => {
     return (
         <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path='/' element={<Home/>}/>
-                <Route path='/about' element={<About/>}/>
-                <Route path='/menu' element={<Menu/>}/>
-                <Route path='/campaigns' element={<Campaigns/>}/>
-                <Route path='/news' element={<News/>}/>
-                <Route path='/contact' element={<Contact/>}/>
-                <Route path='/career' element={<Career/>}/>
-            </Routes>
-            <Footer theme={'default'}/>
-            {/* TODO fix footer's changing */}
+            <LayOut>
+                <Routes>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/about' element={<About/>}/>
+                    <Route path='/menu' element={<Menu/>}/>
+                    <Route path='/campaigns' element={<Campaigns/>}/>
+                    <Route path='/news' element={<News/>}/>
+                    <Route path='/contact' element={<Contact/>}/>
+                    <Route path='/career' element={<Career/>}/>
+                    <Route path='/signup' element={<Signup/>}/>
+                </Routes>
+            </LayOut>
         </BrowserRouter>
     );
 };

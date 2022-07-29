@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {memo} from 'react';
 import Vacancies from "./Vacancies";
 import CareerForm from "./CareerForm";
 
-const Career = () => {
+const Career = memo(() => {
     return (
         <div className='font-Roboto'>
             <div className='w-full bg-primary-bg h-20'/>
@@ -12,6 +12,6 @@ const Career = () => {
             </div>
         </div>
     );
-};
+})
 
 export default Career;

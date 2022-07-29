@@ -4,19 +4,19 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        '2xl': {'max': '1535px'},
+        '2xl': {'min': '1535px'},
         // => @media (max-width: 1535px) { ... }
 
-        'xl': {'max': '1279px'},
+        'xl': {'min': '1279px'},
         // => @media (max-width: 1279px) { ... }
 
-        'lg': {'max': '1023px'},
+        'lg': {'min': '1023px'},
         // => @media (max-width: 1023px) { ... }
 
-        'md': {'max': '767px'},
+        'md': {'min': '767px'},
         // => @media (max-width: 767px) { ... }
 
-        'sm': {'max': '639px'},
+        'sm': {'min': '639px'},
         // => @media (max-width: 639px) { ... }
       },
       fontFamily: {
@@ -34,7 +34,11 @@ module.exports = {
         },
         red: "#BB2025",
         heroBackgroundColor: "#BB2025",
-        gradientColor: "linear-gradient(90deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%);"
+        gradientColor: "linear-gradient(90deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%);",
+        input: {
+          border: '#DBDBDB',
+          text: '#838383'
+        }
       },
       backgroundImage: {
         'hero-pattern': "url('../assets/Children.png')",

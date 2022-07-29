@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {memo, useState} from "react";
 import CategoriesCarousel from "../../components/items/CategoriesCarousel";
 import Filter from "../../assets/icons/buttons/filter.svg";
 import Modal from "react-modal";
@@ -22,7 +22,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const Menu = () => {
+const Menu = memo(() => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [categories] = useState(['Breakfast', 'Lunch', 'Dinner', 'Hot drinks', 'Cold drinks', 'Dessert', 'Snacks', 'Salad']);
     const [choices] = useState(['Toyuqlu', 'Ətli', 'Dəniz məhsullu', 'Vegeterian', 'Dietik']);
@@ -244,6 +244,6 @@ const Menu = () => {
             </Modal>
         </>
     )
-}
+})
 
 export default Menu;

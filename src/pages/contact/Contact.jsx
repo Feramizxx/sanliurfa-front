@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {memo} from 'react';
 import ContactForm from "./ContactForm";
 import ContactData from "./ContactData";
 
-const Contact = () => {
+const Contact = memo(() => {
     return (
         <div className='font-Roboto flex justify-center mb-20'>
             <div className='bg-contact-page bg-contain bg-no-repeat w-[100vw] h-[100vh] absolute -z-10 mt-20'/>
@@ -13,6 +13,6 @@ const Contact = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Contact;

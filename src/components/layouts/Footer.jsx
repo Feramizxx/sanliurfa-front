@@ -5,7 +5,7 @@ import AppShop from "../ui/AppShop";
 import TheJavaChipLogo from "../ui/TheJavaChipLogo";
 import {NavLink} from "react-router-dom";
 
-const Footer = ({theme}) => {
+const Footer = ({theme, setCurrentLink}) => {
 
     const themes = {
         default: {
@@ -24,14 +24,18 @@ const Footer = ({theme}) => {
         }
     }
 
+    const onClick = (num) => {
+        setCurrentLink(num);
+    }
+
     return (
         <footer className={`font-Roboto`} style={{
             backgroundColor: themes[theme].bg,
             color: themes[theme].text
         }}>
-            <section className='flex py-9 justify-evenly'>
+            <section className='p-9 sm:grid grid-cols-2 lg:flex justify-evenly'>
                 <div>
-                    <Logo theme={themes[theme].logo}/>
+                    <Logo theme={themes[theme].logo} setCurrentLink={setCurrentLink}/>
                     <p className='w-56 text-sm'>
                         Suspendisse vitae sollicitudin nunc velit.
                         Suspendisse ante posuere a massa. Consequat
@@ -41,10 +45,10 @@ const Footer = ({theme}) => {
                 <div>
                     <p className='footer-list-title'> Keçidlər </p>
                     <ul>
-                        <li className='footer-list-item'> <NavLink to={'/'}> Əsas səhifə </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'#'}> Menyu </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'#'}> Kampaniyalar </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'/contact'}> Əlaqə </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'/'} onClick={() => onClick(1)}> Əsas səhifə </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'menu'} onClick={() => onClick(3)}> Menyu </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'campaigns'} onClick={() => onClick(4)}> Kampaniyalar </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'contact'} onClick={() => onClick(7)}> Əlaqə </NavLink> </li>
                     </ul>
                 </div>
                 <div>
@@ -98,7 +102,7 @@ const Footer = ({theme}) => {
                 </div>
             </section>
             <hr className='border-none h-[1px] opacity-20' style={{backgroundColor: themes[theme].lineColor}}/>
-            <section className={'flex justify-around items-center'}>
+            <section className={'p-4 sm:flex justify-around items-center'}>
                 <p className={'text-sm font-normal'}> © 2022 Sanliurfa MMC. All Rights Reserved. </p>
                 <div className={'flex items-center'}>
                     <p className={'font-normal text-sm mr-6'}> Designed by: </p>
