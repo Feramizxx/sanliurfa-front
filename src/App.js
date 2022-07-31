@@ -10,6 +10,11 @@ import Contact from "./pages/contact/Contact";
 import Career from "./pages/career/Career";
 import About from "./pages/about/About";
 import News from "./pages/news/News";
+import Cart from "./pages/cart/Cart";
+import Index from "./pages/cart/Index";
+import Addresses from "./pages/cart/Addresses";
+import Payment from "./pages/cart/Payment";
+import Confirm from "./pages/cart/Confirm";
 
 const App = () => {
     return (
@@ -23,6 +28,12 @@ const App = () => {
                 <Route path='/news' element={<News/>}/>
                 <Route path='/contact' element={<Contact/>}/>
                 <Route path='/career' element={<Career/>}/>
+                <Route path='/cart' element={<Cart/>}>
+                    <Route index element={<Index/>}/>
+                    <Route path='addresses' element={<Addresses/>}/>
+                    <Route path='payment' element={<Payment/>}/>
+                    <Route path='confirm' element={<Confirm/>}/>
+                </Route>
             </Routes>
             <Footer theme={'default'}/>
             {/* TODO fix footer's changing */}

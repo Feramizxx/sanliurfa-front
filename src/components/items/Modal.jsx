@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({isVisible, setIsVisible,children}) => {
+const Modal = ({isVisible, setIsVisible, children}) => {
     const onShadowClick = () => {
         setIsVisible(false);
     }

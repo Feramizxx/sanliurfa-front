@@ -54,6 +54,10 @@
     .career-input {
         @apply w-[61%] outline-none p-2 text-black rounded-[4px] mb-8 block
     }
+
+    .cart-input {
+        @apply outline-none shadow-vacancy rounded-[11px] py-[18px] px-6 w-[47%]
+    }
 }
 
 .react-slideshow-container+ul.indicators {
@@ -106,12 +110,13 @@
     background-repeat: no-repeat;
 }
 
-#menu-categories, #menu-meals, #meal-modal {
+#menu-categories, #menu-meals, #meal-modal, #see-also-meals {
     -ms-overflow-style: none; /* IE & Edge */
     scrollbar-width: none; /* Firefox */
 }
 
-#menu-categories::-webkit-scrollbar, #menu-meals::-webkit-scrollbar, #meal-modal::-webkit-scrollbar {
+#menu-categories::-webkit-scrollbar, #menu-meals::-webkit-scrollbar,
+#meal-modal::-webkit-scrollbar, #see-also-meals::-webkit-scrollbar {
     display: none; /*Safari & Chrome*/
 }
 

@@ -84,7 +84,7 @@ const MealPlus = (props) => {
                                 <p className={'text-[#8F161A] text-[40px] font-semibold'}>{props.price.middle}₼</p>
                             </div>
                             <div className={'flex justify-between'}>
-                                <Counter type={'modal'} />
+                                <Counter type={'modal'} minNumber={1} defaultValue={1} />
                                 <button type={'button'} className={'bg-red rounded-full grow ml-4 text-white text-2xl font-light'} onClick={closeModal}>
                                     Səbətə əlavə et
                                 </button>

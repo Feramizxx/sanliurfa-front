@@ -46,6 +46,7 @@ module.exports = {
         counter: '0px 0px 6px rgba(0, 0, 0, 0.1)',
         card: '0px 0px 17px rgba(0, 0, 0, 0.1)',
         'contact-input': '0px 0px 5px 1px rgba(0, 0, 0, 0.1)',
+        'see-also-card': '0px 0px 6px rgba(0, 0, 0, 0.25)',
         'contact-form': '0px 0px 19px rgba(0, 0, 0, 0.15)',
         'vacancy': '0px 0px 5px 1px rgba(0, 0, 0, 0.15)'
       }

@@ -10,7 +10,7 @@ const Meal = (props) => {
             <Taste taste={props.data.vegan ? 'vegan' : (props.data.spicy ? 'spicy' : '')} type={'menu'} />
             <div className={'relative z-0'}>
                 <img src={props.data.picture} title={props.data.name} className={'rounded-[32px] mb-4'}/>
-                <Counter type={'menu'} />
+                <Counter type={'menu'} minNumber={0} defaultValue={0} />
             </div>
             <div className={'pl-5 pr-3 pb-3'}>
                 <div className={'flex justify-between items-center'}>
