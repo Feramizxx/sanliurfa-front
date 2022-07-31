@@ -1,11 +1,23 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import Button from "./ui/Button";
 import LoginForm from "./LoginForm";
 
 const MessageBox = ({isVisible}) => {
     const [isAuth, setIsAuth] = React.useState(false);
     const [loginForm, setLoginForm] = React.useState(false);
+
+    const navigate = useNavigate();
+
+    const navigateToOrders=()=>{
+        navigate('/orders');
+    }
+    const navigateToProfil=()=>{
+        navigate('/profil')
+    }
+    const navigateToAdresses=()=>{
+        navigate('/adresses')
+    }
 
     const onMouseEnter = (e) => {
         setLoginForm(true);
@@ -29,9 +41,9 @@ const MessageBox = ({isVisible}) => {
             </div>
             <div className={`bg-white px-6 py-2 w-48`}>
                 <ul>
-                    <li className='message-box-link'> <a href="#"> Profilim </a> </li>
-                    <li className='message-box-link'> <a href="#"> Sifarişlərim </a> </li>
-                    <li className='message-box-link'> <a href="#"> Ünvanlarım </a> </li>
+                    <li className='message-box-link' > <a className='cursor-pointer' onClick={navigateToProfil}> Profilim </a> </li>
+                    <li className='message-box-link'> <a className='cursor-pointer' onClick={navigateToOrders} > Sifarişlərim </a> </li>
+                    <li className='message-box-link'> <a className='cursor-pointer' onClick={navigateToAdresses}> Ünvanlarım </a> </li>
                     <li className={'message-box-link border-b-0'}>
                         <div className={`flex ${!isAuth? 'flex-col' : 'flex-row'} ${!isAuth? 'justify-center' : 'items-center'}`}>
                             { isAuth? <a href={'#'} className='mr-3'> Çıxış </a> :

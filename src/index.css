@@ -79,7 +79,6 @@
     margin-right: auto;
 }
 .react-slideshow-container+ul.indicators .each-slideshow-indicator.active:before {
-    padding-right: 30px !important;
     border-radius: 40% !important;
     margin-right: 2px !important;
     align-items: center;

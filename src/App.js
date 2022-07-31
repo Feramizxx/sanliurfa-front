@@ -17,6 +17,10 @@ import Payment from "./pages/cart/Payment";
 import Confirm from "./pages/cart/Confirm";
 import LayOut from "./components/layouts/LayOut";
 import Signup from "./pages/signup/Signup";
+import Orders from './components/ui/meal/Orders';
+import Profil from './components/ui/Profil';
+import Adress from './components/ui/meal/Adress';
+import InlineNews from './pages/news/InlineNews';
 
 const App = () => {
     return (
@@ -37,6 +41,10 @@ const App = () => {
                         <Route path='payment' element={<Payment/>}/>
                         <Route path='confirm' element={<Confirm/>}/>
                     </Route>
+                    <Route path='/inlineNews' element={<InlineNews/>}/>
+                    <Route path='/orders' element ={ <Orders/>}/>
+                    <Route path='/profil' element ={ <Profil/>}/>
+                    <Route path='/adresses' element ={ <Adress/>}/>
                 </Routes>
             </LayOut>
         </BrowserRouter>
