@@ -2,7 +2,7 @@ import React from 'react';
 
 const Vacancy = ({vacancy, onClick}) => {
     return (
-        <div className='shadow-vacancy w-[40em] mb-6 rounded-xl flex justify-between items-center p-6 hover:cursor-pointer' onClick={onClick}>
+        <div className='shadow-vacancy w-full mb-6 rounded-xl flex justify-between items-center p-6 hover:cursor-pointer' onClick={onClick}>
             <div className='ml-6'>
                 <h3 className='font-medium text-2xl'> {vacancy.name} </h3>
                 <div className='flex justify-between w-56 mt-3'>
@@ -37,7 +37,7 @@ const Vacancy = ({vacancy, onClick}) => {
                 </div>
             </div>
             <div>
-                <img className='w-9 h-20 float-right mr-6' src={require('../../assets/img/tower.png')} alt="a tower"/>
+                <img className='w-9 h-20 float-right' src={require('../../assets/img/tower.png')} alt="a tower"/>
             </div>
         </div>
     );

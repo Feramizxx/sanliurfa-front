@@ -5,7 +5,6 @@ import family from "../../assets/img/Vector.png";
 import coffe from "../../assets/img/coffeto.png";
 
 const About = memo(() => {
-    console.log("About Page was rendered");
     return (
         <>
             <section className="font-Roboto w-full">

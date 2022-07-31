@@ -11,7 +11,7 @@ const ContactForm = () => {
     const [message, setMessage] = React.useState('');
 
     return (
-        <div className='bg-contact-form bg-no-repeat p-10 shadow-contact-form bg-contain rounded-l-3xl bg-white'>
+        <div className='bg-contact-form bg-no-repeat p-10 shadow-contact-form bg-contain rounded-l-[40px] bg-white'>
             <form onSubmit={onSubmit}>
                 <h1 className='title text-primary-bg'> Təklif və şikayətlər </h1>
 

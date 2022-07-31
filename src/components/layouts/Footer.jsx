@@ -1,12 +1,11 @@
-import React from 'react';
+import React, {memo} from 'react';
 import Logo from "../ui/Logo";
 import SocialMediaLink from "../ui/SocialMediaLink";
 import AppShop from "../ui/AppShop";
 import TheJavaChipLogo from "../ui/TheJavaChipLogo";
 import {NavLink} from "react-router-dom";
 
-const Footer = ({theme, setCurrentLink}) => {
-
+const Footer = memo(({theme, setCurrentLink}) => {
     const themes = {
         default: {
             bg: '#BB2025',
@@ -111,6 +110,6 @@ const Footer = ({theme, setCurrentLink}) => {
             </section>
         </footer>
     );
-};
+});
 
 export default Footer;

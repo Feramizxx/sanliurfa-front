@@ -50,7 +50,7 @@ const LoginForm = ({isVisible, setIsVisible}) => {
                 <div className='flex justify-between w-full items-center'>
                     <Button
                         theme={'default'}
-                        className={'py-1 px-1 mt-2'}
+                        className={'py-1 px-6 mt-2'}
                     >
                         Daxil Ol
                     </Button>

@@ -3,7 +3,7 @@ import SocialMediaLink from "../../components/ui/SocialMediaLink";
 
 const ContactData = () => {
     return (
-        <div className='bg-primary-bg p-10 text-white bg-contact-data bg-right bg-contain bg-no-repeat'>
+        <div className='bg-primary-bg p-10 text-white bg-contact-data bg-right bg-contain bg-no-repeat rounded-br-[40px]'>
             <h1 className='title'> Bizimlə əlaqə </h1>
             <ul>
                 <li className='contact-data-list-item'>

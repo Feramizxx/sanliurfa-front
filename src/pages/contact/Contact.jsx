@@ -1,13 +1,31 @@
 import React, {memo} from 'react';
 import ContactForm from "./ContactForm";
 import ContactData from "./ContactData";
-
+import { routerStyle, mapStyle, iframeStyle } from './open-street-map-style'
+//absolute top-[24em] left-0 w-full overflow-hidden
 const Contact = memo(() => {
+
     return (
         <div className='font-Roboto flex justify-center mb-20'>
-            <div className='bg-contact-page bg-contain bg-no-repeat w-[100vw] h-[100vh] absolute -z-10 mt-20'/>
-            <img className='w-[5vw] absolute left-[58vw] top-[20vh] transition-all hover:cursor-pointer hover:w-[6vw]' src={require('../../assets/img/tower.png')} alt="a tower"/>
-            <div className='mt-96 grid grid-cols-2'>
+            <div style={routerStyle}>
+                <div style={mapStyle}>
+                    <iframe
+                        style={iframeStyle}
+                        src="https://maps.google.com/maps?q=%C5%9Eanl%C4%B1%20Urfa%20restoran%2075%20Khudu%20Mammadov,%20Baku&t=&z=19&ie=UTF8&iwloc=&output=embed"
+                        frameBorder="0"
+                        scrolling="no"
+                        marginHeight="0"
+                        marginWidth="0"/>
+                    <a href="https://123movies-to.org"/><br/>
+                    <a href="https://www.embedgooglemap.net">using google map on website</a>
+                </div>
+            </div>
+            {/*<img className='w-[3vw] absolute left-[48vw] top-[21vh] transition-all hover:cursor-pointer hover:w-[4vw]' src={require('../../assets/img/tower.png')} alt="a tower"/>*/}
+            <div className='mt-96 sm:grid sm:mx-6 z-10'
+                style={{
+                    gridTemplateColumns: 'minmax(0, 40em) minmax(0, 30em)'
+                }}
+            >
                 <ContactForm />
                 <ContactData />
             </div>
