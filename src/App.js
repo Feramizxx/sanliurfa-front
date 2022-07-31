@@ -11,6 +11,12 @@ import Career from "./pages/career/Career";
 import About from "./pages/about/About";
 import News from "./pages/news/News";
 
+
+import Orders from './components/ui/meal/Orders';
+import Profil from './components/ui/Profil';
+import Adress from './components/ui/meal/Adress';
+import InlineNews from './pages/news/InlineNews';
+
 const App = () => {
     return (
         <BrowserRouter>
@@ -23,10 +29,17 @@ const App = () => {
                 <Route path='/news' element={<News/>}/>
                 <Route path='/contact' element={<Contact/>}/>
                 <Route path='/career' element={<Career/>}/>
-            </Routes>
+                <Route path='/inlineNews' element={<InlineNews/>}/>
+                <Route path='/orders' element ={ <Orders/>}/>
+                <Route path='/profil' element ={ <Profil/>}/>
+                <Route path='/adresses' element ={ <Adress/>}/>
+             </Routes>
             <Footer theme={'default'}/>
             {/* TODO fix footer's changing */}
         </BrowserRouter>
+      
+       
+      
     );
 };
 

@@ -1,6 +1,19 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom'
 
 const MessageBox = ({isVisible}) => {
+
+    const navigate = useNavigate();
+
+    const navigateToOrders=()=>{
+     navigate('/orders');
+    }
+    const navigateToProfil=()=>{
+        navigate('/profil')
+    }
+    const navigateToAdresses=()=>{
+        navigate('/adresses')
+    }
     return (
         <div style={{display: isVisible? 'block' : 'none'}} className={'absolute right-32'}>
             <div className='flex justify-center bg-red-10'>
@@ -15,9 +28,9 @@ const MessageBox = ({isVisible}) => {
             </div>
             <div className={`bg-white px-6 py-2 w-48`}>
                 <ul>
-                    <li className='message-box-link'> <a href="#"> Profilim </a> </li>
-                    <li className='message-box-link'> <a href="#"> Sifarişlərim </a> </li>
-                    <li className='message-box-link'> <a href="#"> Ünvanlarım </a> </li>
+                    <li className='message-box-link' > <a className='cursor-pointer' onClick={navigateToProfil}> Profilim </a> </li>
+                    <li className='message-box-link'> <a className='cursor-pointer' onClick={navigateToOrders} > Sifarişlərim </a> </li>
+                    <li className='message-box-link'> <a className='cursor-pointer' onClick={navigateToAdresses}> Ünvanlarım </a> </li>
                     <li className={'message-box-link border-b-0'}>
                         <div className='flex items-center'>
                             <a className='mr-3' href={'#'}> Çıxış </a>
