@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import img1 from "../../assets/img/gridChildren.png";
 import img2 from "../../assets/img/gridLovers.png";
 import img3 from "../../assets/img/gridHands.png";
@@ -6,7 +6,7 @@ import img4 from "../../assets/img/gridPocket.png";
 import "../../assets/styles/news.css";
 
 
-const News = () => {
+const News = memo(() => {
   return (
 
 
@@ -163,6 +163,6 @@ const News = () => {
 
 
   );
-};
+})
 
 export default News;

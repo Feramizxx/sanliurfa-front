@@ -11,10 +11,10 @@ const CareerForm = () => {
     }
 
     return (
-        <form className='bg-primary-bg text-white' onSubmit={onSubmit}>
-            <h1 className='title font-medium text-white ml-24 mt-12'> Ərizə forması </h1>
+        <form className='bg-primary-bg text-white px-12 sm:px-6 md:px-12 lg:px-24 py-12' onSubmit={onSubmit}>
+            <h1 className='title font-medium text-white'> Ərizə forması </h1>
 
-            <div className='ml-24'>
+            <div>
                 <label htmlFor="name">Ad, Soyad</label>
                 <input
                     className='career-input'

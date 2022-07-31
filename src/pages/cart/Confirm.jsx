@@ -16,7 +16,7 @@ const Confirm = () => {
                 </div>
                 <h1 className={'text-red text-5xl font-bold mb-4'}>Congrats!</h1>
                 <p className={'mb-7'}>You booked successfully</p>
-                <NavLink to={'menu'}>
+                <NavLink to={'/menu'}>
                     <button className={'text-red text-lg font-medium rounded-full border-2 border-red w-full py-4 px-32'}>Menyuya keç</button>
                 </NavLink>
             </div>

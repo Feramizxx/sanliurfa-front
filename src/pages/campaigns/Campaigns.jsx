@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {memo, useState} from "react";
 import Campaign from "../../components/items/Campaign";
 import Campaign1 from "../../assets/img/campaigns/1.png";
 import Campaign2 from "../../assets/img/campaigns/2.png";
@@ -6,7 +6,7 @@ import Campaign3 from "../../assets/img/campaigns/3.png";
 import Campaign4 from "../../assets/img/campaigns/4.png";
 import GreeceSalad from "../../assets/img/foods/GreeceSalad.png";
 
-const Campaigns = () => {
+const Campaigns = memo(() => {
     const [campaigns] = useState([
         Campaign1, Campaign2, Campaign3, Campaign4, Campaign1, Campaign2, Campaign3, GreeceSalad
     ]);
@@ -22,6 +22,6 @@ const Campaigns = () => {
             </div>
         </div>
     )
-}
+})
 
 export default Campaigns;

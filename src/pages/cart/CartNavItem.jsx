@@ -1,6 +1,6 @@
 import React from "react";
 import CheckIcon from "../../assets/icons/cart/check.svg";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 
 const CartNavItem = (props) => {
     return (
