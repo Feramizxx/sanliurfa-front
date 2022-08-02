@@ -1,13 +1,13 @@
 import React from "react";
 import img1 from "../../assets/img/gridChildren.png";
+import "../../assets/styles/news.css"
 
 const InlineNews = () => {
   return (
-    <div className="  pt-[150px] news-container flex flex-row bg-red ">
-      <div className="w-[65%] ml-[90px] flex flex-col">
-      
+    <div className="pb-[150px]  pt-[150px] news-container flex flex-row lg:flex-col bg-red ">
+      <div className="w-[65%] lg:w-[95%] lg:ml-auto lg:mr-auto ml-[90px] flex flex-col">
       <div >
-        <h1 className="mb-5 mt-10 text-white text-[48px]">
+        <h1 className="mb-5 mt-10 sm:text-[32px] text-white text-[48px]">
           Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
         </h1>
         <img className="object-cover w-[976px]" src={img1} />
@@ -50,19 +50,21 @@ const InlineNews = () => {
         </p>
       </div>
       </div>
-      <div className="ml-[75px] mt-[200px] ">
+      <div  className="ml-[75px] lg:w-[100%]  lg:ml-0 mt-[100px] ">
         <hr className="border-white p-1" />
-        <span className="text-white">Həmçinin Bax</span>
-        <div className="mt-4 h-[100vh] grid gap-y-5">
+        <span className="text-white lg:ml-2 ">Həmçinin Bax</span>
+        <div id="news-grid" className=" mt-4  grid lg:grid-cols-3 md:grid-cols-2 place-items-center gap-x-2 lg:gap-y-2 gap-y-5 lg:mt-0">
+          
           <div className="w-fit  relative " id="grid-Item-container">
             <img className="w-[300px]" src={img1} />
             <a
-              className="absolute  text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
+              className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
               id="grid-item-text"
             >
               Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
             </a>
           </div>
+      
           <div className="w-fit  relative " id="grid-Item-container">
             <img className="w-[300px]" src={img1} />
             <a
@@ -90,6 +92,17 @@ const InlineNews = () => {
               Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
             </a>
           </div>
+          <div className="w-fit  relative " id="grid-Item-container">
+            <img className="w-[300px]" src={img1} />
+            <a
+              className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
+              id="grid-item-text"
+            >
+              Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
+            </a>
+          </div>
+       
+     
        
         </div>
       </div>

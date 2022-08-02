@@ -9,7 +9,7 @@ const About = () => {
     <>
       <section className="font-Roboto w-full">
         <div className="flex about-section1  xl:flex-col  mr-auto ml-auto  items-center justify-between">
-            <div className="w-[616px] mr-0 "><img className="w-[716px] h-[716px] mb-32 xl:mb-0 " src={cooker} /></div>
+            <div className="w-[80%] mr-0 "><img className="  mb-32 xl:mb-0 " src={cooker} /></div>
           
 
           <div className="w-[50%] xl:w-[100%] px-5  xl:mt-[0px] xl:p-5">
@@ -59,9 +59,9 @@ const About = () => {
 
 
       <section className="font-Roboto w-full mb-10">
-        <div className=" about-section2  flex lg:flex-col  mr-auto ml-auto  items-center flex-row-reverse justify-between ">
-          <div className="w-[700px] h-[600px]">
-            <img className="w-[800px] h-[600px]" src={family} />
+        <div className=" about-section2  lg:flex-col  flex  mr-auto ml-auto  items-center flex-row-reverse justify-between ">
+          <div className="w-[50%]">
+            <img className="" src={family} />
           </div>
 
           <div className="w-[50%] lg:w-[100%] px-5 ml-5 xl:mt-[0px] xl:p-5  ">

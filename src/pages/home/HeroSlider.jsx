@@ -24,7 +24,7 @@ const HeroSlider = () => {
           {slideImages.map((slideImage, index) => (
             <div className="each-slide object-fit w-full " key={index}>
               <div
-                className="h-[100vh] bg-no-repeat  bg-cover relative"
+                className="h-[100vh] bg-no-repeat w-[100%]  bg-cover relative"
                 style={{ backgroundImage: `url(${slideImage.url})` }}
               >
               </div>
