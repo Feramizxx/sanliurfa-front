@@ -12,9 +12,9 @@ const Menu = () => {
         <div className='pt-14 pb-20'>
             <div className={'px-14'}>
                 <div className='flex justify-between items-end mb-8'>
-                    <h2 className="font-bold text-[64px] text-[#BB2025]">Menyu</h2>
+                    <h2 className="font-bold text-[64px] md:text-[40px] text-[#BB2025]">Menyu</h2>
                     <NavLink to="menu"
-                       className="font-light text-[32px] text-[#8F161A] underline decoration-2 underline-offset-2">Daha
+                       className="font-light text-[32px] md:text-[20px] text-[#8F161A] underline decoration-2 underline-offset-2">Daha
                         çox</NavLink>
                 </div>
                 <CategoriesCarousel theme={'white'} />
@@ -38,7 +38,7 @@ const Menu = () => {
                     </svg>
                 </div>
             </div>
-            <div className={'flex justify-center'}>
+            <div className={'flex justify-center md:flex-col md:items-center'}>
                 <Card heading={'Bu gün 08:00 - 22:00 '} subheading={'İş saatları'} icon={Clock} />
                 <Card heading={'Məhəmməd Hadi küç. 23/24'} subheading={'Adresimiz'} icon={Location} central={true} />
                 <Card heading={'7/24'} subheading={'Çatdırılma'} icon={Van} />

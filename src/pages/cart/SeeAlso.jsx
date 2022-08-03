@@ -142,7 +142,7 @@ const SeeAlso = () => {
     return (
         <>
             <div className={'m-auto w-5/6'}>
-                <ul id={'see-also-meals'} className={'flex flex-wrap justify-between'}>
+                <ul id={'see-also-meals'} className={'flex flex-wrap justify-between md:flex-col md:items-center'}>
                     {meals.map((meal, i) => {
                         return (
                             <li className={'flex mb-12 ml-2 shadow-see-also-card rounded-[26px]'} key={i}>
@@ -152,37 +152,6 @@ const SeeAlso = () => {
                     })}
                 </ul>
             </div>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
-                <div className={'w-[646px] relative px-8 pb-6 pt-20'}>
-                    <CloseButton close={closeModal} theme={'red'} />
-                    <h2 className={'text-4xl font-bold text-center mb-8'}>Filter</h2>
-                    <form>
-                        <h3 className={'font-medium text-xl mb-2'}>Kateqoriya</h3>
-                        <div className={'flex flex-wrap mb-6'}>
-                            {categories.map((category, i) => {
-                                return (
-                                    <Checkbox name={category} price={null} key={i}/>
-                                )
-                            })}
-                        </div>
-                        <h3 className={'font-medium text-xl mb-2'}>Çeşidlər </h3>
-                        <div className={'flex flex-wrap mb-10'}>
-                            {choices.map((choice, i) => {
-                                return (
-                                    <Checkbox name={choice} price={null} key={i}/>
-                                )
-                            })}
-                        </div>
-                        <div className={'flex'}>
-                            <button type={'button'}
-                                    className={'bg-red rounded-full grow text-white text-2xl font-light py-4'}
-                                    onClick={closeModal}>
-                                Filtrləməni tamamla
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </Modal>
         </>
     )
 }

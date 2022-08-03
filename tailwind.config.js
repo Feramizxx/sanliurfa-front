@@ -13,11 +13,31 @@ module.exports = {
         'lg': {'max': '1023px'},
         // => @media (max-width: 1023px) { ... }
 
+        'lg2': {'max': '917px'},
+        // => @media (max-width: 917px) { ... }
+
         'md': {'max': '767px'},
         // => @media (max-width: 767px) { ... }
 
         'sm': {'max': '639px'},
         // => @media (max-width: 639px) { ... }
+
+        'xs': {'max': '530px'},
+
+        'min-2xl': {'min': '1535px'},
+        // => @media (min-width: 1535px) { ... }
+
+        'min-xl': {'min': '1279px'},
+        // => @media (min-width: 1279px) { ... }
+
+        'min-lg': {'min': '1023px'},
+        // => @media (min-width: 1023px) { ... }
+
+        'min-md': {'min': '767px'},
+        // => @media (min-width: 767px) { ... }
+
+        'min-sm': {'min': '639px'},
+        // => @media (min-width: 639px) { ... }
       },
       fontFamily: {
         'Roboto': ['Roboto','system-ui'],

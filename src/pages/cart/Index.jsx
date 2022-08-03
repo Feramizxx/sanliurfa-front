@@ -45,7 +45,7 @@ const Index = () => {
     return (
         <div className={'mt-12 mb-2'}>
             <PageNav next={'Addresses'}/>
-            <div className={'py-20 px-48'}>
+            <div className={'py-20 px-48 sm:px-10'}>
                 {meals.map((meal, i) => {
                     return (
                         <Card data={meal} index={i + 1} remove={removeMeal} key={meal.id} />
@@ -53,17 +53,17 @@ const Index = () => {
                 })}
             </div>
             <hr className={'w-11/12 mb-6 m-auto'}/>
-            <div className={'px-48 flex justify-between text-2xl mb-8'}>
+            <div className={'px-48 flex justify-between text-2xl mb-8 md:text-base sm:px-10'}>
                 <p>Çatdırılma</p>
                 <p>Ödənişsiz</p>
             </div>
-            <div className={'px-48 flex justify-between mb-10'}>
-                <p className={'text-[32px] font-bold'}>Ümumi məbləğ</p>
-                <p className={'text-[#8F161A] text-[48px] font-semibold'}>39₼</p>
+            <div className={'px-48 flex justify-between mb-10 sm:px-10'}>
+                <p className={'text-[32px] font-bold md:text-lg'}>Ümumi məbləğ</p>
+                <p className={'text-[#8F161A] text-[48px] font-semibold md:text-xl'}>39₼</p>
             </div>
             <div className={'flex justify-end w-11/12 m-auto mb-12'}>
                 <NavLink to={'/cart/addresses'}>
-                    <button className={'bg-red py-4 px-24 rounded-full text-white text-2xl'}>Sifarişi təsdiqlə</button>
+                    <button className={'bg-red py-4 px-24 rounded-full text-white text-2xl xs:text-base xs:px-12'}>Sifarişi təsdiqlə</button>
                 </NavLink>
             </div>
             <div className={'px-16 mb-10'}>

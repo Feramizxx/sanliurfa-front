@@ -12,8 +12,8 @@ const Campaigns = memo(() => {
     ]);
 
     return (
-        <div className={'pt-40 pb-10 px-28 bg-red'}>
-            <div className={'flex flex-wrap justify-between items-center'}>
+        <div className={'pt-40 pb-10 px-28 bg-red lg2:px-10'}>
+            <div className={'flex flex-wrap justify-between items-center md:flex-col'}>
                 {campaigns.map((campaign, i) => {
                     return (
                         <Campaign image={campaign} key={i} />
