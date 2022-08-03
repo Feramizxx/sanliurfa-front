@@ -8,7 +8,7 @@ const Profil = () => {
     <>
     <div className="pt-[200px]  w-[75%] mr-auto ml-auto">
       <form className="flex flex-col">
-        <div className=" ml-[80px] flex w-[350px] items-center">
+        <div className="ml-[80px] flex w-max-[350px] items-center xs:ml-0">
           <img className="w-36 h-36 rounded-full object-cover" src={img} />
           <div className="ml-2">
             <h1 className="mb-2 text-[32px]">Leyli Aliyeva</h1>
