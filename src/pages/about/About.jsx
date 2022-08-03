@@ -7,11 +7,11 @@ import coffe from "../../assets/img/coffeto.png";
 const About = memo(() => {
     return (
         <>
-            <section className="font-Roboto w-full">
+            <section className="font-Roboto w-full sm:pt-12">
                 <div className="flex about-section1  xl:flex-col  mr-auto ml-auto  items-center justify-between">
-                    <div className="w-[616px] mr-0 "><img className="w-[716px] h-[716px] mb-32 xl:mb-0 " src={cooker} /></div>
-
-
+                    <div className="w-[616px] mr-0 md:w-full md:h-auto">
+                        <img className="w-[716px] h-[716px] mb-32 xl:mb-0 md:w-full md:h-auto" src={cooker} />
+                    </div>
                     <div className="w-[50%] xl:w-[100%] px-5  xl:mt-[0px] xl:p-5">
                         <h3 className="text-[20px]  text-red mb-5">Missiyamız</h3>
                         <h1 className="text-[32px] leading-8 mb-5">
@@ -57,14 +57,22 @@ const About = memo(() => {
 
 
 
+{/*<<<<<<< HEAD*/}
+{/*=======*/}
+{/*      <section className="font-Roboto w-full mb-10">*/}
+{/*        <div className=" about-section2  lg:flex-col  flex  mr-auto ml-auto  items-center flex-row-reverse justify-between ">*/}
+{/*          <div className="w-[50%]">*/}
+{/*            <img className="" src={family} />*/}
+{/*          </div>*/}
+{/*>>>>>>> 5554cbff6590d35ec844318dfffcfef918ca2d32*/}
 
             <section className="font-Roboto w-full mb-10">
                 <div className=" about-section2  flex lg:flex-col  mr-auto ml-auto  items-center flex-row-reverse justify-between ">
-                    <div className="w-[700px] h-[600px]">
-                        <img className="w-[800px] h-[600px]" src={family} />
+                    <div className="w-[700px] h-[600px] md:w-full md:h-auto">
+                        <img className="w-[800px] h-[600px] md:w-full md:h-auto" src={family} />
                     </div>
 
-                    <div className="w-[50%] lg:w-[100%] px-5 ml-5 xl:mt-[0px] xl:p-5  ">
+                    <div className="w-[50%] lg:w-[100%] px-5 xl:mt-[0px] xl:p-5  ">
                         <h3 className="text-[20px]  text-red mb-5">Missiyamız</h3>
                         <h1 className="text-[32px] leading-8 mb-5">
                             Phasellus risus lorem dignissim arcu. Viverra ut magna eu enim

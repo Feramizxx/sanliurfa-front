@@ -9,7 +9,7 @@
     background-image: url("../../assets/img/bgCooker.png");
     background-repeat: no-repeat;
     width:  100%;
-    background-size: contain;
+    background-size: 100% 60%;
     background-position: 0;
     
 }

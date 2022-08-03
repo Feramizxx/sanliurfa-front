@@ -19,7 +19,7 @@ const Profil = () => {
 
         <div className="w-[100%]  mt-[50px]">
         <span className="ml-[100px] lg:ml-[60px] font-semibold">Şəxsi məlumatlarım</span>
-        <div className=" mt-[20px] grid   gap-y-5 grid-cols-2 place-items-center" >
+        <div id="profil-divBox" className=" mt-[20px] grid   gap-y-5 grid-cols-2 place-items-center" >
           <input  className="w-[65%] p-2" placeholder="salam" />
           <input  className="w-[65%] p-2" placeholder="salam" />
           <input  className="w-[65%] p-2" placeholder="salam" />
@@ -28,7 +28,7 @@ const Profil = () => {
         </div>
        
 
-        <div className="w-[100%]  mt-[50px]">
+        <div id="profil-divBox" className="w-[100%]  mt-[50px]">
         <span className="ml-[100px] lg:ml-[60px] font-semibold">Şəxsi məlumatlarım</span>
         <div className=" mt-[20px] grid   gap-y-5 grid-cols-2 place-items-center" >
           <input  className="w-[65%] p-2" placeholder="salam" />
