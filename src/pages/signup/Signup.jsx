@@ -21,8 +21,8 @@ const Signup = () => {
     }
 
     return (
-        <div className={'sm:flex sm:justify-center sm:items-center pt-40 px-3 pb-3 mb-8'}>
-            <form onSubmit={onSubmit} className={'flex justify-center items-center flex-col sm:max-w-[600px]'}>
+        <div className={'min-sm:flex min-sm:justify-center min-sm:items-center pt-40 px-3 pb-3 mb-8'}>
+            <form onSubmit={onSubmit} className={'flex justify-center items-center flex-col min-sm:max-w-[600px]'}>
                 <h3 className='font-bold text-[1.5rem] text-primary-bg'> Sign Up </h3>
                 <div>
                     <label htmlFor="name"> First Name </label>

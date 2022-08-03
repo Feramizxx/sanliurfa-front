@@ -1,18 +1,19 @@
 @import url('assets/styles/biker-animation.css');
 @import url('assets/styles/menu-animation.css');
+@import url('assets/styles/footer-style.css');
+@import url('assets/styles/login-form-style.css');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Mahammad's part */
 @layer components {
     .navbar-link {
-        @apply mt-5 text-lg text-black text-opacity-50 font-semibold hover:cursor-pointer md:mt-0 md:text-[2vw] lg:text-lg
+        @apply text-lg text-black text-opacity-50 font-semibold hover:cursor-pointer md:mt-5 lg:text-[2vw]
     }
 
     .navbar-icon {
-        @apply mr-3 lg:mr-6
+        @apply mr-6 lg:mr-3
     }
 
     .message-box-link {

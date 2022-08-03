@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Route, BrowserRouter, Routes} from "react-router-dom";
 import './index.css';
-import Header from "./components/layouts/Header";
-import Footer from "./components/layouts/Footer";
 import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
 import Campaigns from "./pages/campaigns/Campaigns";

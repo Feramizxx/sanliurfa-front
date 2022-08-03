@@ -2,7 +2,6 @@ import React, {memo} from 'react';
 import ContactForm from "./ContactForm";
 import ContactData from "./ContactData";
 import { routerStyle, mapStyle, iframeStyle } from './open-street-map-style'
-//absolute top-[24em] left-0 w-full overflow-hidden
 const Contact = memo(() => {
 
     return (
@@ -21,7 +20,7 @@ const Contact = memo(() => {
                 </div>
             </div>
             {/*<img className='w-[3vw] absolute left-[48vw] top-[21vh] transition-all hover:cursor-pointer hover:w-[4vw]' src={require('../../assets/img/tower.png')} alt="a tower"/>*/}
-            <div className='mt-96 sm:grid sm:mx-6 z-10'
+            <div className='mt-96 min-sm:grid min-sm:mx-6 z-10'
                 style={{
                     gridTemplateColumns: 'minmax(0, 40em) minmax(0, 30em)'
                 }}

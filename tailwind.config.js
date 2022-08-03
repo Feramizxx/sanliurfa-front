@@ -18,6 +18,21 @@ module.exports = {
 
         'sm': {'max': '639px'},
         // => @media (max-width: 639px) { ... }
+
+        'min-2xl': {'min': '1535px'},
+        // => @media (min-width: 1535px) { ... }
+
+        'min-xl': {'min': '1279px'},
+        // => @media (min-width: 1279px) { ... }
+
+        'min-lg': {'min': '1023px'},
+        // => @media (min-width: 1023px) { ... }
+
+        'min-md': {'min': '767px'},
+        // => @media (min-width: 767px) { ... }
+
+        'min-sm': {'min': '639px'},
+        // => @media (min-width: 639px) { ... }
       },
       fontFamily: {
         'Roboto': ['Roboto','system-ui'],
