@@ -62,7 +62,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
                 </div>
                 <div>
                     <p className='footer-list-title mb-2'> Social Media </p>
-                    <p className='w-96 text-sm'> Be the first one to know  about discounts, offers, news, giveaways and events </p>
+                    <p className='max-w-96 text-sm'> Be the first one to know  about discounts, offers, news, giveaways and events </p>
                     <div className='flex my-4'>
                         <SocialMediaLink className={'mr-2'} href={'#'} theme={theme}>
                             <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
