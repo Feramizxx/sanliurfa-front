@@ -38,7 +38,7 @@ const Mobile = () => {
                         </div>
                     </div>
                     <div className={"mr-7 lg:mr-0 lg:ml-7"}>
-                        <img src={require("../../assets/img/phone.png")} className={'lg:h-[25em]'} />
+                        <img src={require("../../assets/img/phone.png")} />
                     </div>
                 </div>
                 <div className="absolute top-0 bottom-0 left-0 right-0">

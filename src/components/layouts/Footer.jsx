@@ -4,6 +4,7 @@ import SocialMediaLink from "../ui/SocialMediaLink";
 import AppShop from "../ui/AppShop";
 import TheJavaChipLogo from "../ui/TheJavaChipLogo";
 import {NavLink} from "react-router-dom";
+import {scrollTop} from "../../helpers";
 
 const Footer = memo(({theme, setCurrentLink}) => {
     const themes = {
@@ -24,6 +25,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
     }
 
     const onClick = (num) => {
+        scrollTop();
         setCurrentLink(num);
     }
 
@@ -32,7 +34,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
             backgroundColor: themes[theme].bg,
             color: themes[theme].text
         }}>
-            <section className='p-9 sm:grid grid-cols-2 lg:flex justify-evenly'>
+            <section className='p-9 footer'>
                 <div>
                     <Logo theme={themes[theme].logo} setCurrentLink={setCurrentLink}/>
                     <p className='w-56 text-sm'>
@@ -60,7 +62,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
                 </div>
                 <div>
                     <p className='footer-list-title mb-2'> Social Media </p>
-                    <p className='w-96 text-sm'> Be the first one to know  about discounts, offers, news, giveaways and events </p>
+                    <p className='max-w-96 text-sm'> Be the first one to know  about discounts, offers, news, giveaways and events </p>
                     <div className='flex my-4'>
                         <SocialMediaLink className={'mr-2'} href={'#'} theme={theme}>
                             <svg width="8" height="16" viewBox="0 0 8 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +103,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
                 </div>
             </section>
             <hr className='border-none h-[1px] opacity-20' style={{backgroundColor: themes[theme].lineColor}}/>
-            <section className={'p-4 sm:flex justify-around items-center'}>
+            <section className={'p-4 min-sm:flex justify-around items-center'}>
                 <p className={'text-sm font-normal'}> © 2022 Sanliurfa MMC. All Rights Reserved. </p>
                 <div className={'flex items-center'}>
                     <p className={'font-normal text-sm mr-6'}> Designed by: </p>

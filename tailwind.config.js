@@ -33,6 +33,8 @@ module.exports = {
         'min-lg': {'min': '1023px'},
         // => @media (min-width: 1023px) { ... }
 
+        'min-lg2': {'min': '917px'},
+
         'min-md': {'min': '767px'},
         // => @media (min-width: 767px) { ... }
 

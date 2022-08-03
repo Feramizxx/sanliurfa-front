@@ -11,7 +11,7 @@ const CareerForm = () => {
     }
 
     return (
-        <form className='bg-primary-bg text-white px-12 sm:px-6 md:px-12 lg:px-24 py-12' onSubmit={onSubmit}>
+        <form className='bg-primary-bg text-white lg:px-12 px-24 py-12' onSubmit={onSubmit}>
             <h1 className='title font-medium text-white'> Ərizə forması </h1>
 
             <div>

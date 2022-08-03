@@ -36,14 +36,14 @@ const InfoBox = ({onClose}) => {
             }}
         >
             <CloseButton theme={'red'} close={onClose}/>
-            <div className={'flex items-center justify-between py-12'}>
+            <div className={'flex items-center justify-between pb-12 pt-16 sm:flex-col'}>
                 <p className={'text-3xl text-primary-bg font-bold'}> Satış təmsilcisi </p>
-                <div className={'flex items-center text-lg'}>
+                <div className={'flex items-center text-lg sm:pt-2'}>
                     <svg className={'mr-3'} width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16.033 31.066C24.3355 31.066 31.066 24.3355 31.066 16.033C31.066 7.7305 24.3355 1 16.033 1C7.7305 1 1 7.7305 1 16.033C1 24.3355 7.7305 31.066 16.033 31.066Z" stroke="#BB2025" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                         <path d="M22.6339 19.8174L16.0978 16.0435M16.0605 4.92102V16.0324V4.92102Z" stroke="#BB2025" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
-                    <p className={'text-primary-bg'}> Bitmə tarixi: 05.08.2022 </p>
+                    <p className={'text-primary-bg pr-6'}> Bitmə tarixi: 05.08.2022 </p>
                 </div>
             </div>
             <div className={'underline text-lg'}>

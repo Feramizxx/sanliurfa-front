@@ -6,3 +6,7 @@ export const getFooterTheme = (num) => {
         default: return 'default'
     }
 }
+
+export const scrollTop = () => {
+    window.scrollTo({top: 0, left: 0});
+}
