@@ -46,7 +46,7 @@
     }
 
     .title {
-        @apply text-3xl font-medium mb-8 font-Montserrat
+        @apply text-3xl font-medium mb-8
     }
 
     .contact-data-list-item {

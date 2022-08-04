@@ -6,7 +6,7 @@ import Mobile from "./Mobile";
 
 const Home = memo(() => {
     return (
-        <div className="font-Roboto">
+        <div>
             <HeroSlider />
             <Menu />
             <MainNews />
