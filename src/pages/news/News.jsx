@@ -17,51 +17,51 @@ const News = memo(() => {
 
 
     <section className={'bg-red pt-40 pb-10'}>
-    <div className="w-[85%]  mr-auto ml-auto  grid-cols-4 grid-rows-2 grid gap-1"     >
+    <div className="w-[85%]  mr-auto ml-auto xl:items-center  xl:flex xl:flex-col  grid-cols-4 grid-rows-2 grid gap-1"     >
       <div
         onClick={navigateToinlineNews}
-        className="w-fit  relative col-span-2 row-span-2"
+        className="w-fit xl:mt-5  relative col-span-2 row-span-2"
         id="grid-Item-container"
       >
-        <img className="h-[100%] object-cover" src={img1} />
+        <img className="xl:h-[40vw] xl:w-[80vw] object-cover" src={img1} />
         <a
-          className="absolute text-[32px] leading-10 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
+          className="absolute  text-[2vw] leading-7 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
           id="grid-item-text"
         >
           Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
         </a>
       </div>
       <div
-        className="w-fit col-span-2 relative  row-span-1"
+        className="w-fit  xl:mt-5  col-span-2 relative  row-span-1"
         id="grid-Item-container"
       >
-        <img  className="h-[100%] object-cover" src={img2} />
+        <img  className="xl:h-[40vw] xl:w-[80vw] object-cover" src={img2} />
         <a
-          className="absolute text-[24px] leading-7 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
+          className="absolute  text-[2vw] p-7 leading-7 text-white  bottom-0 bg-black  bg-opacity-40  w-[100%]  hover:block "
           id="grid-item-text"
         >
           Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
         </a>
       </div>
       <div
-        className="w-fit col-span-1 pt-[0px] 2xl:pt-[0px] relative row-span-1 "
+        className="w-fit  xl:mt-5  col-span-1 pt-[0px] 2xl:pt-[0px] relative row-span-1 "
         id="grid-Item-container"
       >
-        <img className="h-[100%] object-cover" src={img3} />
+        <img className="xl:h-[40vw] xl:w-[80vw] object-cover" src={img3} />
         <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
+          className="absolute text-[2vw] leading-7 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full  hover:block "
           id="grid-item-text"
         >
           Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
         </a>
       </div>
       <div
-        className="w-fit col-span-1 relative pt-[0px] 2xl:pt-[0px] row-span-1"
+        className="w-fit  xl:mt-5 col-span-1 relative pt-[0px] 2xl:pt-[0px] row-span-1"
         id="grid-Item-container"
       >
-        <img className="h-[100%] object-cover"  src={img4} />
+        <img className="xl:h-[40vw] xl:w-[80vw] object-cover"  src={img4} />
         <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
+          className="absolute text-[2vw] leading-7 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
           id="grid-item-text"
         >
           Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.

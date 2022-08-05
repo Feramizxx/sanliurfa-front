@@ -20,7 +20,7 @@ const HeroSlider = () => {
   return (
     <div>
       <div className="slide-container w-full h-full mt-50">
-        <Slide arrows={false} indicators={true}>
+        <Slide  arrows={false}  indicators={true}>
           {slideImages.map((slideImage, index) => (
             <div className="each-slide object-fit w-full " key={index}>
               <div
