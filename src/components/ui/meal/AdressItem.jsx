@@ -5,7 +5,7 @@ const AdressItem = (props) => {
   return (
     <div className="adresses-container mb-10 w-[85%] mr-auto ml-auto px-10 py-5 flex  flex-col ">
       <div className="flex justify-between  mb-2">
-        <h3 className="font-semibold">Evim</h3>
+        <h3 className="font-semibold">{props.title}</h3>
         <p className="flex items-center">
           <svg
             className="mr-2"
@@ -30,12 +30,14 @@ const AdressItem = (props) => {
       <div className="flex justify-between md:flex-col mt-4 w-[100%]">
         <div className="flex flex-col">
           <span></span>
-          <span>{props.city}</span>
-          <span>{props.adress}</span>
+          <span>Şəhər: {props.city}</span>
+          <span>Rayon: {props.adress}</span>
+          <span>Küçə: {props.street}</span>
         </div>
         <div className="flex flex-col">
-          <span>{props.name + " " + props.surName}</span>
-          <span>{props.number}</span>
+          <span>Bina: {props.building}</span>
+          <span>Mərtəbə: {props.floor}</span>
+          <span>Blok: {props.blok}</span>
         </div>
         <div className="text-red flex items-end">
           <button value={props.id} onClick={props.removeAdress}>
