@@ -19,11 +19,13 @@ import Orders from './components/ui/meal/Orders';
 import Profil from './components/ui/Profil';
 import Adress from './components/ui/meal/Adress';
 import InlineNews from './pages/news/InlineNews';
+import AdressContextProvider from './contexts/AdressesContext';
 
 const App = () => {
     return (
         <BrowserRouter>
             <LayOut>
+            <AdressContextProvider>
                 <Routes>
                     <Route path='/' element={<Home/>}/>
                     <Route path='/about' element={<About/>}/>
@@ -44,6 +46,7 @@ const App = () => {
                     <Route path='/profil' element ={ <Profil/>}/>
                     <Route path='/adresses' element ={ <Adress/>}/>
                 </Routes>
+                </AdressContextProvider>
             </LayOut>
         </BrowserRouter>
     );
