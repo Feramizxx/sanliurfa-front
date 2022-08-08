@@ -1,12 +1,17 @@
-import React, {memo} from 'react';
+import React, {memo, useContext} from 'react';
 import Logo from "../ui/Logo";
 import SocialMediaLink from "../ui/SocialMediaLink";
 import AppShop from "../ui/AppShop";
 import TheJavaChipLogo from "../ui/TheJavaChipLogo";
 import {NavLink} from "react-router-dom";
 import {scrollTop} from "../../helpers";
+import {LinkContext} from "../../contexts/LinkContext";
+import {getFooterTheme} from '../../helpers';
 
-const Footer = memo(({theme, setCurrentLink}) => {
+const Footer = memo(() => {
+    const linkContext = useContext(LinkContext);
+    const theme = getFooterTheme(linkContext.value);
+
     const themes = {
         default: {
             bg: '#BB2025',
@@ -26,7 +31,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
 
     const onClick = (num) => {
         scrollTop();
-        setCurrentLink(num);
+        linkContext.setValue(num);
     }
 
     return (
@@ -36,7 +41,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
         }}>
             <section className='p-9 footer'>
                 <div>
-                    <Logo theme={themes[theme].logo} setCurrentLink={setCurrentLink}/>
+                    <Logo theme={themes[theme].logo}/>
                     <p className='w-56 text-sm'>
                         Suspendisse vitae sollicitudin nunc velit.
                         Suspendisse ante posuere a massa. Consequat
