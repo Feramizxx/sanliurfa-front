@@ -6,6 +6,7 @@ import Card from "../../components/items/Card";
 import Clock from "../../assets/icons/card/clock.svg";
 import Location from "../../assets/icons/card/location.svg";
 import Van from "../../assets/icons/card/van.svg";
+import {scrollTop} from "../../helpers";
 
 const Menu = () => {
     return (
@@ -13,7 +14,7 @@ const Menu = () => {
             <div className={'px-14'}>
                 <div className='flex justify-between items-end mb-8'>
                     <h2 className="font-bold text-[64px] md:text-[40px] text-[#BB2025]">Menyu</h2>
-                    <NavLink to="menu"
+                    <NavLink to="menu" onClick={scrollTop}
                        className="font-light text-[32px] md:text-[20px] text-[#8F161A] underline decoration-2 underline-offset-2">Daha
                         çox</NavLink>
                 </div>

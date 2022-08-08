@@ -10,9 +10,9 @@ const Addresses = () => {
     return (
         <div className={'mt-12 mb-2'}>
             <PageNav prev={'Cart'} next={'Payment'}/>
-            <form className={'py-20 px-48'}>
-                <div className={'flex justify-between mb-7'}>
-                    <select className={'cart-input font-extralight'}>
+            <form className={'py-20 px-48 lg2:px-10'}>
+                <div className={'flex justify-between mb-7 sm:flex-col'}>
+                    <select className={'cart-input font-extralight sm:mb-7 sm:w-full'}>
                         <option selected='selected' disabled='disabled'>Şəhər</option>
                         {cities.map((city, i) => {
                             return (
@@ -20,7 +20,7 @@ const Addresses = () => {
                             )
                         })}
                     </select>
-                    <select className={'cart-input font-extralight'}>
+                    <select className={'cart-input font-extralight sm:w-full'}>
                         <option selected='selected' disabled='disabled'>Rayon</option>
                         {districts.map((district, i) => {
                             return (
@@ -29,9 +29,9 @@ const Addresses = () => {
                         })}
                     </select>
                 </div>
-                <div className={'flex justify-between mb-7'}>
-                    <input className={'cart-input'} placeholder={'Küçə'} />
-                    <select className={'cart-input font-extralight'}>
+                <div className={'flex justify-between mb-7 sm:flex-col'}>
+                    <input className={'cart-input sm:mb-7 sm:w-full'} placeholder={'Küçə'} />
+                    <select className={'cart-input font-extralight sm:w-full'}>
                         <option selected='selected' disabled='disabled'>Mənzil</option>
                         {flats.map((flat, i) => {
                             return (
@@ -40,12 +40,12 @@ const Addresses = () => {
                         })}
                     </select>
                 </div>
-                <div className={'flex justify-between mb-7'}>
-                    <div className={'flex justify-between w-[47%]'}>
+                <div className={'flex justify-between mb-7 sm:flex-col'}>
+                    <div className={'flex justify-between w-[47%] sm:mb-7 sm:w-full'}>
                         <input className={'cart-input'} placeholder={'Başlıq'} />
                         <input className={'cart-input'} placeholder={'Bina'} />
                     </div>
-                    <div className={'flex justify-between w-[47%]'}>
+                    <div className={'flex justify-between w-[47%] sm:w-full'}>
                         <input className={'cart-input'} placeholder={'Blok'} />
                         <input className={'cart-input'} placeholder={'Mərtəbə'} />
                     </div>
@@ -59,7 +59,9 @@ const Addresses = () => {
                 </div>
                 <div className={'flex justify-end'}>
                     <NavLink to={'/cart/payment'}>
-                        <button className={'bg-red py-4 px-32 rounded-full text-white text-2xl font-light'}>Növbəti</button>
+                        <button className={'bg-red py-4 px-32 rounded-full text-white text-2xl font-light sm:text-lg sm:px-20'}>
+                            Növbəti
+                        </button>
                     </NavLink>
                 </div>
             </form>

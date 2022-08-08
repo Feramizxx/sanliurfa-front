@@ -1,7 +1,6 @@
 import React from "react";
 import {Outlet} from "react-router-dom";
 import CartNavBar from "./CartNavBar";
-import PageNav from "./PageNav";
 
 const Cart = () => {
     return (

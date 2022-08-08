@@ -23,10 +23,10 @@ const Counter = (props) => {
                          shadow-counter rounded-full bg-white w-fit`}>
             <div className={'flex py-2'}>
                 <img src={(amount > props.minNumber) ? BlackMinus : GrayMinus} onClick={() => decrease()}
-                     className={`border-r cursor-pointer sm:px-4 sm:py-1 sm:w-12 ${props.type === 'modal' ? 'w-20 px-7 py-2' : 'px-5'}`} />
+                     className={`border-r cursor-pointer sm:px-4 sm:py-1 sm:w-12 ${props.type === 'modal' ? 'w-20 px-7 py-2' : 'px-4'}`} />
                 <div className={`${props.type === 'modal' ? 'text-2xl px-7 py-2 sm:px-4 sm:py-1 sm:text-lg' : 'text-base px-5'}`}>{amount}</div>
                 <img src={Plus} onClick={() => increase()}
-                     className={`border-l cursor-pointer sm:px-4 sm:py-1 sm:w-12 ${props.type === 'modal' ? 'w-20 px-7 py-2' : 'px-5'}`} />
+                     className={`border-l cursor-pointer sm:px-4 sm:py-1 sm:w-12 ${props.type === 'modal' ? 'w-20 px-7 py-2' : 'px-4'}`} />
             </div>
         </div>
     )

@@ -178,15 +178,24 @@ const Menu = memo(() => {
 
     return (
         <>
-            <div className={'bg-red font-Roboto py-40 px-28'}>
+            <div className={'bg-red font-Roboto py-40 px-28 md:px-8'}>
                 <CategoriesCarousel theme={'red'}/>
-                <div className={'mb-8'}>
-                    <div className={'flex cursor-pointer mt-12 xs:mt-0'} onClick={openModal}>
+                <div className={'flex justify-between items-center mb-8'}>
+                    <div className={'flex cursor-pointer xs:mt-0'} onClick={openModal}>
                         <p className={'text-white mr-4'}>Filtrlə</p>
                         <img src={Filter}/>
                     </div>
+                    <div>
+                        <select className={'outline-none px-12 py-1'}>
+                            <option selected={'selected'} disabled={'disabled'}>Çeşidlə</option>
+                            <option>A-dan Z-yə</option>
+                            <option>Z-dən A-ya</option>
+                            <option>Ucuzdan bahaya</option>
+                            <option>Bahadan ucuza</option>
+                        </select>
+                    </div>
                 </div>
-                <ul id={'menu-meals'} className={'flex flex-wrap justify-between md:flex-nowrap md:flex-col md:items-center'}>
+                <ul id={'menu-meals'} className={'flex flex-wrap justify-between sm:flex-nowrap sm:flex-col sm:items-center'}>
                     {meals.map((meal, i) => {
                         return (
                             <li className={'flex mb-12'} key={i}><Meal data={meal} type={'list'} key={i} /></li>

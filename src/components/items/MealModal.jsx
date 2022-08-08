@@ -68,7 +68,7 @@ const MealModal = (props) => {
                         <h3 className={'font-medium text-xl mb-2'}>Qeydləriniz</h3>
                         <input type={'text'} className={'bg-[#F1F1F1] w-full outline-red transition-colors mb-7 py-4 px-6 rounded-full'} />
                         <div className={'flex justify-between items-center mb-4'}>
-                            <h3 className={'font-medium text-xl mb-2'}>Ümumi məbləğ:{props.amount}</h3>
+                            <h3 className={'font-medium text-xl mb-2'}>Ümumi məbləğ:</h3>
                             <p className={'text-[#8F161A] text-[40px] font-semibold'}>{totalPrice}₼</p>
                         </div>
                         <div className={'flex justify-between'}>

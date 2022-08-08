@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import Counter from "../../components/ui/meal/Counter";
 
 const Card = (props) => {
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(props.data.number);
 
     return (
         <div
@@ -22,7 +22,7 @@ const Card = (props) => {
             </div>
             <div className={'flex items-center sm:flex-col'}>
                 <div className={'flex flex-col justify-between items-center h-full py-3 mr-24 xl:mr-2'}>
-                    <p className={'text-[#8F161A] text-[32px] font-semibold xl:text-[24px]'}>{props.data.price}₼</p>
+                    <p className={'text-[#8F161A] text-[32px] font-semibold xl:text-[24px]'}>{count * props.data.price}₼</p>
                     <Counter minNumber={1} defaultValue={props.data.number}
                              countDecrease={() => {setCount(count - 1)}} countIncrease={() => {setCount(count + 1)}} />
                 </div>

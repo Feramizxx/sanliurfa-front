@@ -7,7 +7,7 @@ const CartProduct = (props) => {
                 <img src={props.data.picture} className={'w-[40px] mr-4'} />
                 <p>{props.data.name}</p>
             </div>
-            <div className={'flex justify-between w-1/3 pl-3'}>
+            <div className={'flex justify-between w-1/3 pl-3 xs:w-1/2'}>
                 <p>(x{props.data.portion})</p>
                 <b>{props.data.price.toFixed(2)} ₼</b>
             </div>

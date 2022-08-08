@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 
 const PageNav = (props) => {
     return (
-        <div className={'px-48 md:px-10'}>
+        <div className={'px-48 lg2:px-10'}>
             {props.prev &&
                 <NavLink to={'/cart/' + (props.prev !== 'Cart' ? props.prev.toLowerCase() : '')}>
                     <div className={'flex float-left'}>
