@@ -5,7 +5,7 @@ import { routerStyle, mapStyle, iframeStyle } from './open-street-map-style'
 const Contact = memo(() => {
 
     return (
-        <div className='font-Roboto flex justify-center mb-20'>
+        <div className='flex justify-center mb-20'>
             <div style={routerStyle}>
                 <div style={mapStyle}>
                     <iframe

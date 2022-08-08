@@ -10,7 +10,7 @@ const LayOut = ({children}) => {
     return (
         <>
             <Header currentLink={currentLink} setCurrentLink={setCurrentLink}/>
-            <main>
+            <main className='font-Roboto'>
                 {children}
             </main>
             <Footer theme={helpers.getFooterTheme(currentLink)} setCurrentLink={setCurrentLink}/>

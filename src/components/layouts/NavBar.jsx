@@ -22,6 +22,8 @@ const NavBar = ({currentLink, setCurrentLink}) => {
     const onLinkClick = (num) => {
         setCurrentLink(num);
         scrollTop();
+        setAnimation('menu-close');
+        setIsMenuOpen(false);
         localStorage.setItem('currentLink',String(num));
     }
 

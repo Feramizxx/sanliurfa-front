@@ -7,7 +7,7 @@ import coffe from "../../assets/img/coffeto.png";
 const About = memo(() => {
     return (
         <>
-            <section className="font-Roboto w-full sm:pt-12">
+            <section className="w-full sm:pt-12">
                 <div className="flex about-section1  xl:flex-col  mr-auto ml-auto  items-center justify-between">
                     <div className="w-[616px] mr-0 md:w-full md:h-auto">
                         <img className="w-[716px] h-[716px] mb-32 xl:mb-0 md:w-full md:h-auto" src={cooker} />

@@ -42,8 +42,7 @@ module.exports = {
         // => @media (min-width: 639px) { ... }
       },
       fontFamily: {
-        'Roboto': ['Roboto','system-ui'],
-        'Montserrat': ['Montserrat', 'system-ui']
+        'Roboto': ['Roboto','system-ui']
       },
       colors: {
         'opaque-red': 'rgba(187, 32, 37, 0.1)',

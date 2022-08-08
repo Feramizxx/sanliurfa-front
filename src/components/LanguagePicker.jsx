@@ -2,12 +2,17 @@ import React from 'react';
 import Language from "./Language";
 
 const LanguagePicker = () => {
-    const [isCurrent, setIsCurrent] = React.useState(true);
+    const _isCurrent = localStorage.getItem('isCurrent');
+    const [isCurrent, setIsCurrent] = React.useState(_isCurrent !== undefined? _isCurrent === 'true' : true);
     const [isVisible, setIsVisible] = React.useState({
-        aze: true,
-        eng: false
+        aze: isCurrent,
+        eng: !isCurrent
     });
     const [underFirstClick, setUnderFirstClick] = React.useState(true);
+
+    window.onbeforeunload = () => {
+        localStorage.setItem('isCurrent',String(isCurrent));
+    }
 
     const onClick = (currentState) => {
         if (underFirstClick) {
@@ -20,9 +25,9 @@ const LanguagePicker = () => {
             setIsVisible({
                 aze: currentState,
                 eng: !currentState
-            })
+            });
         }
-        setUnderFirstClick(!underFirstClick);
+        setUnderFirstClick(!underFirstClick)
     }
 
     return (

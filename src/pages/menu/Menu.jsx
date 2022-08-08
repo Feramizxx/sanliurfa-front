@@ -178,7 +178,7 @@ const Menu = memo(() => {
 
     return (
         <>
-            <div className={'bg-red font-Roboto py-40 px-28 md:px-8'}>
+            <div className={'bg-red py-40 px-28 md:px-8'}>
                 <CategoriesCarousel theme={'red'}/>
                 <div className={'flex justify-between items-center mb-8'}>
                     <div className={'flex cursor-pointer xs:mt-0'} onClick={openModal}>
