@@ -1,5 +1,5 @@
-#profil-divBox input,select{
- background: #FFFFFF;
+#profil-divBox  input,select{
+background: #FFFFFF;
 box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.15);
 border-radius: 11px;
 }

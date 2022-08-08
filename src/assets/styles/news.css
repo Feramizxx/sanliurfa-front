@@ -20,6 +20,11 @@ display: block;
         grid-template-columns: auto auto auto !important;
     }
 }
+@media screen and (max-width: 1279px) {
+    #grid-item-text{
+        display: block;
+       }
+}
 @media screen and (max-width: 767px) {
     #news-grid{
         grid-template-columns: auto auto  !important;
