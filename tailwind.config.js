@@ -45,6 +45,7 @@ module.exports = {
         'Roboto': ['Roboto','system-ui']
       },
       colors: {
+        'language-bg': 'rgba(255,255,255,0.3)',
         'opaque-red': 'rgba(187, 32, 37, 0.1)',
         navbarBackground: 'rgba(255, 255, 255, 0.5)',
         primary: {
@@ -68,6 +69,7 @@ module.exports = {
         'contact-page': "url('./assets/img/contact-page-bg.png')"
       },
       boxShadow: {
+        language: '0px 0px 5px 1px rgba(0, 0, 0, 0.5), inset 1px 1px 6px rgba(0, 0, 0, 0.15)',
         counter: '0px 0px 6px rgba(0, 0, 0, 0.1)',
         card: '0px 0px 17px rgba(0, 0, 0, 0.1)',
         'contact-input': '0px 0px 5px 1px rgba(0, 0, 0, 0.1)',

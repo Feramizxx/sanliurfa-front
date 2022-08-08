@@ -7,9 +7,13 @@ import {NavLink} from "react-router-dom";
 import {scrollTop} from "../../helpers";
 import {LinkContext} from "../../contexts/LinkContext";
 import {getFooterTheme} from '../../helpers';
+import {LanguageContext} from "../../contexts/LanguageContext";
 
 const Footer = memo(() => {
     const linkContext = useContext(LinkContext);
+    const languageContext = useContext(LanguageContext);
+    const dictionary = languageContext.dictionary;
+    const language = languageContext.value;
     const theme = getFooterTheme(linkContext.value);
 
     const themes = {
@@ -51,10 +55,10 @@ const Footer = memo(() => {
                 <div>
                     <p className='footer-list-title'> Keçidlər </p>
                     <ul>
-                        <li className='footer-list-item'> <NavLink to={'/'} onClick={() => onClick(1)}> Əsas səhifə </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'menu'} onClick={() => onClick(3)}> Menyu </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'campaigns'} onClick={() => onClick(4)}> Kampaniyalar </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'contact'} onClick={() => onClick(7)}> Əlaqə </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'/'} onClick={() => onClick(1)}> {dictionary[language].links.home} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'menu'} onClick={() => onClick(3)}> {dictionary[language].links.menu} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'campaigns'} onClick={() => onClick(4)}> {dictionary[language].links.campaigns} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'contact'} onClick={() => onClick(7)}> {dictionary[language].links.contact} </NavLink> </li>
                     </ul>
                 </div>
                 <div>

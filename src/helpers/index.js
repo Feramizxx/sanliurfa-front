@@ -27,3 +27,15 @@ export const getFooterTheme = (num) => {
 export const scrollTop = () => {
     window.scrollTo({top: 0, left: 0});
 }
+
+export const sortLanguages = (languages, currentLanguage) => {
+    for (let i = 0; i < languages.length; i++) {
+        const language = languages[i];
+        if (language === currentLanguage) {
+            languages[i] = languages[0];
+            languages[0] = language;
+            break
+        }
+    }
+    return languages;
+}
