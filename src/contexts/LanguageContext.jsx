@@ -24,10 +24,21 @@ const dictionary = {
             career: 'Career',
             contact: 'Contacts'
         }
+    },
+    ru: {
+        links: {
+            home: 'Домашняя Страница',
+            about: 'О нас',
+            menu: 'Меню',
+            campaigns: 'Компании',
+            news: 'Новости',
+            career: 'Карьера',
+            contact: 'Контакты'
+        }
     }
 }
 
-const languages = ['aze','en'];
+const languages = ['aze','en','ru'];
 
 const LanguageContextProvider = ({children}) => {
     const _language = localStorage.getItem('language');

@@ -44,7 +44,7 @@ const Footer = memo(() => {
             <section className='p-9 footer'>
                 <div>
                     <Logo theme={themes[theme].logo}/>
-                    <p className='w-56 text-sm'>
+                    <p className='w-56 text-sm mt-3'>
                         Suspendisse vitae sollicitudin nunc velit.
                         Suspendisse ante posuere a massa. Consequat
                         hac aliquam felis netus lacus at.
@@ -114,7 +114,7 @@ const Footer = memo(() => {
                 <p className={'text-sm font-normal'}> © 2022 Sanliurfa MMC. All Rights Reserved. </p>
                 <div className={'flex items-center'}>
                     <p className={'font-normal text-sm mr-6'}> Designed by: </p>
-                    <TheJavaChipLogo/>
+                    <TheJavaChipLogo className='w-[167px] h-[56px]'/>
                 </div>
             </section>
         </footer>
