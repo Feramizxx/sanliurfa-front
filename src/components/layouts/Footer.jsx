@@ -11,9 +11,7 @@ import {LanguageContext} from "../../contexts/LanguageContext";
 
 const Footer = memo(() => {
     const linkContext = useContext(LinkContext);
-    const languageContext = useContext(LanguageContext);
-    const dictionary = languageContext.dictionary;
-    const language = languageContext.value;
+    const {content} = useContext(LanguageContext);
     const theme = getFooterTheme(linkContext.value);
 
     const themes = {
@@ -55,10 +53,10 @@ const Footer = memo(() => {
                 <div>
                     <p className='footer-list-title'> Keçidlər </p>
                     <ul>
-                        <li className='footer-list-item'> <NavLink to={'/'} onClick={() => onClick(1)}> {dictionary[language].links.home} </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'menu'} onClick={() => onClick(3)}> {dictionary[language].links.menu} </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'campaigns'} onClick={() => onClick(4)}> {dictionary[language].links.campaigns} </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'contact'} onClick={() => onClick(7)}> {dictionary[language].links.contact} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'/'} onClick={() => onClick(1)}> {content.links.home} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'menu'} onClick={() => onClick(3)}> {content.links.menu} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'campaigns'} onClick={() => onClick(4)}> {content.links.campaigns} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'contact'} onClick={() => onClick(7)}> {content.links.contact} </NavLink> </li>
                     </ul>
                 </div>
                 <div>

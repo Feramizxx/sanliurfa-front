@@ -10,11 +10,9 @@ import languageContext, {LanguageContext} from "../../contexts/LanguageContext";
 
 const NavBar = () => {
     const linkContext = React.useContext(LinkContext);
-    const languageContext = React.useContext(LanguageContext);
+    const {content} = React.useContext(LanguageContext);
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [animation, setAnimation] = React.useState('');
-    const language = languageContext.value;
-    const dictionary = languageContext.dictionary;
 
     async function onMenuClick() {
         setAnimation(isMenuOpen? 'menu-close' : 'menu-open');
@@ -41,13 +39,13 @@ const NavBar = () => {
                     min-lg2:static min-lg2:flex min-lg2:h-0 min-lg2:bg-inherit min-lg2:z-0 min-lg2:p-0 min-lg2:justify-evenly min-lg2:items-center min-lg:w-[60vw]
                 `}
             >
-                <li className={`navbar-link ${defineCurrentPage(1)}`} onClick={() => onLinkClick(1)}> <NavLink to={'/'}> {dictionary[language].links.home} </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(2)}`} onClick={() => onLinkClick(2)}> <NavLink to={'about'}> {dictionary[language].links.about} </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(3)}`} onClick={() => onLinkClick(3)}> <NavLink to={'menu'}> {dictionary[language].links.menu} </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(4)}`} onClick={() => onLinkClick(4)}> <NavLink to={'campaigns'}> {dictionary[language].links.campaigns} </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(5)}`} onClick={() => onLinkClick(5)}> <NavLink to={'news'}> {dictionary[language].links.news} </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(6)}`} onClick={() => onLinkClick(6)}> <NavLink to={'career'}> {dictionary[language].links.career} </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(7)}`} onClick={() => onLinkClick(7)}> <NavLink to={'contact'}> {dictionary[language].links.contact} </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(1)}`} onClick={() => onLinkClick(1)}> <NavLink to={'/'}> {content.links.home} </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(2)}`} onClick={() => onLinkClick(2)}> <NavLink to={'about'}> {content.links.about} </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(3)}`} onClick={() => onLinkClick(3)}> <NavLink to={'menu'}> {content.links.menu} </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(4)}`} onClick={() => onLinkClick(4)}> <NavLink to={'campaigns'}> {content.links.campaigns} </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(5)}`} onClick={() => onLinkClick(5)}> <NavLink to={'news'}> {content.links.news} </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(6)}`} onClick={() => onLinkClick(6)}> <NavLink to={'career'}> {content.links.career} </NavLink> </li>
+                <li className={`navbar-link ${defineCurrentPage(7)}`} onClick={() => onLinkClick(7)}> <NavLink to={'contact'}> {content.links.contact} </NavLink> </li>
             </ul>
             <ul className={'flex justify-between items-center'}>
                 <SearchButton/>

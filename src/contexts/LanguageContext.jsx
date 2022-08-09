@@ -40,7 +40,7 @@ const LanguageContextProvider = ({children}) => {
 
     return (
         <LanguageContext.Provider value={{
-            dictionary,
+            content: dictionary[language],
             languages,
             value: language,
             setValue

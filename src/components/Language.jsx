@@ -9,7 +9,7 @@ const Language = ({language,isCurrent,flag,onClick,display,mt}) => {
             onClick={onClick}
             className={`
                 w-[50px] transition-all delay-200 flex items-center justify-between pr-1
-                rounded-3xl bg-inherit shadow-black shadow-sm ${!isCurrent && !display? 'absolute opacity-0' : ''}
+                rounded-3xl bg-inherit shadow-black shadow-sm hover:cursor-pointer ${!isCurrent && !display? 'absolute opacity-0' : ''}
                 ${display? `absolute opacity-1`: ''}
                 `}
         >
