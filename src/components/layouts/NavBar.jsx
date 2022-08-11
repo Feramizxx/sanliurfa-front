@@ -5,8 +5,13 @@ import LanguagePicker from "../LanguagePicker";
 import {NavLink} from "react-router-dom";
 import SearchButton from "../ui/SearchButton";
 import {scrollTop} from '../../helpers';
+import {LinkContext} from "../../contexts/LinkContext";
+import languageContext, {LanguageContext} from "../../contexts/LanguageContext";
+import NavItem from "./NavItem";
 
-const NavBar = ({currentLink, setCurrentLink}) => {
+const NavBar = () => {
+    const linkContext = React.useContext(LinkContext);
+    const {content} = React.useContext(LanguageContext);
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [animation, setAnimation] = React.useState('');
 
@@ -15,38 +20,33 @@ const NavBar = ({currentLink, setCurrentLink}) => {
         setIsMenuOpen(!isMenuOpen);
     }
 
-    const defineCurrentPage = (num) => {
-        return currentLink === num? 'text-primary-text' : '';
-    }
-
     const onLinkClick = (num) => {
-        setCurrentLink(num);
+        linkContext.setValue(num);
         scrollTop();
         setAnimation('menu-close');
         setIsMenuOpen(false);
-        localStorage.setItem('currentLink',String(num));
     }
 
     return (
         <nav className='flex justify-around items-center z-10 bg-navbarBackground backdrop-blur-[72px]'>
-            <Logo theme={'default'} setCurrentLink={setCurrentLink}/>
+            <Logo theme={'default'}/>
             <ul
                 className={`
                     fixed w-full top-[-1000%] p-12 z-50 bg-white ${animation}
                     min-lg2:static min-lg2:flex min-lg2:h-0 min-lg2:bg-inherit min-lg2:z-0 min-lg2:p-0 min-lg2:justify-evenly min-lg2:items-center min-lg:w-[60vw]
                 `}
             >
-                <li className={`navbar-link ${defineCurrentPage(1)}`} onClick={() => onLinkClick(1)}> <NavLink to={'/'}> Əsas səhifə </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(2)}`} onClick={() => onLinkClick(2)}> <NavLink to={'about'}> Haqqımızda </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(3)}`} onClick={() => onLinkClick(3)}> <NavLink to={'menu'}> Menyu </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(4)}`} onClick={() => onLinkClick(4)}> <NavLink to={'campaigns'}> Kampaniyalar </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(5)}`} onClick={() => onLinkClick(5)}> <NavLink to={'news'}> Xəbərlər </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(6)}`} onClick={() => onLinkClick(6)}> <NavLink to={'career'}> Karyera </NavLink> </li>
-                <li className={`navbar-link ${defineCurrentPage(7)}`} onClick={() => onLinkClick(7)}> <NavLink to={'contact'}> Əlaqə </NavLink> </li>
+                <NavItem current={linkContext.value} num={1} onLinkClick={onLinkClick} to='/'> {content.links.home} </NavItem>
+                <NavItem current={linkContext.value} num={2} onLinkClick={onLinkClick} to='about'> {content.links.about} </NavItem>
+                <NavItem current={linkContext.value} num={3} onLinkClick={onLinkClick} to='menu'> {content.links.menu} </NavItem>
+                <NavItem current={linkContext.value} num={4} onLinkClick={onLinkClick} to='campaigns'> {content.links.campaigns} </NavItem>
+                <NavItem current={linkContext.value} num={5} onLinkClick={onLinkClick} to='news'> {content.links.news} </NavItem>
+                <NavItem current={linkContext.value} num={6} onLinkClick={onLinkClick} to='career'> {content.links.career} </NavItem>
+                <NavItem current={linkContext.value} num={7} onLinkClick={onLinkClick} to='contact'> {content.links.contact} </NavItem>
             </ul>
             <ul className={'flex justify-between items-center'}>
                 <SearchButton/>
-                <NavLink to={'cart'} onClick={() => onLinkClick(0)}>
+                <NavLink to={'cart'} onClick={() => onLinkClick()}>
                     <button className='navbar-icon'>
                         <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.96875 19.3438C7.63499 19.3438 7.30873 19.2448 7.03123 19.0594C6.75372 18.8739 6.53743 18.6104 6.4097 18.302C6.28198 17.9937 6.24856 17.6544 6.31367 17.327C6.37879 16.9997 6.53951 16.699 6.77551 16.463C7.01151 16.227 7.31219 16.0663 7.63953 16.0012C7.96688 15.9361 8.30618 15.9695 8.61453 16.0972C8.92288 16.2249 9.18643 16.4412 9.37186 16.7187C9.55728 16.9962 9.65625 17.3225 9.65625 17.6562C9.65625 18.1038 9.47846 18.533 9.16199 18.8495C8.84553 19.166 8.4163 19.3438 7.96875 19.3438ZM15.2812 19.3438C14.9475 19.3438 14.6212 19.2448 14.3437 19.0594C14.0662 18.8739 13.8499 18.6104 13.7222 18.302C13.5945 17.9937 13.5611 17.6544 13.6262 17.327C13.6913 16.9997 13.852 16.699 14.088 16.463C14.324 16.227 14.6247 16.0663 14.952 16.0012C15.2794 15.9361 15.6187 15.9695 15.927 16.0972C16.2354 16.2249 16.4989 16.4412 16.6844 16.7187C16.8698 16.9962 16.9688 17.3225 16.9688 17.6562C16.9688 18.1038 16.791 18.533 16.4745 18.8495C16.158 19.166 15.7288 19.3438 15.2812 19.3438ZM17.25 14.8438H6C5.80192 14.8419 5.61062 14.7714 5.45878 14.6442C5.30694 14.5169 5.20398 14.341 5.1675 14.1462L3.04125 2.46875H1.5C1.27622 2.46875 1.06161 2.37986 0.903379 2.22162C0.745145 2.06339 0.65625 1.84878 0.65625 1.625C0.65625 1.40122 0.745145 1.18661 0.903379 1.02838C1.06161 0.870145 1.27622 0.78125 1.5 0.78125H3.75C3.94808 0.783075 4.13938 0.853621 4.29122 0.980839C4.44306 1.10806 4.54602 1.28405 4.5825 1.47875L5.06625 4.15625H19.5C19.6281 4.15666 19.7545 4.18624 19.8695 4.24277C19.9845 4.2993 20.0852 4.38128 20.1637 4.4825C20.2413 4.58355 20.2957 4.70046 20.3229 4.82491C20.3501 4.94937 20.3496 5.07829 20.3212 5.2025L18.0712 14.2025C18.0241 14.3849 17.9181 14.5467 17.7696 14.6627C17.6211 14.7786 17.4384 14.8423 17.25 14.8438ZM6.70875 13.1562H16.5863L18.375 5.84375H5.37L6.70875 13.1562Z" fill="#8F161A"/>

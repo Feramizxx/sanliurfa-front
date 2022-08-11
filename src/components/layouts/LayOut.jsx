@@ -1,20 +1,20 @@
 import React from 'react';
 import Header from "./Header";
 import Footer from "./Footer";
-import * as helpers from '../../helpers'
+import LinkContextProvider from "../../contexts/LinkContext";
+import LanguageContextProvider from "../../contexts/LanguageContext";
 
 const LayOut = ({children}) => {
-    const initialLink = localStorage.getItem('currentLink');
-    const [currentLink, setCurrentLink] = React.useState(initialLink? Number(initialLink) : 1);
-
     return (
-        <>
-            <Header currentLink={currentLink} setCurrentLink={setCurrentLink}/>
-            <main className='font-Roboto'>
-                {children}
-            </main>
-            <Footer theme={helpers.getFooterTheme(currentLink)} setCurrentLink={setCurrentLink}/>
-        </>
+        <LinkContextProvider>
+            <LanguageContextProvider>
+                <Header/>
+                <main className='font-Roboto'>
+                    {children}
+                </main>
+                <Footer/>
+            </LanguageContextProvider>
+        </LinkContextProvider>
     );
 };
 

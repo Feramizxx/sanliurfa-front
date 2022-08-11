@@ -1,12 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router'
+import {LinkContext} from "../../contexts/LinkContext";
+import {scrollTop} from "../../helpers";
 
-const Logo = ({theme, setCurrentLink}) => {
+const Logo = ({theme}) => {
+    const linkContext = React.useContext(LinkContext);
     const navigate = useNavigate();
 
     const onClick = () => {
+        scrollTop();
+        linkContext.setValue(1);
         navigate('/');
-        setCurrentLink(1);
     }
 
     return (

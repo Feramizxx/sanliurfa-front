@@ -1,48 +1,48 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {LanguageContext} from "../contexts/LanguageContext";
 import Language from "./Language";
+import {sortLanguages} from "../helpers";
 
 const LanguagePicker = () => {
-    const _isCurrent = localStorage.getItem('isCurrent');
-    const [isCurrent, setIsCurrent] = React.useState(_isCurrent !== undefined? _isCurrent === 'true' : true);
-    const [isVisible, setIsVisible] = React.useState({
-        aze: isCurrent,
-        eng: !isCurrent
-    });
-    const [underFirstClick, setUnderFirstClick] = React.useState(true);
+    const languageContext = useContext(LanguageContext);
+    const [firstClick,setFirstClick] = React.useState(true);
+    const [displayAll,setDisplayAll] = React.useState(false);
+    const languages = languageContext.languages;
+    const currentLanguage = languageContext.value;
+    let mt = -25;
 
-    window.onbeforeunload = () => {
-        localStorage.setItem('isCurrent',String(isCurrent));
-    }
-
-    const onClick = (currentState) => {
-        if (underFirstClick) {
-            setIsVisible({
-                aze: true,
-                eng: true
-            });
+    const onClick = (language) => {
+        if (firstClick) {
+            setDisplayAll(true);
         } else {
-            setIsCurrent(currentState);
-            setIsVisible({
-                aze: currentState,
-                eng: !currentState
-            });
+            languageContext.setValue(language);
+            setDisplayAll(false);
         }
-        setUnderFirstClick(!underFirstClick)
+        setFirstClick(!firstClick)
     }
 
     return (
-        <div>
-            {isCurrent?
-                <>
-                    <Language isCurrent={isCurrent} language={'aze'} isVisible={isVisible.aze} onClick={() => onClick(true)}/>
-                    <Language isCurrent={!isCurrent} language={'en'} isVisible={isVisible.eng} onClick={() => onClick(false)}/>
-                </> :
-                <>
-                    <Language isCurrent={!isCurrent} language={'en'} isVisible={isVisible.eng} onClick={() => onClick(false)}/>
-                    <Language isCurrent={isCurrent} language={'aze'} isVisible={isVisible.aze} onClick={() => onClick(true)}/>
-                </>
-            }
-        </div>
+        <ul>
+            {sortLanguages(languages,currentLanguage).map((language) => {
+                const isCurrent = language === currentLanguage;
+                if (!isCurrent) {
+                    mt += 26;
+                }
+                return (
+                    <li key={language}>
+                        <Language
+                            mt={mt}
+                            display={!isCurrent && displayAll}
+                            isCurrent={isCurrent}
+                            language={language}
+                            flag={require(`../assets/img/flags/${language}-flag.png`)}
+                            onClick={() => onClick(language)}
+                            key={language}
+                        />
+                    </li>
+                );
+            })}
+        </ul>
     );
 };
 

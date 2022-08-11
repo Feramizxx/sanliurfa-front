@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from "./NavBar";
 
-const Header = ({currentLink, setCurrentLink}) => {
+const Header = () => {
     return (
         <header className="font-Roboto fixed w-full z-20">
             <div className={'flex'}>
@@ -15,7 +15,7 @@ const Header = ({currentLink, setCurrentLink}) => {
                     <p className='text-primary-text'> +994123714939 </p>
                 </div>
             </div>
-            <NavBar currentLink={currentLink} setCurrentLink={setCurrentLink}/>
+            <NavBar />
         </header>
     );
 };

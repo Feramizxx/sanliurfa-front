@@ -3,7 +3,7 @@ import {NavLink, useNavigate} from "react-router-dom";
 import Button from "./ui/Button";
 import LoginForm from "./LoginForm";
 
-const MessageBox = ({isVisible, mouseLeave, onLinkClick}) => {
+const MessageBox = ({isVisible, onLinkClick}) => {
     const [isAuth, setIsAuth] = React.useState(false);
     const [loginForm, setLoginForm] = React.useState(false);
     const navigate = useNavigate();
@@ -21,8 +21,12 @@ const MessageBox = ({isVisible, mouseLeave, onLinkClick}) => {
         setLoginForm(false);
     }
 
+    const onBoxClick = (e) => {
+        e.stopPropagation();
+    }
+
     return (
-        <div style={{display: isVisible? 'block' : 'none'}} className={'absolute mt-7 mr-6'} onMouseLeave={mouseLeave}>
+        <div style={{display: isVisible? 'block' : 'none'}} className={'absolute mt-7 mr-6'} onClick={onBoxClick}>
             <div className='flex justify-center bg-red-10'>
                 <div style={{
                     transform: 'rotate(90deg)',

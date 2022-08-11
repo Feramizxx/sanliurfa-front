@@ -1,12 +1,19 @@
-import React, {memo} from 'react';
+import React, {memo, useContext} from 'react';
 import Logo from "../ui/Logo";
 import SocialMediaLink from "../ui/SocialMediaLink";
 import AppShop from "../ui/AppShop";
 import TheJavaChipLogo from "../ui/TheJavaChipLogo";
 import {NavLink} from "react-router-dom";
 import {scrollTop} from "../../helpers";
+import {LinkContext} from "../../contexts/LinkContext";
+import {getFooterTheme} from '../../helpers';
+import {LanguageContext} from "../../contexts/LanguageContext";
 
-const Footer = memo(({theme, setCurrentLink}) => {
+const Footer = memo(() => {
+    const linkContext = useContext(LinkContext);
+    const {content} = useContext(LanguageContext);
+    const theme = getFooterTheme(linkContext.value);
+
     const themes = {
         default: {
             bg: '#BB2025',
@@ -26,7 +33,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
 
     const onClick = (num) => {
         scrollTop();
-        setCurrentLink(num);
+        linkContext.setValue(num);
     }
 
     return (
@@ -36,8 +43,8 @@ const Footer = memo(({theme, setCurrentLink}) => {
         }}>
             <section className='p-9 footer'>
                 <div>
-                    <Logo theme={themes[theme].logo} setCurrentLink={setCurrentLink}/>
-                    <p className='w-56 text-sm'>
+                    <Logo theme={themes[theme].logo}/>
+                    <p className='w-56 text-sm mt-3'>
                         Suspendisse vitae sollicitudin nunc velit.
                         Suspendisse ante posuere a massa. Consequat
                         hac aliquam felis netus lacus at.
@@ -46,10 +53,10 @@ const Footer = memo(({theme, setCurrentLink}) => {
                 <div>
                     <p className='footer-list-title'> Keçidlər </p>
                     <ul>
-                        <li className='footer-list-item'> <NavLink to={'/'} onClick={() => onClick(1)}> Əsas səhifə </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'menu'} onClick={() => onClick(3)}> Menyu </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'campaigns'} onClick={() => onClick(4)}> Kampaniyalar </NavLink> </li>
-                        <li className='footer-list-item'> <NavLink to={'contact'} onClick={() => onClick(7)}> Əlaqə </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'/'} onClick={() => onClick(1)}> {content.links.home} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'menu'} onClick={() => onClick(3)}> {content.links.menu} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'campaigns'} onClick={() => onClick(4)}> {content.links.campaigns} </NavLink> </li>
+                        <li className='footer-list-item'> <NavLink to={'contact'} onClick={() => onClick(7)}> {content.links.contact} </NavLink> </li>
                     </ul>
                 </div>
                 <div>
@@ -107,7 +114,7 @@ const Footer = memo(({theme, setCurrentLink}) => {
                 <p className={'text-sm font-normal'}> © 2022 Sanliurfa MMC. All Rights Reserved. </p>
                 <div className={'flex items-center'}>
                     <p className={'font-normal text-sm mr-6'}> Designed by: </p>
-                    <TheJavaChipLogo/>
+                    <TheJavaChipLogo className='w-[167px] h-[56px]'/>
                 </div>
             </section>
         </footer>
