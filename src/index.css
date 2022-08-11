@@ -29,7 +29,7 @@
     }
 
     .menu-li {
-        @apply min-w-fit font-light text-3xl leading-9 mr-14 cursor-pointer transition-all duration-200
+        @apply font-light text-3xl leading-9 cursor-pointer transition-all duration-200
                hover:text-[#8F161A] hover:font-semibold md:text-2xl
     }
 
@@ -117,16 +117,6 @@
     color: white;
     padding: 20px;
     background-repeat: no-repeat;
-}
-
-#menu-categories, #menu-meals, #meal-modal, #see-also-meals {
-    -ms-overflow-style: none; /* IE & Edge */
-    scrollbar-width: none; /* Firefox */
-}
-
-#menu-categories::-webkit-scrollbar, #menu-meals::-webkit-scrollbar,
-#meal-modal::-webkit-scrollbar, #see-also-meals::-webkit-scrollbar {
-    display: none; /*Safari & Chrome*/
 }
 
 .ReactModal__Content {

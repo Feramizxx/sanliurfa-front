@@ -24,6 +24,8 @@ module.exports = {
 
         'xs': {'max': '530px'},
 
+        'xxs': {'max': '430px'},
+
         'min-2xl': {'min': '1535px'},
         // => @media (min-width: 1535px) { ... }
 

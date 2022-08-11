@@ -39,7 +39,7 @@ const MealModal = (props) => {
 
     return (
         <Modal isOpen={props.modalIsOpen} onRequestClose={props.closeModal} style={customStyles}>
-            <div className={'max-w-[646px] max-h-[800px] md:max-h-[600px] overflow-y-scroll relative'} id={'meal-modal'}>
+            <div className={'max-w-[646px] max-h-[800px] xl:max-h-[700px] lg:max-h-[600px] overflow-y-scroll relative'} id={'meal-modal'}>
                 <CloseButton close={props.closeModal} />
                 <Taste taste={props.taste} type={'modal'} />
                 <img src={GreeceSalad} />
@@ -53,9 +53,9 @@ const MealModal = (props) => {
                     <form>
                         <h3 className={'font-medium text-xl mb-2'}>Ölçü</h3>
                         <div className={'flex mb-8'}>
-                            <Radio size={'small'} label={'Kiçik'}/>
-                            <Radio size={'middle'} label={'Orta'}/>
-                            <Radio size={'large'} label={'Böyük'}/>
+                            <Radio size={'small'} label={'Kiçik'} name={'size'} />
+                            <Radio size={'middle'} label={'Orta'} name={'size'} />
+                            <Radio size={'large'} label={'Böyük'} name={'size'} />
                         </div>
                         <h3 className={'font-medium text-xl mb-2'}>Əlavələr</h3>
                         <div className={'flex flex-wrap mb-6'}>
@@ -69,7 +69,7 @@ const MealModal = (props) => {
                         <input type={'text'} className={'bg-[#F1F1F1] w-full outline-red transition-colors mb-7 py-4 px-6 rounded-full'} />
                         <div className={'flex justify-between items-center mb-4'}>
                             <h3 className={'font-medium text-xl mb-2'}>Ümumi məbləğ:</h3>
-                            <p className={'text-[#8F161A] text-[40px] font-semibold'}>{totalPrice}₼</p>
+                            <p className={'text-[#8F161A] text-[40px] font-semibold'}>{totalPrice*props.amount}₼</p>
                         </div>
                         <div className={'flex justify-between'}>
                             <Counter type={'modal'} minNumber={1} defaultValue={props.amount}

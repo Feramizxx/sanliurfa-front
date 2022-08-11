@@ -8,7 +8,7 @@ const Meal = (props) => {
     const [count, setCount] = useState(0);
 
     return (
-        <div className={`relative bg-white rounded-[32px] w-[270px] ${props.type === 'carousel' ? 'mr-12' : ''}`}>
+        <div className={`relative bg-white rounded-[32px] w-[270px] ${props.type === 'carousel' ? 'mr-12 xxs:mr-4' : ''}`}>
             <Taste taste={props.data.vegan ? 'vegan' : (props.data.spicy ? 'spicy' : '')} type={'menu'} />
             <div className={'relative z-0'}>
                 <img src={props.data.picture} title={props.data.name} className={'rounded-[32px] mb-4'}/>

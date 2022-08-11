@@ -1,6 +1,7 @@
 import React, {memo, useState} from "react";
 import CategoriesCarousel from "../../components/items/CategoriesCarousel";
 import FilterModal from "../../components/items/FilterModal";
+import SortModal from "../../components/items/SortModal";
 import Filter from "../../assets/icons/buttons/filter.svg";
 import GreeceSalad from "../../assets/img/foods/GreeceSaladSmall.png";
 import CursusFeugiat from "../../assets/img/foods/CursusFeugiat.png";
@@ -9,6 +10,7 @@ import Meal from "../../components/items/Meal";
 
 const Menu = memo(() => {
     const [modalIsOpen, setIsOpen] = useState(false);
+    const [sortModalIsOpen, setSortModalIsOpen] = useState(false);
     const [meals] = useState([
         {
             name: 'Tincidunt nullam',
@@ -176,23 +178,32 @@ const Menu = memo(() => {
         setIsOpen(false);
     }
 
+    function openSortModal() {
+        setSortModalIsOpen(true);
+    }
+
+    function closeSortModal() {
+        setSortModalIsOpen(false);
+    }
+
     return (
         <>
             <div className={'bg-red py-40 px-28 md:px-8'}>
                 <CategoriesCarousel theme={'red'}/>
-                <div className={'flex justify-between items-center mb-8'}>
-                    <div className={'flex cursor-pointer xs:mt-0'} onClick={openModal}>
+                <div className={'flex justify-start items-center mb-8'}>
+                    <div className={'flex cursor-pointer pr-6 border-r border-white xs:mt-0'} onClick={openModal}>
                         <p className={'text-white mr-4'}>Filtrlə</p>
                         <img src={Filter}/>
                     </div>
-                    <div>
-                        <select className={'outline-none px-12 py-1'}>
-                            <option selected={'selected'} disabled={'disabled'}>Çeşidlə</option>
-                            <option>A-dan Z-yə</option>
-                            <option>Z-dən A-ya</option>
-                            <option>Ucuzdan bahaya</option>
-                            <option>Bahadan ucuza</option>
-                        </select>
+                    <div className={'flex cursor-pointer pl-6'} onClick={openSortModal}>
+                        <p className={'text-white mr-4'}>Sort</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrows-sort text-white"
+                             width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor"
+                             fill="none" strokeLinecap="round" strokeLinejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M3 9l4 -4l4 4m-4 -4v14"></path>
+                            <path d="M21 15l-4 4l-4 -4m4 4v-14"></path>
+                        </svg>
                     </div>
                 </div>
                 <ul id={'menu-meals'} className={'flex flex-wrap justify-between sm:flex-nowrap sm:flex-col sm:items-center'}>
@@ -204,6 +215,7 @@ const Menu = memo(() => {
                 </ul>
             </div>
             <FilterModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
+            <SortModal modalIsOpen={sortModalIsOpen} closeModal={closeSortModal} />
         </>
     )
 })
