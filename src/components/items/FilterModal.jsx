@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Modal from "react-modal";
 import Checkbox from "../../components/ui/input/Checkbox";
 import CloseButton from "../../components/ui/CloseButton";
@@ -30,7 +30,7 @@ const FilterModal = (props) => {
                     <div className={'flex flex-wrap mb-6'}>
                         {categories.map((category, i) => {
                             return (
-                                <Checkbox name={category} price={null} key={i}/>
+                                <Checkbox name={category} price={null} key={i} />
                             )
                         })}
                     </div>
@@ -38,14 +38,14 @@ const FilterModal = (props) => {
                     <div className={'flex flex-wrap mb-10'}>
                         {choices.map((choice, i) => {
                             return (
-                                <Checkbox name={choice} price={null} key={i}/>
+                                <Checkbox name={choice} price={null} key={i} />
                             )
                         })}
                     </div>
                     <div className={'flex'}>
                         <button type={'button'}
-                                className={'bg-red rounded-full grow text-white text-2xl font-light py-4'}
-                                onClick={props.closeModal}>
+                            className={'bg-red rounded-full grow text-white text-2xl font-light py-4'}
+                            onClick={props.closeModal}>
                             Filtrləməni tamamla
                         </button>
                     </div>
