@@ -1,4 +1,4 @@
-import React, {memo, useState} from "react";
+import React, { memo, useState } from "react";
 import CategoriesCarousel from "../../components/items/CategoriesCarousel";
 import FilterModal from "../../components/items/FilterModal";
 import SortModal from "../../components/items/SortModal";
@@ -189,17 +189,17 @@ const Menu = memo(() => {
     return (
         <>
             <div className={'bg-red py-40 px-28 md:px-8'}>
-                <CategoriesCarousel theme={'red'}/>
+                <CategoriesCarousel theme={'red'} />
                 <div className={'flex justify-start items-center mb-8'}>
                     <div className={'flex cursor-pointer pr-6 border-r border-white xs:mt-0'} onClick={openModal}>
                         <p className={'text-white mr-4'}>Filtrlə</p>
-                        <img src={Filter}/>
+                        <img src={Filter} />
                     </div>
                     <div className={'flex cursor-pointer pl-6'} onClick={openSortModal}>
                         <p className={'text-white mr-4'}>Sort</p>
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrows-sort text-white"
-                             width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor"
-                             fill="none" strokeLinecap="round" strokeLinejoin="round">
+                            width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor"
+                            fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M3 9l4 -4l4 4m-4 -4v14"></path>
                             <path d="M21 15l-4 4l-4 -4m4 4v-14"></path>

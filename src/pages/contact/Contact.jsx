@@ -1,9 +1,8 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import ContactForm from "./ContactForm";
 import ContactData from "./ContactData";
 import { routerStyle, mapStyle, iframeStyle } from './open-street-map-style'
 const Contact = memo(() => {
-
     return (
         <div className='flex justify-center mb-20'>
             <div style={routerStyle}>
@@ -14,8 +13,8 @@ const Contact = memo(() => {
                         frameBorder="0"
                         scrolling="no"
                         marginHeight="0"
-                        marginWidth="0"/>
-                    <a href="https://123movies-to.org"/><br/>
+                        marginWidth="0" />
+                    <a href="https://123movies-to.org" /><br />
                     <a href="https://www.embedgooglemap.net">using google map on website</a>
                 </div>
             </div>

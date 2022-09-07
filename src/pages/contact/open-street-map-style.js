@@ -1,8 +1,8 @@
 const height = '60vh';
-const width = '100vw';
+const width = '100%';
 
 export const routerStyle = {
-    position: "absolute" ,
+    position: "absolute",
     textAlign: "right",
     width,
     height,

@@ -39,7 +39,7 @@ const MealModal = (props) => {
 
     return (
         <Modal isOpen={props.modalIsOpen} onRequestClose={props.closeModal} style={customStyles}>
-            <div className={'max-w-[646px] max-h-[800px] xl:max-h-[700px] lg:max-h-[600px] overflow-y-scroll relative'} id={'meal-modal'}>
+            <div className={'max-w-[646px] h-screen overflow-y-scroll relative'} id={'meal-modal'}>
                 <CloseButton close={props.closeModal} />
                 <Taste taste={props.taste} type={'modal'} />
                 <img src={GreeceSalad} />
