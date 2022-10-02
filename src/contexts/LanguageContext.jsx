@@ -38,14 +38,14 @@ const dictionary = {
     }
 }
 
-const languages = ['aze','en','ru'];
+const languages = ['aze', 'en', 'ru'];
 
-const LanguageContextProvider = ({children}) => {
+const LanguageContextProvider = ({ children }) => {
     const _language = localStorage.getItem('language');
-    const [language, setLanguage] = React.useState(_language? _language : 'aze');
+    const [language, setLanguage] = React.useState(_language ? _language : 'aze');
 
     const setValue = (value) => {
-        localStorage.setItem('language',value);
+        localStorage.setItem('language', value);
         setLanguage(value);
     }
 

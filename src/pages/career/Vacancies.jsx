@@ -4,7 +4,10 @@ import List from "../../components/List";
 import Vacancy from "./Vacancy";
 import Modal from "react-modal";
 import InfoBox from "./InfoBox";
-import header from "../../components/layouts/Header";
+import useFetchVacancies from './../../hooks/useFetchVacancies';
+import { useContext, useState } from 'react';
+import { LanguageContext } from './../../contexts/LanguageContext';
+import PageLoader from './../../components/PageLoader';
 
 const customStyles = {
     content: {
@@ -20,64 +23,14 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const Vacancies = () => {
-    const [vacancies, setVacancies] = React.useState([]);
-    const [modal, setModal] = React.useState(false);
+    const { value } = useContext(LanguageContext);
+    const { vacancies, vacanciesAreLoading, vacanciesError } = useFetchVacancies(value);
+    const [modal, setModal] = useState(false);
+    const [clickedVacancy, setClickedVacancy] = useState(null);
+    if (vacanciesAreLoading) return <PageLoader />
 
-    React.useEffect(() => {
-        const vacancies = [
-            {
-                id: 1,
-                name: 'Satış təmsilcisi',
-                date: '19.06.2022',
-                location: 'Bakı'
-            },
-            {
-                id: 2,
-                name: 'Satış təmsilcisi',
-                date: '19.06.2022',
-                location: 'Bakı'
-            },
-            {
-                id: 3,
-                name: 'Satış təmsilcisi',
-                date: '19.06.2022',
-                location: 'Bakı'
-            },
-            {
-                id: 4,
-                name: 'Satış təmsilcisi',
-                date: '19.06.2022',
-                location: 'Bakı'
-            },
-            {
-                id: 5,
-                name: 'Satış təmsilcisi',
-                date: '19.06.2022',
-                location: 'Bakı'
-            },
-            {
-                id: 6,
-                name: 'Satış təmsilcisi',
-                date: '19.06.2022',
-                location: 'Bakı'
-            },
-            {
-                id: 7,
-                name: 'Satış təmsilcisi',
-                date: '19.06.2022',
-                location: 'Bakı'
-            },
-            {
-                id: 8,
-                name: 'Satış təmsilcisi',
-                date: '19.06.2022',
-                location: 'Bakı'
-            }
-        ];
-        setVacancies(vacancies);
-    },[]);
-
-    const onVacancyClick = () => {
+    const onVacancyClick = (vacancy) => {
+        setClickedVacancy(vacancy)
         setModal(true);
     }
 
@@ -86,16 +39,21 @@ const Vacancies = () => {
     }
 
     return (
-        <div className={`overflow-y-hidden overflow-x-hidden bg-white h-[40em] mt-12 mb-1 min-sm:mb-0 flex justify-start flex-col`}>
+        <div className={`overflow-y-hidden  overflow-x-hidden bg-white h-[40em] mt-12 mb-1 min-sm:mb-0 flex justify-start flex-col`}>
             <h1 className='title text-primary-bg font-medium mx-12 mt-6'> Aktiv vakansiyalar </h1>
             <Modal isOpen={modal} onRequestClose={onClose} style={customStyles}>
-                <InfoBox onClose={onClose} />
+                <InfoBox onClose={onClose} vacancy={clickedVacancy} />
             </Modal>
-            <List
-                className='overflow-y-scroll flex flex-col w-full h-full min-sm:pl-1 pb-[17px] pr-[17px] box-content'
-                data={vacancies}
-                renderFunction={(vacancy) => <Vacancy vacancy={vacancy} onClick={onVacancyClick} key={vacancy.id} />}
-            />
+            {!vacanciesError ?
+                <List
+                    className='overflow-y-scroll flex flex-col w-full h-full min-sm:pl-1 pb-[17px] pr-[17px] box-content'
+                    data={vacancies}
+                    renderFunction={(vacancy) => <Vacancy vacancy={vacancy} onClick={() => onVacancyClick(vacancy)} key={vacancy.id} />}
+                /> :
+                <div className='w-full h-full flex items-center justify-center'>
+                    <p className='text-xl font-bold text-red'> Could not load vacancies... </p>
+                </div>
+            }
         </div>
     );
 };

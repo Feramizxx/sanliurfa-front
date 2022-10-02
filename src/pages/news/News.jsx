@@ -1,174 +1,52 @@
-import React,{useState, memo} from "react";
-import {NavLink,useNavigate} from "react-router-dom";
-import img1 from "../../assets/img/gridChildren.png";
-import img2 from "../../assets/img/gridLovers.png";
-import img3 from "../../assets/img/gridHands.png";
+import React, { memo, useContext } from "react";
 import img4 from "../../assets/img/gridPocket.png";
-import "../../assets/styles/news.css";
+import useFetchNews from "../../hooks/useFetchNews";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import PageLoader from './../../components/PageLoader';
+import NewsCard from './../../components/NewsCard';
 
 const News = memo(() => {
-  const navigate = useNavigate();
+  const { value } = useContext(LanguageContext);
+  const { news, newsAreLoading, newsError } = useFetchNews(value);
 
-  const navigateToinlineNews=()=>{
-    navigate('/inlineNews');
-  }
+  if (newsAreLoading) return <PageLoader />
 
   return (
-
-
-    <section className={'bg-red pt-40 pb-10'}>
-    <div className="w-[85%]  mr-auto ml-auto xl:items-center  xl:flex xl:flex-col  grid-cols-4 grid-rows-2 grid gap-1"     >
-      <div
-        onClick={navigateToinlineNews}
-        className="w-fit xl:mt-5  relative col-span-2 row-span-2"
-        id="grid-Item-container"
-      >
-        <img className="xl:h-[40vw] xl:w-[80vw] object-cover" src={img1} />
-        <a
-          className="absolute  text-[2vw] leading-7 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  xl:mt-5  col-span-2 relative  row-span-1"
-        id="grid-Item-container"
-      >
-        <img  className="xl:h-[40vw] xl:w-[80vw] object-cover" src={img2} />
-        <a
-          className="absolute  text-[2vw] p-7 leading-7 text-white  bottom-0 bg-black  bg-opacity-40  w-[100%]  hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  xl:mt-5  col-span-1 pt-[0px] 2xl:pt-[0px] relative row-span-1 "
-        id="grid-Item-container"
-      >
-        <img className="xl:h-[40vw] xl:w-[80vw] object-cover" src={img3} />
-        <a
-          className="absolute text-[2vw] leading-7 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full  hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  xl:mt-5 col-span-1 relative pt-[0px] 2xl:pt-[0px] row-span-1"
-        id="grid-Item-container"
-      >
-        <img className="xl:h-[40vw] xl:w-[80vw] object-cover"  src={img4} />
-        <a
-          className="absolute text-[2vw] leading-7 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-    </div>
-
-
-{/*this section have to write  write map */}
-
-
-  <div id="news-grid-container" className="w-[85%] mt-[50px] ml-auto mr-auto flex flex-col">
-    <h1 className="text-white pb-[20px] pt-[40px] text-[32px] md:text-[24px] mb-4">Ən son xəbərlərimiz</h1>
-    <div id="news-grid" className="grid   gap-x-5 gap-y-8 grid-cols-4   place-items-center">
-
-    <div
-        className="w-fit  relative pt-[3px] 2xl:pt-[0px] row-span-1"
-        id="grid-Item-container"
-      >
-        <img className="w-fit" src={img4} />
-        <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  relative pt-[3px] 2xl:pt-[0px] row-span-1"
-        id="grid-Item-container"
-      >
-        <img className="w-fit" src={img4} />
-        <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  relative pt-[3px] 2xl:pt-[0px] row-span-1"
-        id="grid-Item-container"
-      >
-        <img className="w-fit" src={img4} />
-        <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  relative pt-[3px] 2xl:pt-[0px] row-span-1"
-        id="grid-Item-container"
-      >
-        <img className="w-fit" src={img4} />
-        <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  relative pt-[3px] 2xl:pt-[0px] row-span-1"
-        id="grid-Item-container"
-      >
-        <img className="w-fit" src={img4} />
-        <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  relative pt-[3px] 2xl:pt-[0px] row-span-1"
-        id="grid-Item-container"
-      >
-        <img className="w-fit" src={img4} />
-        <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-      <div
-        className="w-fit  relative pt-[3px] 2xl:pt-[0px] row-span-1"
-        id="grid-Item-container"
-      >
-        <img className="w-fit" src={img4} />
-        <a
-          className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
-          id="grid-item-text"
-        >
-          Ullamcorper sit sollicitudin luctus hendrerit malesuada arcu.
-        </a>
-      </div>
-    </div>
-  </div>
-
-
-
-    </ section>
-
-
+    <>
+      {!newsError ?
+        <div className={'pt-40 bg-red pb-10 flex justify-center'}>
+          <div className="w-full max-w-[80vw] flex flex-col items-center">
+            <div className="news-grid">
+              {[1, 2, 3, 4].map((num) => {
+                const shiftedNews = news.shift();
+                return (
+                  <div key={shiftedNews.id} className={`news-grid-item-${num} relative`}>
+                    <NewsCard id={shiftedNews.id} title={shiftedNews.title} img={shiftedNews.imageUrl} />
+                  </div>
+                )
+              })}
+            </div>
+            <div className="flex justify-center w-full">
+              <div className="max-w-[1310px] w-full">
+                <h1 className="text-white text-2xl my-12">Ən son xəbərlərimiz</h1>
+                <div className="flex flex-col items-center min-sm:grid grid-cols-2 min-md:grid-cols-3 gap-6">
+                  {news.map(singleNews => {
+                    return (
+                      <div key={singleNews.id} className="mt-2 min-h-[260px] sm:max-w-[400px] min-sm:mt-0 relative w-full min-sm:min-h-[35vh]">
+                        <NewsCard id={singleNews.id} title={singleNews.title} img={singleNews.imageUrl} />
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> :
+        <div className="w-full h-screen flex items-center justify-center bg-red pt-40 pb-10">
+          <p className="text-white font-bold text-xl"> Could not load news... </p>
+        </div>
+      }
+    </>
   );
 })
 

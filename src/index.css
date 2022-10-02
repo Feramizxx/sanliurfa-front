@@ -2,6 +2,8 @@
 @import url('assets/styles/menu-animation.css');
 @import url('assets/styles/footer-style.css');
 @import url('assets/styles/login-form-style.css');
+@import url('assets/styles/modal.css');
+@import url('assets/styles/news.css');
 
 @tailwind base;
 @tailwind components;
@@ -9,64 +11,63 @@
 
 @layer components {
     .navbar-link {
-        @apply text-lg text-black text-opacity-50 font-semibold hover:cursor-pointer lg2:mt-3
+        @apply text-lg text-black text-opacity-50 font-semibold hover:cursor-pointer lg2:mt-3;
     }
 
     .navbar-icon {
-        @apply mr-6 lg:mr-3
+        @apply mr-6 lg:mr-3;
     }
 
     .message-box-link {
-        @apply border-solid border-b-2 border-b-gray-100 pb-2 my-2
+        @apply border-solid border-b-2 border-b-gray-100 pb-2 my-2;
     }
 
     .footer-list-title {
-        @apply font-bold mt-10 mb-6
+        @apply font-bold mt-10 mb-6;
     }
 
     .footer-list-item {
-        @apply text-sm opacity-70 mb-3
+        @apply text-sm opacity-70 mb-3;
     }
 
     .menu-li {
-        @apply font-light text-3xl leading-9 cursor-pointer transition-all duration-200
-               hover:text-[#8F161A] hover:font-semibold md:text-2xl
+        @apply font-light text-3xl leading-9 cursor-pointer transition-all duration-200 hover:text-[#8F161A] hover:font-semibold md:text-2xl;
     }
 
     .menu-li.menu-li-active {
-        @apply text-[#8F161A] font-semibold
+        @apply text-[#8F161A] font-semibold;
     }
 
     .menu-li.menu-li-red {
-        @apply text-white hover:text-white
+        @apply text-white;
     }
 
     .contact-input {
-        @apply block outline-0 rounded shadow-contact-input p-1 w-full mb-6
+        @apply block outline-0 rounded shadow-contact-input p-1 w-full mb-6;
     }
 
     .title {
-        @apply text-3xl font-medium mb-8
+        @apply text-3xl font-medium mb-8;
     }
 
     .contact-data-list-item {
-        @apply flex items-center mb-12
+        @apply flex items-center mb-12;
     }
 
     .career-input {
-        @apply w-full outline-none p-2 text-black rounded-[4px] mb-8 block
+        @apply w-full outline-none p-2 text-black rounded-[4px] mb-8 block;
     }
 
     .auth-form-input {
-        @apply p-1 outline-none border-2 border-input-border rounded text-input-text w-full mb-2
+        @apply p-1 outline-none border-2 border-input-border rounded text-input-text w-full mb-2;
     }
 
     .info-box-list {
-        @apply list-disc list-inside
+        @apply list-disc list-inside;
     }
 
     .cart-input {
-        @apply outline-none shadow-vacancy rounded-[11px] py-[18px] px-6 w-[47%]
+        @apply outline-none shadow-vacancy rounded-[11px] py-[18px] px-6 w-[47%];
     }
 }
 
@@ -79,12 +80,14 @@
     margin-left: auto;
     margin-right: auto;
 }
+
 .react-slideshow-container+ul.indicators .each-slideshow-indicator.active:before {
     border-radius: 40% !important;
     margin-right: 2px !important;
     align-items: center;
 
 }
+
 .react-slideshow-container+ul.indicators .each-slideshow-indicator:before {
     position: absolute;
     top: 0;
@@ -98,19 +101,22 @@
     text-align: center;
 }
 
-.kids-section >div:nth-child(1) {
-    background-image:    linear-gradient(90deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%),
-    url('./assets/img/Children.png');
+.kids-section>div:nth-child(1) {
+    background-image: linear-gradient(90deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%),
+        url('./assets/img/Children.png');
 }
-.kids-section >div:nth-child(2){
-    background-image:    linear-gradient(270deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%),
-    url('./assets/img/Hands.png');
+
+.kids-section>div:nth-child(2) {
+    background-image: linear-gradient(270deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%),
+        url('./assets/img/Hands.png');
 }
-.kids-section >div:nth-child(3){
-    background-image:    linear-gradient(90deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%),
-    url('./assets/img/cek.png');
+
+.kids-section>div:nth-child(3) {
+    background-image: linear-gradient(90deg, #BB2025 0%, rgba(255, 255, 255, 0.6) 100%),
+        url('./assets/img/cek.png');
 }
-.kids-section > div:nth-child(n){
+
+.kids-section>div:nth-child(n) {
     width: 100%;
     height: 400px;
     background-size: cover;

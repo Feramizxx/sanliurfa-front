@@ -18,7 +18,6 @@ const Contact = memo(() => {
                     <a href="https://www.embedgooglemap.net">using google map on website</a>
                 </div>
             </div>
-            {/*<img className='w-[3vw] absolute left-[48vw] top-[21vh] transition-all hover:cursor-pointer hover:w-[4vw]' src={require('../../assets/img/tower.png')} alt="a tower"/>*/}
             <div className='mt-96 min-sm:grid min-sm:mx-6 z-10'
                 style={{
                     gridTemplateColumns: 'minmax(0, 40em) minmax(0, 30em)'

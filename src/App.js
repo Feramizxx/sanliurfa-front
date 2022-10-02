@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, BrowserRouter, Routes} from "react-router-dom";
+import { Route, BrowserRouter, Routes } from "react-router-dom";
 import './index.css';
 import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
@@ -25,27 +25,27 @@ const App = () => {
     return (
         <BrowserRouter>
             <LayOut>
-            <AdressContextProvider>
-                <Routes>
-                    <Route path='/' element={<Home/>}/>
-                    <Route path='/about' element={<About/>}/>
-                    <Route path='/menu' element={<Menu/>}/>
-                    <Route path='/campaigns' element={<Campaigns/>}/>
-                    <Route path='/news' element={<News/>}/>
-                    <Route path='/contact' element={<Contact/>}/>
-                    <Route path='/career' element={<Career/>}/>
-                    <Route path='/signup' element={<Signup/>}/>
-                    <Route path='/cart' element={<Cart/>}>
-                        <Route index element={<Index/>}/>
-                        <Route path='addresses' element={<Addresses/>}/>
-                        <Route path='payment' element={<Payment/>}/>
-                        <Route path='confirm' element={<Confirm/>}/>
-                    </Route>
-                    <Route path='/inlineNews' element={<InlineNews/>}/>
-                    <Route path='/orders' element ={ <Orders/>}/>
-                    <Route path='/profil' element ={ <Profil/>}/>
-                    <Route path='/adresses' element ={ <Adress/>}/>
-                </Routes>
+                <AdressContextProvider>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/about' element={<About />} />
+                        <Route path='/menu' element={<Menu />} />
+                        <Route path='/campaigns' element={<Campaigns />} />
+                        <Route path='/news' element={<News />} />
+                        <Route path='/contact' element={<Contact />} />
+                        <Route path='/career' element={<Career />} />
+                        <Route path='/signup' element={<Signup />} />
+                        <Route path='/cart' element={<Cart />}>
+                            <Route index element={<Index />} />
+                            <Route path='addresses' element={<Addresses />} />
+                            <Route path='payment' element={<Payment />} />
+                            <Route path='confirm' element={<Confirm />} />
+                        </Route>
+                        <Route path='/inline-news/:id' element={<InlineNews />} />
+                        <Route path='/orders' element={<Orders />} />
+                        <Route path='/profil' element={<Profil />} />
+                        <Route path='/adresses' element={<Adress />} />
+                    </Routes>
                 </AdressContextProvider>
             </LayOut>
         </BrowserRouter>

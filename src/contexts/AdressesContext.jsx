@@ -79,10 +79,10 @@ const AdressContextProvider = (props) => {
     }
     navigate("/cart/payment");
   };
-  const myfunc=(e)=>{
+  const myfunc = (e) => {
     e.preventDefault();
     navigate("/cart/payment")
-}
+  }
 
   const removeHandler = (e) => {
     setnewAdress((current) =>
