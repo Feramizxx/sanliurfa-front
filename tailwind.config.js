@@ -1,50 +1,52 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [  "./src/**/*.{js,jsx,ts,tsx}",],
+  content: ["./src/**/*.{js,jsx,ts,tsx}",],
   theme: {
     extend: {
       screens: {
-        '2xl': {'max': '1535px'},
+        '2xl': { 'max': '1535px' },
         // => @media (max-width: 1535px) { ... }
 
-        'xl': {'max': '1279px'},
+        'xl': { 'max': '1279px' },
         // => @media (max-width: 1279px) { ... }
 
-        'lg': {'max': '1023px'},
+        'lg': { 'max': '1023px' },
         // => @media (max-width: 1023px) { ... }
 
-        'lg2': {'max': '917px'},
+        'lg2': { 'max': '917px' },
         // => @media (max-width: 917px) { ... }
 
-        'md': {'max': '767px'},
+        'md': { 'max': '767px' },
         // => @media (max-width: 767px) { ... }
 
-        'sm': {'max': '639px'},
+        'sm': { 'max': '639px' },
         // => @media (max-width: 639px) { ... }
 
-        'xs': {'max': '530px'},
+        '2xs': { 'max': '630px' },
 
-        'xxs': {'max': '430px'},
+        'xs': { 'max': '530px' },
 
-        'min-2xl': {'min': '1535px'},
+        'xxs': { 'max': '430px' },
+
+        'min-2xl': { 'min': '1535px' },
         // => @media (min-width: 1535px) { ... }
 
-        'min-xl': {'min': '1279px'},
+        'min-xl': { 'min': '1279px' },
         // => @media (min-width: 1279px) { ... }
 
-        'min-lg': {'min': '1023px'},
+        'min-lg': { 'min': '1023px' },
         // => @media (min-width: 1023px) { ... }
 
-        'min-lg2': {'min': '917px'},
+        'min-lg2': { 'min': '917px' },
 
-        'min-md': {'min': '767px'},
+        'min-md': { 'min': '767px' },
         // => @media (min-width: 767px) { ... }
 
-        'min-sm': {'min': '639px'},
+        'min-sm': { 'min': '639px' },
         // => @media (min-width: 639px) { ... }
       },
       fontFamily: {
-        'Roboto': ['Roboto','system-ui']
+        'Roboto': ['Roboto', 'system-ui']
       },
       colors: {
         'language-bg': 'rgba(255,255,255,0.3)',

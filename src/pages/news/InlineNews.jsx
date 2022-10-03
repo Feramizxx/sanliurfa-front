@@ -35,7 +35,9 @@ const InlineNews = () => {
           <h1 className="mb-5 mt-10 sm:text-[32px] text-white text-[48px]">
             {singleNews.title}
           </h1>
-          <img className="object-cover w-[976px]" src={STORAGE_BASE_URL + singleNews.imageUrl} />
+          <div className="object-cover w-full max-w-[900px] min-h-[70vh] bg-cover bg-no-repeat bg-center" style={{
+            backgroundImage: `url(${STORAGE_BASE_URL + singleNews.imageUrl})`
+          }} />
           <div className="flex flex-wrap pt-3">
             <svg
               className="bg-red mr-2"
@@ -60,12 +62,12 @@ const InlineNews = () => {
       <div className="ml-[75px] lg:w-[100%] lg:ml-0 mt-[100px] ">
         <hr className="border-white p-1" />
         <span className="text-white lg:ml-2">Həmçinin Bax</span>
-        <div id="news-grid" className="mt-4  min-sm:grid  grid-cols-2 place-items-center gap-x-2 lg:gap-y-2 gap-y-5">
+        <div className="mt-4 p-3 lg:grid grid-cols-3 md:grid-cols-2 2xs:flex flex-col place-items-center gap-x-2 lg:gap-y-2">
           {news.map((recentNews) => {
             if (recentNews.id !== singleNews.id) {
               return (
-                <div onClick={() => onClickRecentNews(recentNews.id)} key={recentNews.id} className="w-screen min-w-[200px] max-w-[20vw] hover:cursor-pointer relative " id="grid-Item-container">
-                  <div className="bg-cover bg-center w-full min-h-[200px]" style={{
+                <div onClick={() => onClickRecentNews(recentNews.id)} key={recentNews.id} className="w-screen min-w-[200px] max-w-[60vw] min-sm:max-w-[25vw] hover:cursor-pointer relative mt-2">
+                  <div className="bg-cover bg-center w-full min-h-[250px]" style={{
                     backgroundImage: `url(${STORAGE_BASE_URL + recentNews.imageUrl})`
                   }} />
                   <div

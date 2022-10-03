@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({children, onClick,theme,className,onMouseEnter, onMouseLeave}) => {
+const Button = ({ children, onClick, theme, className, onMouseEnter, onMouseLeave }) => {
 
     const themes = {
         default: {

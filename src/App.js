@@ -16,7 +16,7 @@ import Confirm from "./pages/cart/Confirm";
 import LayOut from "./components/layouts/LayOut";
 import Signup from "./pages/signup/Signup";
 import Orders from './components/ui/meal/Orders';
-import Profil from './components/ui/Profil';
+import Profile from './components/ui/Profile';
 import Adress from './components/ui/meal/Adress';
 import InlineNews from './pages/news/InlineNews';
 import AdressContextProvider from './contexts/AdressesContext';
@@ -43,7 +43,7 @@ const App = () => {
                         </Route>
                         <Route path='/inline-news/:id' element={<InlineNews />} />
                         <Route path='/orders' element={<Orders />} />
-                        <Route path='/profil' element={<Profil />} />
+                        <Route path='/profile' element={<Profile />} />
                         <Route path='/adresses' element={<Adress />} />
                     </Routes>
                 </AdressContextProvider>

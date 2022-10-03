@@ -47,7 +47,7 @@ const OrderItems = () => {
           <div className="flex lg:flex-col items-center">
             <div className="flex w-[150px]">
               <img
-                className="w-[81px] h-[81px]    border-white object-cover border-solid border-2  rounded-[14px]"
+                className="w-[81px] h-[81px] border-white object-cover border-solid border-2  rounded-[14px]"
                 src={img}
               />
               <img
@@ -279,8 +279,8 @@ const OrderItems = () => {
           </div>
         </div>
       </div>
-  
-  
+
+
     </>
   );
 };

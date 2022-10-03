@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import HeroSlider from "./HeroSlider";
 import Menu from "./Menu";
 import MainNews from "./MainNews";

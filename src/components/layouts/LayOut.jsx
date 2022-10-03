@@ -3,18 +3,21 @@ import Header from "./Header";
 import Footer from "./Footer";
 import LinkContextProvider from "../../contexts/LinkContext";
 import LanguageContextProvider from "../../contexts/LanguageContext";
+import AuthContextProvider from '../../contexts/AuthContext';
 
-const LayOut = ({children}) => {
+const LayOut = ({ children }) => {
     return (
-        <LinkContextProvider>
-            <LanguageContextProvider>
-                <Header/>
-                <main className='font-Roboto'>
-                    {children}
-                </main>
-                <Footer/>
-            </LanguageContextProvider>
-        </LinkContextProvider>
+        <AuthContextProvider>
+            <LinkContextProvider>
+                <LanguageContextProvider>
+                    <Header />
+                    <main className='font-Roboto'>
+                        {children}
+                    </main>
+                    <Footer />
+                </LanguageContextProvider>
+            </LinkContextProvider>
+        </AuthContextProvider>
     );
 };
 

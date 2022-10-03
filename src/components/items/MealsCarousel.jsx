@@ -1,10 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Meal from "./Meal";
 import GreeceSalad from "../../assets/img/foods/GreeceSaladSmall.png";
 import CursusFeugiat from "../../assets/img/foods/CursusFeugiat.png";
 import JustoEst from "../../assets/img/foods/JustoEst.png";
+import useFetchMenu from './../../hooks/useFetchMenu';
+import PageLoader from "../PageLoader";
 
 const responsive = {
     largeDesktop: {
@@ -34,93 +36,16 @@ const responsive = {
 };
 
 const MealsCarousel = () => {
-    const [meals] = useState([
-        {
-            name: 'Tincidunt nullam',
-            description: 'Adipiscing faucibus suspendisse aliquet. Aliquam faucibus lacus elementum euismod integer.',
-            picture: GreeceSalad,
-            rating: 4,
-            vegan: true,
-            spicy: false,
-            price: {
-                small: 10,
-                middle: 12,
-                large: 14
-            }
-        },
-        {
-            name: 'Cursus feugiat',
-            description: 'Quam justo, viverra enim, urna purus magnis. Ridiculus rhoncus tellus eu aliquam.',
-            picture: CursusFeugiat,
-            rating: 5,
-            vegan: false,
-            spicy: true,
-            price: {
-                small: 12,
-                middle: 15,
-                large: 18
-            }
-        },
-        {
-            name: 'Justo Est',
-            description: 'Et orci vel euismod scelerisque arcu rhoncus. Tortor lectus fermentum mauris auctor adipiscing at.',
-            picture: JustoEst,
-            rating: 3,
-            vegan: false,
-            spicy: false,
-            price: {
-                small: 6.5,
-                middle: 9,
-                large: 11.5
-            }
-        },
-        {
-            name: 'Tincidunt nullam',
-            description: 'Adipiscing faucibus suspendisse aliquet. Aliquam faucibus lacus elementum euismod integer.',
-            picture: GreeceSalad,
-            rating: 4,
-            vegan: true,
-            spicy: false,
-            price: {
-                small: 10,
-                middle: 12,
-                large: 14
-            }
-        },
-        {
-            name: 'Cursus feugiat',
-            description: 'Quam justo, viverra enim, urna purus magnis. Ridiculus rhoncus tellus eu aliquam.',
-            picture: CursusFeugiat,
-            rating: 5,
-            vegan: false,
-            spicy: true,
-            price: {
-                small: 12,
-                middle: 15,
-                large: 18
-            }
-        },
-        {
-            name: 'Justo Est',
-            description: 'Et orci vel euismod scelerisque arcu rhoncus. Tortor lectus fermentum mauris auctor adipiscing at.',
-            picture: JustoEst,
-            rating: 3,
-            vegan: false,
-            spicy: false,
-            price: {
-                small: 6.5,
-                middle: 9,
-                large: 11.5
-            }
-        },
-    ])
+    const { menu, menuError, isMenuLoading } = useFetchMenu(8);
+
+    if (isMenuLoading) return <PageLoader />
 
     return (
         <div className={'px-14'}>
             <Carousel responsive={responsive} arrows={false} swipeable={true} draggable={true} itemClass="max-w-max">
-                {meals.map((meal, i) => {
+                {menu.map((meal, i) => {
                     return (
-                        <div className={'flex'} key={i}><Meal data={meal} type={'carousel'} key={i} /></div>
+                        <div className={'flex'} key={meal.id}><Meal data={meal} type={'carousel'} key={i} /></div>
                     )
                 })}
             </Carousel>
