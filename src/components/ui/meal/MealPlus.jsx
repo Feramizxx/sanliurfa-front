@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Plus from "../../../assets/icons/buttons/plus.svg";
 import MealModal from "../../items/MealModal";
 
-const MealPlus = (props) => {
+const MealPlus = ({ price, amount, name, taste, image, description, additions }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
@@ -16,9 +16,19 @@ const MealPlus = (props) => {
     return (
         <>
             <div className={'bg-red rounded-tl-[26px] rounded-br-[26px] cursor-pointer px-7 py-3'} onClick={openModal}>
-                <img src={Plus}/>
+                <img src={Plus} />
             </div>
-            <MealModal modalIsOpen={modalIsOpen} closeModal={closeModal} amount={props.amount} price={props.price} name={props.name} taste={props.taste} />
+            <MealModal
+                image={image}
+                modalIsOpen={modalIsOpen}
+                closeModal={closeModal}
+                amount={amount}
+                price={price}
+                name={name}
+                taste={taste}
+                description={description}
+                additions={additions}
+            />
         </>
     )
 }

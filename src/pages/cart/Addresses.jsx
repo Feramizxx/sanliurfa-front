@@ -1,8 +1,5 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import PageNav from "./PageNav";
-import {Navigate, useNavigate} from "react-router-dom";
-import {NavLink} from "react-router-dom";
-import {AdressContext} from "../../contexts/AdressesContext";
 
 const Addresses = () => {
     const {
@@ -19,7 +16,7 @@ const Addresses = () => {
 
     return (
         <div className={"mt-12 mb-2"}>
-            <PageNav prev={"Cart"} next={"Payment"}/>
+            <PageNav prev={"Cart"} next={"Payment"} />
             <form
                 onSubmit={saveAdress ? handleSubmitForm2 : myfunc}
                 className={"py-20 px-48 lg2:px-10"}
@@ -33,9 +30,11 @@ const Addresses = () => {
                         <option selected="selected" disabled="disabled">
                             Şəhər
                         </option>
-                        {cities.map((city, i) => {
-                            return <option key={i}>{city}</option>;
-                        })}
+                        {cities.map((city, i) =>
+                            <option key={i}>
+                                {city}
+                            </option>
+                        )}
                     </select>
                     <select
                         name="adress"
@@ -45,9 +44,11 @@ const Addresses = () => {
                         <option selected="selected" disabled="disabled">
                             Rayon
                         </option>
-                        {districts.map((district, i) => {
-                            return <option key={i}>{district}</option>;
-                        })}
+                        {districts.map((district, i) =>
+                            <option key={i}>
+                                {district}
+                            </option>
+                        )}
                     </select>
                 </div>
                 <div className={"flex justify-between mb-7 sm:flex-col"}>
@@ -101,11 +102,11 @@ const Addresses = () => {
                     </div>
                 </div>
                 <div className={"mb-7"}>
-          <textarea
-              className={"cart-input w-full"}
-              rows={6}
-              placeholder={"Qeyd"}
-          ></textarea>
+                    <textarea
+                        className={"cart-input w-full"}
+                        rows={6}
+                        placeholder={"Qeyd"}
+                    ></textarea>
                 </div>
                 <div className={"mb-7 flex items-center"}>
                     <input

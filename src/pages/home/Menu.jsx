@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import CategoriesCarousel from "../../components/items/CategoriesCarousel";
 import MealsCarousel from "../../components/items/MealsCarousel";
@@ -10,20 +10,26 @@ import { scrollTop } from "../../helpers";
 import useFetchContactInfo from './../../hooks/useFetchContactInfo';
 import { LanguageContext } from './../../contexts/LanguageContext';
 import { LinkContext } from './../../contexts/LinkContext';
+import useFetchMenu from './../../hooks/useFetchMenu';
+import PageLoader from './../../components/PageLoader';
 
 const Menu = () => {
     const { value } = useContext(LanguageContext);
-    const { contactInfo, contactInfoError, isContactInfoLoading } = useFetchContactInfo(value);
     const { setValue } = useContext(LinkContext);
+    const { contactInfo, contactInfoError, isContactInfoLoading } = useFetchContactInfo(value);
+    const { menu, isMenuLoading, menuError } = useFetchMenu(8);
+    const [meals, setMeals] = useState([]);
 
     const onLinkClick = () => {
         scrollTop();
         setValue(3);
     }
 
+    if (isMenuLoading) return <PageLoader />
+
     return (
         <>
-            {!contactInfoError ?
+            {!contactInfoError && !menuError ?
                 <div className='pt-14 pb-20'>
                     <div className={'px-14'}>
                         <div className='flex justify-between items-end mb-8'>
@@ -33,10 +39,10 @@ const Menu = () => {
                                 çox
                             </NavLink>
                         </div>
-                        <CategoriesCarousel theme={'white'} />
+                        <CategoriesCarousel theme={'white'} categories={menu} setMeals={setMeals} />
                     </div>
                     <div className="bg-red pt-20 pb-24 mb-6 relative">
-                        <MealsCarousel />
+                        <MealsCarousel meals={meals} />
                         <div className="absolute top-0 left-0 w-full overflow-hidden">
                             <svg viewBox="0 0 1200 120" preserveAspectRatio="none"
                                 className="relative block h-[76px]" style={{ 'width': 'calc(128% + 1.3px)' }}>

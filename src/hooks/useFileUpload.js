@@ -1,4 +1,4 @@
-const useFileUpload = (inputRef, allowedExtensions, setError, setFile) => {
+const useFileUpload = (inputRef, allowedExtensions, setError, setFile = null, onSuccess = null) => {
 
     const validateExtension = (extension, e) => {
         if (!Array.isArray(allowedExtensions)) {
@@ -23,8 +23,9 @@ const useFileUpload = (inputRef, allowedExtensions, setError, setFile) => {
         const uploadedFile = e.target.files[0];
         const extension = uploadedFile.name.split('.').pop();
         if (validateExtension(extension, e)) {
-            setFile(uploadedFile);
+            if (setFile) setFile(uploadedFile);
             setError('');
+            if (onSuccess) onSuccess(uploadedFile);
         }
     }
 

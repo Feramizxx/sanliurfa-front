@@ -18,16 +18,6 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const InfoBox = ({ onClose, vacancy }) => {
-    const [modal, setModal] = React.useState(false);
-
-    const onModalClose = () => {
-        setModal(false);
-    }
-
-    const onOpen = () => {
-        setModal(true);
-    }
-
     return (
         <div className='bg-white relative pl-14 overflow-y-scroll'
             style={{
@@ -65,10 +55,6 @@ const InfoBox = ({ onClose, vacancy }) => {
                     </ul>
                 }
             </div>
-            <button className={'py-2 px-6 my-6 font-bold rounded-3xl bg-primary-bg text-white'} onClick={onOpen}> Müraciət et </button>
-            <Modal isOpen={modal} onRequestClose={onModalClose} style={customStyles}>
-                <SmallCareerForm onClose={onModalClose} />
-            </Modal>
         </div>
     );
 };

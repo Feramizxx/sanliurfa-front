@@ -16,36 +16,44 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const FilterModal = (props) => {
-    const [categories] = useState(['Breakfast', 'Lunch', 'Dinner', 'Hot drinks', 'Cold drinks', 'Dessert', 'Snacks', 'Salad']);
-    const [choices] = useState(['Toyuqlu', 'Ətli', 'Dəniz məhsullu', 'Vegeterian', 'Dietik']);
+const FilterModal = ({ modalIsOpen, closeModal, categories, setMeals }) => {
+    // const [choices] = useState(['Toyuqlu', 'Ətli', 'Dəniz məhsullu', 'Vegeterian', 'Dietik']);
+
+    const onClick = (meals) => {
+        setMeals(meals);
+    }
 
     return (
-        <Modal isOpen={props.modalIsOpen} onRequestClose={props.closeModal} style={customStyles}>
+        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
             <div className={'max-w-[646px] relative px-8 pb-6 pt-20'}>
-                <CloseButton close={props.closeModal} theme={'red'} />
+                <CloseButton close={closeModal} theme={'red'} />
                 <h2 className={'text-4xl font-bold text-center mb-8'}>Filter</h2>
                 <form>
                     <h3 className={'font-medium text-xl mb-2'}>Kateqoriya</h3>
                     <div className={'flex flex-wrap mb-6'}>
-                        {categories.map((category, i) => {
+                        {categories.map((category) => {
                             return (
-                                <Checkbox name={category} price={null} key={i} />
+                                <Checkbox
+                                    name={category.name}
+                                    price={null}
+                                    key={category.id}
+                                    onClick={() => onClick(category.meals)}
+                                />
                             )
                         })}
                     </div>
-                    <h3 className={'font-medium text-xl mb-2'}>Çeşidlər </h3>
+                    {/* <h3 className={'font-medium text-xl mb-2'}>Çeşidlər </h3>
                     <div className={'flex flex-wrap mb-10'}>
                         {choices.map((choice, i) => {
                             return (
                                 <Checkbox name={choice} price={null} key={i} />
                             )
                         })}
-                    </div>
+                    </div> */}
                     <div className={'flex'}>
                         <button type={'button'}
-                            className={'bg-red rounded-full grow text-white text-2xl font-light py-4'}
-                            onClick={props.closeModal}>
+                            className={'bg-red rounded-full grow text-white text-2xl font-light py-4 px-6'}
+                            onClick={closeModal}>
                             Filtrləməni tamamla
                         </button>
                     </div>

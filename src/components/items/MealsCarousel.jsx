@@ -9,6 +9,10 @@ import useFetchMenu from './../../hooks/useFetchMenu';
 import PageLoader from "../PageLoader";
 
 const responsive = {
+    default: {
+        breakpoint: { max: 4000, min: 1535 },
+        items: 4
+    },
     largeDesktop: {
         breakpoint: { max: 1535, min: 1279 },
         items: 3
@@ -35,17 +39,15 @@ const responsive = {
     }
 };
 
-const MealsCarousel = () => {
-    const { menu, menuError, isMenuLoading } = useFetchMenu(8);
-
-    if (isMenuLoading) return <PageLoader />
-
+const MealsCarousel = ({ meals }) => {
     return (
         <div className={'px-14'}>
             <Carousel responsive={responsive} arrows={false} swipeable={true} draggable={true} itemClass="max-w-max">
-                {menu.map((meal, i) => {
+                {(meals.legth === 0 ? menu[0].meals : meals).map((meal) => {
                     return (
-                        <div className={'flex'} key={meal.id}><Meal data={meal} type={'carousel'} key={i} /></div>
+                        <div className={'flex'} key={meal.id}>
+                            <Meal meal={meal} type={'carousel'} />
+                        </div>
                     )
                 })}
             </Carousel>

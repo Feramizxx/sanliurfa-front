@@ -20,36 +20,35 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const MealModal = (props) => {
-    const [additions] = useState([
-        { name: 'Chinese', price: 2.00 },
-        { name: 'Greek', price: 0.70 },
-        { name: 'Japanese', price: 1.50 },
-        { name: 'Korean', price: 1.20 },
-        { name: 'British', price: 2.20 },
-        { name: 'Mexican', price: 1.40 },
-        { name: 'Russian', price: 0.60 },
-        { name: 'Italian', price: 1.50 },
-        { name: 'Thai', price: 2.00 },
-        { name: 'Indonesian', price: 1.80 },
-        { name: 'Indian', price: 1.20 },
-    ]);
-    const [totalPrice, setTotalPrice] = useState(props.price.middle);
-    const [amount, setAmount] = useState(props.amount);
+const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image, description, additions }) => {
+    const [totalPrice, setTotalPrice] = useState(price);
+    const [currentAmount, setCurrentAmount] = useState(amount);
+    const [display, setDisplay] = useState(additions ? additions.length / 4 : 0);
+
+    const onMoreClick = (e) => {
+        e.preventDefault();
+        setDisplay(additions.length);
+    }
+
+    const onHideClick = (e) => {
+        e.preventDefault();
+        setDisplay(additions.length / 4);
+    }
 
     return (
-        <Modal isOpen={props.modalIsOpen} onRequestClose={props.closeModal} style={customStyles}>
+        <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
             <div className={'max-w-[646px] h-screen overflow-y-scroll relative'} id={'meal-modal'}>
-                <CloseButton close={props.closeModal} />
-                <Taste taste={props.taste} type={'modal'} />
-                <img src={GreeceSalad} />
+                <CloseButton close={closeModal} />
+                {/* <Taste taste={taste} type={'modal'} /> */}
+                <div className="bg-center bg-cover w-full h-[50vh]" style={{
+                    backgroundImage: `url(${image})`
+                }} />
                 <div className={'px-7 py-6'}>
                     <div className={'flex justify-between items-center mb-1'}>
-                        <h2 className={'font-medium text-4xl'}>{props.name}</h2>
-                        <p className={'text-[#8F161A] text-[40px] font-semibold'}>{props.price.middle}₼</p>
+                        <h2 className={'font-medium text-4xl'}>{name}</h2>
+                        <p className={'text-[#8F161A] text-[40px] font-semibold'}>{price}₼</p>
                     </div>
-                    <p className={'font-light text-sm mb-8'}>Buratta, rukola, pomidor, qırmızı turp, balzamik sous,
-                        qırmızı soğan, pesto rosso sousu</p>
+                    <p className={'font-light text-sm mb-8'}> {description} </p>
                     <form>
                         <h3 className={'font-medium text-xl mb-2'}>Ölçü</h3>
                         <div className={'flex mb-8'}>
@@ -59,22 +58,38 @@ const MealModal = (props) => {
                         </div>
                         <h3 className={'font-medium text-xl mb-2'}>Əlavələr</h3>
                         <div className={'flex flex-wrap mb-6'}>
-                            {additions.map((addition, i) => {
-                                return (
-                                    <Checkbox name={addition.name} price={addition.price} key={i} />
-                                )
-                            })}
+                            {additions &&
+                                <>
+                                    {additions.map((addition, i) => {
+                                        if (i <= display) {
+                                            return (
+                                                <Checkbox
+                                                    name={addition.name}
+                                                    price={addition.prices[0].price}
+                                                    key={addition.sku}
+                                                />
+                                            )
+                                        }
+                                    })}
+                                    <div className="flex justify-center w-full">
+                                        <button
+                                            className="bg-[#F1F1F1] rounded-full p-3"
+                                            onClick={display === additions.length ? onHideClick : onMoreClick}
+                                        > {display === additions.length ? "Gizlət" : "Hamsini göstər"} </button>
+                                    </div>
+                                </>
+                            }
                         </div>
                         <h3 className={'font-medium text-xl mb-2'}>Qeydləriniz</h3>
                         <input type={'text'} className={'bg-[#F1F1F1] w-full outline-red transition-colors mb-7 py-4 px-6 rounded-full'} />
                         <div className={'flex justify-between items-center mb-4'}>
                             <h3 className={'font-medium text-xl mb-2'}>Ümumi məbləğ:</h3>
-                            <p className={'text-[#8F161A] text-[40px] font-semibold'}>{totalPrice * props.amount}₼</p>
+                            <p className={'text-[#8F161A] text-[40px] font-semibold'}>{Math.round(totalPrice * currentAmount * 100) / 100}₼</p>
                         </div>
                         <div className={'flex justify-between'}>
-                            <Counter type={'modal'} minNumber={1} defaultValue={props.amount}
-                                countDecrease={() => { setAmount(amount - 1) }} countIncrease={() => { setAmount(amount + 1) }} />
-                            <button type={'button'} className={'bg-red rounded-full grow ml-4 text-white text-2xl font-lights sm:text-lg'} onClick={props.closeModal}>
+                            <Counter type={'modal'} minNumber={1} defaultValue={amount}
+                                countDecrease={() => { setCurrentAmount(currentAmount - 1) }} countIncrease={() => { setCurrentAmount(currentAmount + 1) }} />
+                            <button type={'button'} className={'bg-red rounded-full grow ml-4 text-white text-2xl font-lights sm:text-lg'} onClick={closeModal}>
                                 Səbətə əlavə et
                             </button>
                         </div>

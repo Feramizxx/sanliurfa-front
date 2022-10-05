@@ -31,7 +31,7 @@
     }
 
     .menu-li {
-        @apply font-light text-3xl leading-9 cursor-pointer transition-all duration-200 hover:text-[#8F161A] hover:font-semibold md:text-2xl;
+        @apply font-light text-[1.5rem] leading-9 cursor-pointer transition-all duration-200 hover:text-[#8F161A] hover:font-semibold md:text-2xl;
     }
 
     .menu-li.menu-li-active {
@@ -72,6 +72,10 @@
 
     .form-error {
         @apply text-red text-sm font-bold my-1;
+    }
+
+    .profile-input {
+        @apply xl:w-[100%] w-[75%] p-2;
     }
 }
 

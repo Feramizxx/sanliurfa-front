@@ -17,7 +17,7 @@ const Button = ({ children, onClick, theme, className, onMouseEnter, onMouseLeav
 
     return (
         <button
-            className={`hover:cursor-pointer rounded font-bold ${className}`}
+            className={`hover:cursor-pointer font-bold ${className}`}
             onClick={onClick}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
