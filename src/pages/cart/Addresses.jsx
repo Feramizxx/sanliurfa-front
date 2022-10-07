@@ -1,30 +1,67 @@
 import React, { useState, useContext, useEffect } from "react";
 import PageNav from "./PageNav";
+import { cities, districts } from './../../assets/storage/addresses';
+import { AuthContext } from './../../contexts/AuthContext';
+import useFetchAddresses from './../../hooks/useFetchAddresses';
+import PageLoader from './../../components/PageLoader';
+import AdressItem from './../../components/ui/meal/AdressItem';
+import { CartContext } from './../../contexts/CartContext';
+import Button from './../../components/ui/Button';
+import { useNavigate } from 'react-router';
+import { scrollTop } from "../../helpers";
 
 const Addresses = () => {
-    const {
-        myfunc,
-        handleFormChange,
-        handleSubmitForm2,
-        districts,
-        cities,
-    } = useContext(AdressContext);
-    const [saveAdress, setsaveAdress] = useState(false);
-    const saveAdressHandle = () => {
-        setsaveAdress(!saveAdress);
-    };
+    const { token } = useContext(AuthContext);
+    const { selectAddress } = useContext(CartContext);
+    const { addresses, addressesAreLoading, setAddresses } = useFetchAddresses(token);
+    const [selected, setSelected] = useState(null);
+    const navigate = useNavigate();
+
+    if (addressesAreLoading) return <PageLoader />;
 
     return (
         <div className={"mt-12 mb-2"}>
             <PageNav prev={"Cart"} next={"Payment"} />
-            <form
-                onSubmit={saveAdress ? handleSubmitForm2 : myfunc}
-                className={"py-20 px-48 lg2:px-10"}
-            >
-                <div className={"flex justify-between mb-7 sm:flex-col"}>
+            <div className={"py-20 px-48 lg2:px-10"}>
+                {Array.isArray(addresses) && addresses.length !== 0 ? addresses.map((address) =>
+                    <div key={address.id}
+                        onClick={() => {
+                            if (selected !== address.id) {
+                                setSelected(address.id);
+                                selectAddress(address);
+                            } else {
+                                setSelected(null);
+                                selectAddress(null);
+                            }
+                        }}
+                        className="hover:cursor-pointer"
+                    >
+                        <AdressItem
+                            address={address}
+                            setAddresses={setAddresses}
+                            selected={selected === address.id}
+                        />
+                    </div>) :
+                    <p className="w-full text-center text-red font-bold">
+                        Siz hələ heç bir ünvan əlavə etməmisiniz...
+                    </p>
+                }
+                <Button
+                    theme={'default'}
+                    onClick={() => {
+                        scrollTop();
+                        navigate('/profile/addresses')
+                    }}
+                    className="py-2 px-4 rounded-2xl float-right"
+                > Mənim ünvanlarım </Button>
+            </div>
+        </div >
+    );
+};
+
+{/* <div className={"flex justify-between mb-7 sm:flex-col"}>
                     <select
                         name="city"
-                        onChange={handleFormChange}
                         className={"cart-input font-extralight sm:mb-7 sm:w-full"}
                     >
                         <option selected="selected" disabled="disabled">
@@ -38,7 +75,6 @@ const Addresses = () => {
                     </select>
                     <select
                         name="adress"
-                        onChange={handleFormChange}
                         className={"cart-input font-extralight sm:w-full"}
                     >
                         <option selected="selected" disabled="disabled">
@@ -55,13 +91,11 @@ const Addresses = () => {
                     <input
                         required
                         name="street"
-                        onChange={handleFormChange}
                         className={"cart-input sm:mb-7 sm:w-full"}
                         placeholder={"Küçə"}
                     />
                     <input
                         required
-                        onChange={handleFormChange}
                         name="flat"
                         className={"cart-input sm:w-full"}
                         placeholder={"Mənzil"}
@@ -72,14 +106,12 @@ const Addresses = () => {
                         <input
                             required
                             name="title"
-                            onChange={handleFormChange}
                             className={"cart-input"}
                             placeholder={"Başlıq"}
                         />
                         <input
                             required
                             name="building"
-                            onChange={handleFormChange}
                             className={"cart-input"}
                             placeholder={"Bina"}
                         />
@@ -88,14 +120,12 @@ const Addresses = () => {
                         <input
                             required
                             name="blok"
-                            onChange={handleFormChange}
                             className={"cart-input"}
                             placeholder={"Blok"}
                         />
                         <input
                             required
                             name="floor"
-                            onChange={handleFormChange}
                             className={"cart-input"}
                             placeholder={"Mərtəbə"}
                         />
@@ -110,7 +140,6 @@ const Addresses = () => {
                 </div>
                 <div className={"mb-7 flex items-center"}>
                     <input
-                        onClick={saveAdressHandle}
                         type="checkbox"
                         id={"remember"}
                         className={"mr-3 w-[30px] h-[30px] accent-emerald-600"}
@@ -128,10 +157,7 @@ const Addresses = () => {
                     >
                         Növbəti
                     </button>
-                </div>
-            </form>
-        </div>
-    );
-};
+                </div> */}
+
 
 export default Addresses;

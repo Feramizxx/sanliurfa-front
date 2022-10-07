@@ -51,7 +51,7 @@ const MessageBox = ({ isVisible, onLinkClick }) => {
                 <ul>
                     <li className='message-box-link' > <a className='cursor-pointer' onClick={() => onClick('/profile')}> Profilim </a> </li>
                     <li className='message-box-link'> <a className='cursor-pointer' onClick={() => onClick('/profile/orders')} > Sifarişlərim </a> </li>
-                    <li className='message-box-link'> <a className='cursor-pointer' onClick={() => onClick('/profile/adresses')}> Ünvanlarım </a> </li>
+                    <li className='message-box-link'> <a className='cursor-pointer' onClick={() => onClick('/profile/addresses')}> Ünvanlarım </a> </li>
                     <li className={'message-box-link border-b-0'}>
                         <div className={`flex ${!isAuth ? 'flex-col' : 'flex-row'} ${!isAuth ? 'justify-center' : 'items-center'}`}>
                             {isAuth ? <button onClick={logOut} className='mr-3'> Çıxış </button> :

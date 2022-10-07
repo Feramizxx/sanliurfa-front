@@ -10,7 +10,7 @@ const defineFieldValue = (initial, current, fromApi) => {
   return initial === current ? fromApi : current;
 }
 
-const AdressItem = ({ address, setAddresses }) => {
+const AdressItem = ({ address, setAddresses, selected = false }) => {
   const [modal, setModal] = useState(false);
   const [form, setForm] = useState(false);
   const { token } = useContext(AuthContext);
@@ -50,8 +50,13 @@ const AdressItem = ({ address, setAddresses }) => {
           </div>
         </div>
       </MyModal>
-      <div className="adresses-container mb-10 w-[85%] mr-auto ml-auto px-10 py-5 flex  flex-col ">
-        <div className="flex justify-between  mb-2">
+      <div
+        className={`adresses-container mb-10 w-[85%] max-w-[900px] mr-auto ml-auto px-10 py-5`}
+        style={{
+          boxShadow: !selected ? '0px 0px 5px 1px rgba(0, 0, 0, 0.1)' : '0px 0px 10px 10px rgba(187, 32, 37, 0.5)'
+        }}
+      >
+        <div className="flex justify-between mb-2">
           <h3 className="font-semibold">{address.city} {address.avenue}...</h3>
           <div className="flex items-center">
             <svg
@@ -75,18 +80,22 @@ const AdressItem = ({ address, setAddresses }) => {
           </div>
         </div>
         <hr className="text-black" />
-        <div className="flex justify-between md:flex-col mt-4 w-[100%]">
-          <div className="flex flex-col">
-            <p>Şəhər: {address.city}</p>
-            <p>Rayon: {address.district}</p>
-            <p>Küçə: {address.avenue}</p>
+        <div className="flex justify-between mt-4 w-[100%] sm:grid grid-cols-2 xs:block">
+          <div className="flex justify-center xs:block">
+            <div className="flex flex-col">
+              <p>Şəhər: {address.city}</p>
+              <p>Rayon: {address.district}</p>
+              <p>Küçə: {address.avenue}</p>
+            </div>
           </div>
-          <div className="flex flex-col">
-            <p>Bina: {address.building}</p>
-            <p>Mərtəbə: {address.floor}</p>
-            <p>Blok: {address.block}</p>
+          <div className="flex justify-center xs:block xs:mt-2">
+            <div className="flex flex-col">
+              <p>Bina: {address.building}</p>
+              <p>Mərtəbə: {address.floor}</p>
+              <p>Blok: {address.block}</p>
+            </div>
           </div>
-          <div className="text-red flex items-end">
+          <div className="text-red flex items-end sm:mt-2">
             <button onClick={() => setModal(true)}>
               Sil
               <hr />

@@ -50,7 +50,7 @@ const App = () => {
                         <Route path='/profile'> {/* TODO: check it */}
                             <Route index element={<Profile />} />
                             <Route path='orders' element={<Orders />} />
-                            <Route path='adresses' element={<AddressesPage />} />
+                            <Route path='addresses' element={<AddressesPage />} />
                         </Route>
                     }
                     <Route path='/inline-news/:id' element={<InlineNews />} />
