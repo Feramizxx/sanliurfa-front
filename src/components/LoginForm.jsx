@@ -5,7 +5,7 @@ import { AxiosError } from 'axios';
 import { login } from './../api/login';
 import { AuthContext } from '../contexts/AuthContext';
 
-const LoginForm = ({ isVisible, setIsVisible, onLinkClick }) => {
+const LoginForm = ({ isVisible, setIsVisible, onLinkClick, authError }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -24,6 +24,7 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick }) => {
         try {
             const token = await login(data);
             loginUser(token);
+            setIsVisible(false);
         } catch (error) {
             if (error instanceof AxiosError && error.response.status === 400) {
                 setErrorMessage('Email or password is incorrect.');
@@ -42,7 +43,7 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick }) => {
     }
 
     return (
-        <form onSubmit={onSubmit} className={'absolute w-[15em] bg-white p-3 mt-[15.8em] right-0 md:w-[20em] sm:right-[-2em] login-form'}
+        <form onSubmit={onSubmit} className={`absolute w-[15em] ${authError && 'border-2 border-red'} bg-white p-3 mt-[15.8em] right-0 md:w-[20em] sm:right-[-2em] login-form`}
             style={{
                 display: isVisible ? 'block' : 'none',
             }}
@@ -51,6 +52,9 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick }) => {
         >
             {errorMessage !== '' &&
                 <p className='form-error'> {errorMessage} </p>
+            }
+            {authError !== '' &&
+                <p className='form-error'> Profil məlumatlarınızı əldə etmək üçün daxil olmalısınız </p>
             }
             <input
                 className={'auth-form-input'}

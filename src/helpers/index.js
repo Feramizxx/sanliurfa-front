@@ -25,7 +25,7 @@ export const getFooterTheme = (num) => {
 }
 
 export const scrollTop = () => {
-    window.scrollTo({top: 0, left: 0});
+    window.scrollTo({ top: 0, left: 0 });
 }
 
 export const sortLanguages = (languages, currentLanguage) => {
@@ -39,3 +39,5 @@ export const sortLanguages = (languages, currentLanguage) => {
     }
     return languages;
 }
+
+export const roundPrice = (price) => Math.round(price * 100) / 100

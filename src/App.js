@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
 import Campaigns from "./pages/campaigns/Campaigns";
@@ -21,6 +21,11 @@ import AddressesPage from './components/ui/meal/AddressesPage';
 import './index.css';
 
 const App = () => {
+    // IMPORTANT: this part defines if the entered user is authorized or not.
+    // We can't call here us Auth from GlobalContext since user is not 
+    const _isAuth = localStorage.getItem('isAuth');
+    const isAuth = _isAuth ? _isAuth === 'true' : false;
+
     return (
         <BrowserRouter>
             <LayOut>
@@ -33,16 +38,23 @@ const App = () => {
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/career' element={<Career />} />
                     <Route path='/signup' element={<Signup />} />
-                    <Route path='/cart' element={<Cart />}>
-                        <Route index element={<Index />} />
-                        <Route path='addresses' element={<Addresses />} />
-                        <Route path='payment' element={<Payment />} />
-                        <Route path='confirm' element={<Confirm />} />
-                    </Route>
+                    {isAuth && // TODO: add private and public routing in routes folder (DISCUSS IT)
+                        <Route path='/cart' element={<Cart />}>
+                            <Route index element={<Index />} />
+                            <Route path='addresses' element={<Addresses />} />
+                            <Route path='payment' element={<Payment />} />
+                            <Route path='confirm' element={<Confirm />} />
+                        </Route>
+                    }
+                    {isAuth &&
+                        <Route path='/profile'> {/* TODO: check it */}
+                            <Route index element={<Profile />} />
+                            <Route path='orders' element={<Orders />} />
+                            <Route path='adresses' element={<AddressesPage />} />
+                        </Route>
+                    }
                     <Route path='/inline-news/:id' element={<InlineNews />} />
-                    <Route path='/orders' element={<Orders />} />
-                    <Route path='/profile' element={<Profile />} />
-                    <Route path='/adresses' element={<AddressesPage />} />
+                    <Route path='*' element={<Navigate to="/" />} /> {/* NOTE: error page */}
                 </Routes>
             </LayOut>
         </BrowserRouter>
