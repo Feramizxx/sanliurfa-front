@@ -25,7 +25,9 @@ const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image,
     const [totalPrice, setTotalPrice] = useState(price);
     const [currentAmount, setCurrentAmount] = useState(amount);
     const [display, setDisplay] = useState(additions ? additions.length / 4 : 0);
-    const { addProduct } = useContext(CartContext)
+    const { addProduct } = useContext(CartContext);
+
+    // TODO: add selected additions
 
     const onMoreClick = (e) => {
         e.preventDefault();
@@ -101,7 +103,7 @@ const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image,
                                 type={'button'}
                                 className={'bg-red rounded-full grow ml-4 text-white text-2xl font-lights sm:text-lg'}
                                 onClick={async () => {
-                                    await addProduct({ name, image, additions, description }, currentAmount, totalPrice)
+                                    await addProduct({ name, image, description }, currentAmount, totalPrice)
                                     closeModal();
                                 }}>
                                 Səbətə əlavə et
