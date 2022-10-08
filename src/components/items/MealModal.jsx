@@ -100,8 +100,8 @@ const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image,
                             <button
                                 type={'button'}
                                 className={'bg-red rounded-full grow ml-4 text-white text-2xl font-lights sm:text-lg'}
-                                onClick={() => {
-                                    addProduct({ name, image, additions, description }, currentAmount, totalPrice)
+                                onClick={async () => {
+                                    await addProduct({ name, image, additions, description }, currentAmount, totalPrice)
                                     closeModal();
                                 }}>
                                 Səbətə əlavə et

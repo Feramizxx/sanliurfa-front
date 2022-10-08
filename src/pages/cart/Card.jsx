@@ -28,18 +28,18 @@ const Card = ({ index, meal, amount, price }) => {
                     <Counter
                         minNumber={1}
                         defaultValue={amount}
-                        countDecrease={() => {
-                            decrementProduct(meal.name);
+                        countDecrease={async () => {
+                            await decrementProduct(meal.name);
                             setCount(count - 1)
                         }}
-                        countIncrease={() => {
-                            incrementProduct(meal.name);
+                        countIncrease={async () => {
+                            await incrementProduct(meal.name);
                             setCount(count + 1)
                         }}
                     />
                 </div>
-                <p className={'text-[#D21414] underline cursor-pointer'} onClick={() => {
-                    removeProduct(meal.name);
+                <p className={'text-[#D21414] underline cursor-pointer'} onClick={async () => {
+                    await removeProduct(meal.name);
                 }}>Sil</p>
             </div>
         </div >
