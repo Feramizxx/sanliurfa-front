@@ -3,7 +3,7 @@ import React from 'react';
 export const LanguageContext = React.createContext();
 
 const dictionary = {
-    aze: {
+    az: {
         links: {
             home: 'Əsas səhifə',
             about: 'Haqqımızda ',
@@ -38,11 +38,11 @@ const dictionary = {
     }
 }
 
-const languages = ['aze', 'en', 'ru'];
+const languages = ['en', 'az', 'ru'];
 
 const LanguageContextProvider = ({ children }) => {
     const _language = localStorage.getItem('language');
-    const [language, setLanguage] = React.useState(_language ? _language : 'aze');
+    const [language, setLanguage] = React.useState(_language ? _language : 'en');
 
     const setValue = (value) => {
         localStorage.setItem('language', value);

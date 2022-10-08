@@ -7,7 +7,7 @@ import useFetch from './useFetch';
 
 const useFetchCurrentUser = (refetch) => {
     const [currentUser, setCurrentUser] = useState(null);
-    const { token } = useContext(AuthContext)
+    const { token } = useContext(AuthContext);
     const [fetchUser, isUserLoading, userError] = useFetch(async () => {
         const data = await getCurrentUser(token);
         setCurrentUser(data);
@@ -15,7 +15,7 @@ const useFetchCurrentUser = (refetch) => {
 
     useEffect(() => {
         fetchUser();
-    }, [token, refetch]);
+    }, [refetch]);
 
     return {
         currentUser: currentUser, isUserLoading, userError, setCurrentUser
