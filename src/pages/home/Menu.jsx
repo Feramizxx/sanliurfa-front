@@ -8,8 +8,8 @@ import Location from "../../assets/icons/card/location.svg";
 import Van from "../../assets/icons/card/van.svg";
 import { scrollTop } from "../../helpers";
 import useFetchContactInfo from './../../hooks/useFetchContactInfo';
-import { LanguageContext } from './../../contexts/LanguageContext';
-import { LinkContext } from './../../contexts/LinkContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
+import { LinkContext } from '../../contexts/LinkContext';
 import useFetchMenu from './../../hooks/useFetchMenu';
 import PageLoader from './../../components/PageLoader';
 

@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import PageLoader from "../../components/PageLoader";
-import { LanguageContext } from './../../contexts/LanguageContext';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import useFetchNews from './../../hooks/useFetchNews';
 import { useNavigate } from 'react-router-dom';
 import { STORAGE_BASE_URL } from "../../api/config";
-import { LinkContext } from './../../contexts/LinkContext';
+import { LinkContext } from '../../contexts/LinkContext';
 
 
 const MainNews = () => {

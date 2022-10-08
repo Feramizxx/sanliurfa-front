@@ -1,10 +1,5 @@
 import React, { memo, useState } from "react";
 import Campaign from "../../components/items/Campaign";
-import Campaign1 from "../../assets/img/campaigns/1.png";
-import Campaign2 from "../../assets/img/campaigns/2.png";
-import Campaign3 from "../../assets/img/campaigns/3.png";
-import Campaign4 from "../../assets/img/campaigns/4.png";
-import GreeceSalad from "../../assets/img/foods/GreeceSalad.png";
 import useFetchCampaigns from './../../hooks/useFetchCampaigns';
 import PageLoader from './../../components/PageLoader';
 import { STORAGE_BASE_URL } from "../../api/config";

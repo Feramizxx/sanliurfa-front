@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import CloseButton from "../../components/ui/CloseButton";
 import Meal from "../../components/items/Meal";
-import GreeceSalad from "../../assets/img/foods/GreeceSaladSmall.png";
-import CursusFeugiat from "../../assets/img/foods/CursusFeugiat.png";
-import JustoEst from "../../assets/img/foods/JustoEst.png";
-import Checkbox from "../../components/ui/input/Checkbox";
 import useFetchMenu from './../../hooks/useFetchMenu';
 import PageLoader from './../../components/PageLoader';
 
