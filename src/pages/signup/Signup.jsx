@@ -31,15 +31,14 @@ const Signup = () => {
                 if (validatePasswordCharacter(password)) {
                     setErrorMessage(null);
                     const data = {
-                        firsName: name,
-                        lastName: surname,
+                        firstname: name,
+                        lastname: surname,
                         email,
                         password,
                         phone_number: phone
                     }
                     try {
-                        const token = await signup(data);
-                        console.log(token);
+                        await signup(data);
                     } catch (error) {
                         if (error instanceof AxiosError) {
                             if (error.response.status === 409) {

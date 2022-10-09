@@ -27,7 +27,7 @@ const SeeAlso = () => {
                 <ul id={'see-also-meals'} className={'flex flex-wrap justify-between md:flex-col md:items-center'}>
                     {menu[0].meals.map((meal) => {
                         return (
-                            <li className={'flex mb-12 ml-2 shadow-see-also-card rounded-[26px]'} key={meal.id}>
+                            <li className={'flex mb-12 ml-2 shadow-see-also-card rounded-[26px]'} key={meal.sku}>
                                 <Meal meal={meal} type={'list'} />
                             </li>
                         )
