@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { AxiosError } from 'axios';
 import { login } from './../api/login';
 import { AuthContext } from '../contexts/AuthContext';
+import { NavLink } from 'react-router-dom';
 
 const LoginForm = ({ isVisible, setIsVisible, onLinkClick, authError }) => {
     const [email, setEmail] = useState('');
@@ -25,6 +26,7 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, authError }) => {
             const token = await login(data);
             loginUser(token);
             setIsVisible(false);
+            setPassword('');
         } catch (error) {
             if (error instanceof AxiosError && error.response.status === 400) {
                 setErrorMessage('Email or password is incorrect.');
@@ -79,10 +81,10 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, authError }) => {
                 >
                     Daxil Ol
                 </Button>
-                <a href="#" style={{
+                <NavLink to="/forgot-password" style={{
                     color: '#007AFF',
                     fontSize: '12px'
-                }}> Forgot Password? </a>
+                }}> Forgot Password? </NavLink>
             </div>
             <hr className={'my-3'} />
             <Button

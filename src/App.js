@@ -1,4 +1,4 @@
-import React from 'react';
+import { useContext } from 'react';
 import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Menu from "./pages/menu/Menu";
@@ -18,49 +18,58 @@ import Orders from './components/ui/meal/Orders';
 import Profile from './components/ui/Profile';
 import InlineNews from './pages/news/InlineNews';
 import AddressesPage from './components/ui/meal/AddressesPage';
+import ResetPassword from './pages/reset-password/ResetPassword';
 import './index.css';
+import { AuthContext } from './contexts/AuthContext';
+import ForgotPassword from './pages/forgot-password/ForgotPassword';
+
 
 const App = () => {
-    // IMPORTANT: this part defines if the entered user is authorized or not.
-    // We can't call here us Auth from GlobalContext since user is not 
-    const _isAuth = localStorage.getItem('isAuth');
-    const isAuth = _isAuth ? _isAuth === 'true' : false;
-
     return (
         <BrowserRouter>
             <LayOut>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/menu' element={<Menu />} />
-                    <Route path='/campaigns' element={<Campaigns />} />
-                    <Route path='/news' element={<News />} />
-                    <Route path='/contact' element={<Contact />} />
-                    <Route path='/career' element={<Career />} />
-                    <Route path='/signup' element={<Signup />} />
-                    <Route path='/cart' element={<Cart />}>
-                        <Route index element={<Index />} />
-                        {isAuth && // TODO: add private and public routing in routes folder (DISCUSS IT)
-                            <>
-                                <Route path='addresses' element={<Addresses />} />
-                                <Route path='payment' element={<Payment />} />
-                                <Route path='confirm' element={<Confirm />} />
-                            </>
-                        }
-                    </Route>
-                    {isAuth &&
-                        <Route path='/profile'> {/* TODO: check it */}
-                            <Route index element={<Profile />} />
-                            <Route path='orders' element={<Orders />} />
-                            <Route path='addresses' element={<AddressesPage />} />
-                        </Route>
-                    }
-                    <Route path='/inline-news/:id' element={<InlineNews />} />
-                    <Route path='*' element={<Navigate to="/" />} /> {/* NOTE: error page */}
-                </Routes>
+                <Router />
             </LayOut>
         </BrowserRouter>
     );
 };
+
+const Router = () => {
+    const { isAuth } = useContext(AuthContext)
+
+    return (
+        <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/menu' element={<Menu />} />
+            <Route path='/campaigns' element={<Campaigns />} />
+            <Route path='/news' element={<News />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/career' element={<Career />} />
+            <Route path='/signup' element={<Signup />} />
+            <Route path='/reset-password/:token' element={<ResetPassword />} />
+            <Route path='/forgot-password' element={<ForgotPassword />} />
+            <Route path='/cart' element={<Cart />}>
+                <Route index element={<Index />} />
+                {isAuth &&
+                    <>
+                        <Route path='addresses' element={<Addresses />} />
+                        <Route path='payment' element={<Payment />} />
+                        <Route path='confirm' element={<Confirm />} />
+                    </>
+                }
+            </Route>
+            {isAuth &&
+                <Route path='/profile'>
+                    <Route index element={<Profile />} />
+                    <Route path='orders' element={<Orders />} />
+                    <Route path='addresses' element={<AddressesPage />} />
+                </Route>
+            }
+            <Route path='/inline-news/:id' element={<InlineNews />} />
+            <Route path='*' element={<Navigate to="/" />} /> {/* NOTE: error page */}
+        </Routes>
+    )
+}
 
 export default App;
