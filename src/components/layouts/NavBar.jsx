@@ -8,7 +8,7 @@ import { LinkContext } from "../../contexts/LinkContext";
 import { LanguageContext } from "../../contexts/LanguageContext";
 import NavItem from "./NavItem";
 import { useContext, useState } from 'react';
-import { CartContext } from './../../contexts/CartContext';
+import { CartContext } from '../../contexts/CartContext';
 
 const NavBar = () => {
     const linkContext = useContext(LinkContext);
