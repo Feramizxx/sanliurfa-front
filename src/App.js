@@ -38,14 +38,16 @@ const App = () => {
                     <Route path='/contact' element={<Contact />} />
                     <Route path='/career' element={<Career />} />
                     <Route path='/signup' element={<Signup />} />
-                    {isAuth && // TODO: add private and public routing in routes folder (DISCUSS IT)
-                        <Route path='/cart' element={<Cart />}>
-                            <Route index element={<Index />} />
-                            <Route path='addresses' element={<Addresses />} />
-                            <Route path='payment' element={<Payment />} />
-                            <Route path='confirm' element={<Confirm />} />
-                        </Route>
-                    }
+                    <Route path='/cart' element={<Cart />}>
+                        <Route index element={<Index />} />
+                        {isAuth && // TODO: add private and public routing in routes folder (DISCUSS IT)
+                            <>
+                                <Route path='addresses' element={<Addresses />} />
+                                <Route path='payment' element={<Payment />} />
+                                <Route path='confirm' element={<Confirm />} />
+                            </>
+                        }
+                    </Route>
                     {isAuth &&
                         <Route path='/profile'> {/* TODO: check it */}
                             <Route index element={<Profile />} />
