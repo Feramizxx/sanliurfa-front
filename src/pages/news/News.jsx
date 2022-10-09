@@ -1,5 +1,4 @@
 import React, { memo, useContext } from "react";
-import img4 from "../../assets/img/gridPocket.png";
 import useFetchNews from "../../hooks/useFetchNews";
 import { LanguageContext } from "../../contexts/LanguageContext";
 import PageLoader from './../../components/PageLoader';

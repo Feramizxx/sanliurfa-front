@@ -3,20 +3,18 @@ import PageNav from "./PageNav";
 import CartProduct from "./CartProduct";
 import {NavLink} from "react-router-dom";
 import SheetIcon from "../../assets/icons/cart/sheet.svg";
-import Monastr from "../../assets/img/foods/Monastr.png";
-import Sezar from "../../assets/img/foods/Sezar.png";
 import SeeAlso from "./SeeAlso";
 
 const Payment = () => {
     const [products] = useState([
         {
-            picture: Sezar,
+            // picture: Sezar,
             name: 'Salad',
             portion: 1,
             price: 15.00
         },
         {
-            picture: Monastr,
+            // picture: Monastr,
             name: 'Waffle',
             portion: 1,
             price: 20.00

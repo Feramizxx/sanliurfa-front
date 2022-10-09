@@ -57,7 +57,7 @@ const Menu = memo(() => {
                             <ul id={'menu-meals'} className={'flex flex-wrap justify-between sm:flex-nowrap sm:flex-col sm:items-center'}>
                                 {(meals.legth === 0 ? menu[0].meals : meals).map((meal) => {
                                     return (
-                                        <li className={'flex mb-12'} key={meal.id}>
+                                        <li className={'flex mb-12'} key={meal.sku}>
                                             <Meal meal={meal} type={'list'} />
                                         </li>
                                     )

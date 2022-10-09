@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Meal from "./Meal";
-import GreeceSalad from "../../assets/img/foods/GreeceSaladSmall.png";
-import CursusFeugiat from "../../assets/img/foods/CursusFeugiat.png";
-import JustoEst from "../../assets/img/foods/JustoEst.png";
-import useFetchMenu from './../../hooks/useFetchMenu';
-import PageLoader from "../PageLoader";
 
 const responsive = {
     default: {
@@ -43,10 +38,10 @@ const MealsCarousel = ({ meals }) => {
     return (
         <div className={'px-14'}>
             <Carousel responsive={responsive} arrows={false} swipeable={true} draggable={true} itemClass="max-w-max">
-                {(meals.legth === 0 ? menu[0].meals : meals).map((meal) => {
+                {meals.map(meal => {
                     return (
-                        <div className={'flex'} key={meal.id}>
-                            <Meal meal={meal} type={'carousel'} />
+                        <div className={'flex'} key={meal.sku}>
+                            <Meal meal={meal} type={'carousel'}/>
                         </div>
                     )
                 })}
