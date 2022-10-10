@@ -23,7 +23,7 @@ const ForgotPassword = () => {
                 setModalMessage('Something went wrong, please try again later on. Redirecting to home page...');
             }
         } finally {
-            if (errorMessage !== '') {
+            if (errorMessage === '') {
                 setModal(true);
             }
         }

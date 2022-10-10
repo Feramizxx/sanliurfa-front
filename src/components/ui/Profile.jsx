@@ -109,8 +109,8 @@ const Profile = () => {
             </div>
             <div className="xl:flex xl:flex-col items-center xl:ml-[0px] ml-[8px]">
               <h1 className="mb-2 text-[32px] ">{currentUser.firstname} {currentUser.lastname}</h1>
-              <span className="text-[16px] cursor-pointer xl:ml-2 ">Düzəliş etmək</span>
-              <hr className="w-[68%]" />
+              {/* <span className="text-[16px] cursor-pointer xl:ml-2 ">Düzəliş etmək</span> */}
+              <hr className="w-full" />
             </div>
           </div>
           {errorMessage !== '' &&
