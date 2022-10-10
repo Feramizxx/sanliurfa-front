@@ -22,12 +22,9 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const Vacancies = () => {
-    const { value } = useContext(LanguageContext);
-    const { vacancies, vacanciesAreLoading, vacanciesError } = useFetchVacancies(value);
+const Vacancies = ({ vacancies, vacanciesError }) => {
     const [modal, setModal] = useState(false);
     const [clickedVacancy, setClickedVacancy] = useState(null);
-    if (vacanciesAreLoading) return <PageLoader />
 
     const onVacancyClick = (vacancy) => {
         setClickedVacancy(vacancy)

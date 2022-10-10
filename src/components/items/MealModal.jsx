@@ -55,11 +55,11 @@ const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image,
                     <p className={'font-light text-sm mb-8'}> {description} </p>
                     <form>
                         <h3 className={'font-medium text-xl mb-2'}>Ölçü</h3>
-                        <div className={'flex mb-8'}>
+                        {/* <div className={'flex mb-8'}>
                             <Radio size={'small'} label={'Kiçik'} name={'size'} />
                             <Radio size={'middle'} label={'Orta'} name={'size'} />
                             <Radio size={'large'} label={'Böyük'} name={'size'} />
-                        </div>
+                        </div> */}
                         <h3 className={'font-medium text-xl mb-2'}>Əlavələr</h3>
                         <div className={'flex flex-wrap mb-6'}>
                             {additions &&

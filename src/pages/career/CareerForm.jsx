@@ -3,14 +3,17 @@ import { useState, useRef } from 'react';
 import FormData from 'form-data'
 import MyModal from './../../components/MyModal';
 import { postVacancyRequest } from './../../api/postVacancyRequest.';
+import Dropdown from '../../components/DropDown';
 
-const CareerForm = () => {
+const NO_VACANCY_MESSAGE = 'Hazirda boş vakansiya yoxdur...'
+
+const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [modalMessage, setModalMessage] = useState('');
     const [name, setName] = useState('');
-    const [telephone, setTelephone] = useState('');
+    const [telephone, setTelephone] = useState('+994');
     const [email, setEmail] = useState('');
-    const [vacancy, setVacancy] = useState('');
+    const [vacancy, setVacancy] = useState(vacancies[0].vacancy || NO_VACANCY_MESSAGE);
     const [file, setFile] = useState(null);
     const [modal, setModal] = useState(false);
     const fileInputRef = useRef({});
@@ -21,26 +24,28 @@ const CareerForm = () => {
         setFile
     );
 
-
     const onSubmit = async (e) => {
         e.preventDefault();
-        if (errorMessage === '') {
-            const formData = new FormData();
-            formData.append('cv', file);
-            formData.append('fullName', name);
-            formData.append('phoneNumber', telephone);
-            formData.append('email', email);
-            formData.append('vacancy', vacancy);
-            try {
-                console.log('Sending...')
-                const data = await postVacancyRequest(formData);
-                setModalMessage("Successfully sent a vacancy request.")
-            } catch (error) {
-                setModalMessage("Could not sent a vacancy request. Please try again later.")
-            } finally {
-                setModal(true);
+        if (vacancy !== NO_VACANCY_MESSAGE) {
+            if (errorMessage === '') {
+                const formData = new FormData();
+                formData.append('cv', file);
+                formData.append('fullName', name);
+                formData.append('phoneNumber', telephone);
+                formData.append('email', email);
+                formData.append('vacancy', vacancy);
+                try {
+                    console.log('Sending...')
+                    const data = await postVacancyRequest(formData);
+                    setModalMessage("Successfully sent a vacancy request.")
+                } catch (error) {
+                    setModalMessage("Could not sent a vacancy request. Please try again later.")
+                } finally {
+                    setModal(true);
+                }
             }
-
+        } else {
+            setErrorMessage(NO_VACANCY_MESSAGE)
         }
     }
 
@@ -83,14 +88,23 @@ const CareerForm = () => {
                     />
 
                     <label htmlFor="vacancy">Vakansiya</label>
-                    <input
-                        className='career-input'
-                        type="text"
-                        id="vacancy"
-                        value={vacancy}
-                        onChange={(e) => setVacancy(e.target.value)}
-                        required={true}
-                    />
+                    {vacanciesError || vacancies.length === 0 ?
+                        <input
+                            className='career-input'
+                            type="text"
+                            id="vacancy"
+                            value={vacancy}
+                            onChange={null}
+                            required={true}
+                        /> :
+                        <Dropdown
+                            data={vacancies}
+                            setCurrentCb={(vacancy) => setVacancy(vacancy.vacancy)}
+                            setData={setVacancies}
+                            sortCb={(vacancy) => vacancy.vacancy}
+                            displayCb={(vacancy) => vacancy.vacancy}
+                        />
+                    }
 
                     <div className='mb-12'>
                         <p> CV </p>

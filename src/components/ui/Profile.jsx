@@ -82,7 +82,7 @@ const Profile = () => {
   return (
     <>
       <div className="pt-[12em] w-[75%] mr-auto ml-auto">
-        <form onSubmit={onSubmit} className="flex flex-col">
+        <form onSubmit={onSubmit} className="flex flex-col mb-6">
           <div className="xl:flex-col xl:mr-auto xl:ml-auto items-center ml-[80px] flex w-max-[350px] w-fit ">
             <div
               className="w-36 h-36 rounded-full bg-gray-200 bg-center bg-cover relative"
@@ -121,25 +121,25 @@ const Profile = () => {
             <div id="profil-divBox" className="xl:flex xl:flex-col mt-[20px] grid   gap-y-5 grid-cols-2 place-items-center" >
               <input
                 className="profile-input"
-                placeholder="Ad"
+                placeholder={currentUser.firstname || "Ad"}
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
               />
               <input
                 className="profile-input"
-                placeholder="Soyad"
+                placeholder={currentUser.lastname || 'Soyad'}
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
               <input
                 className="profile-input"
-                placeholder={`${currentUser.phone_number}`}
+                placeholder={`${currentUser.phone_number || 'Mobil nömrə'}`}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
               <input
                 className="profile-input"
-                placeholder={`${currentUser.email}`}
+                placeholder={`${currentUser.email || 'Elektron ünvan'}`}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -160,13 +160,14 @@ const Profile = () => {
 
       </div >
 
-      <div>
+      {/* <div>
         <div className=" flex w-[85%] mr-auto ml-auto justify-between">
           <span className="mt-10 font-semibold">Son Sifarişlərim</span>
           <button onClick={navigateToOrders} className="mt-10 font-semibold">Hamısı <hr /></button>
         </div>
-        {/* <OrderItems /> */}
-      </div></>
+        <OrderItems />
+      </div> */}
+    </>
 
   );
 };

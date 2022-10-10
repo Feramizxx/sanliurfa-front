@@ -15,7 +15,7 @@ const useFetchVacancies = (lang = 'en') => {
         fetchVacancies();
     }, [lang])
 
-    return { vacancies, vacanciesAreLoading, vacanciesError };
+    return { vacancies, vacanciesAreLoading, vacanciesError, setVacancies };
 }
 
 export default useFetchVacancies;

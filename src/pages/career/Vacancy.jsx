@@ -1,5 +1,10 @@
 import React from 'react';
 
+const fixDate = (apiDate) => {
+    const partition = apiDate.split(':').join().split('T')
+    return partition[0];
+}
+
 const Vacancy = ({ vacancy, onClick }) => {
     return (
         <div className='shadow-vacancy w-full mb-6 rounded-xl flex justify-between items-center p-6 hover:cursor-pointer' onClick={onClick}>
@@ -25,7 +30,7 @@ const Vacancy = ({ vacancy, onClick }) => {
                             <path d="M17.3327 6.66667C17.5095 6.66667 17.6791 6.59643 17.8041 6.47141C17.9291 6.34638 17.9993 6.17681 17.9993 6V2C17.9993 1.82319 17.9291 1.65362 17.8041 1.5286C17.6791 1.40357 17.5095 1.33334 17.3327 1.33334C17.1559 1.33334 16.9863 1.40357 16.8613 1.5286C16.7363 1.65362 16.666 1.82319 16.666 2V6C16.666 6.17681 16.7363 6.34638 16.8613 6.47141C16.9863 6.59643 17.1559 6.66667 17.3327 6.66667Z" fill="#BB2025" />
                             <path d="M8.66602 4H15.3327V5.33333H8.66602V4Z" fill="#BB2025" />
                         </svg>
-                        <p> {vacancy.expiresAt} </p>
+                        <p> {fixDate(vacancy.expiresAt)} </p>
                     </div>
                     <div className='flex items-center'>
                         <svg className='mr-1' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

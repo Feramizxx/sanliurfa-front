@@ -77,7 +77,7 @@ const Footer = memo(() => {
                                 </ul>
                             }
                         </> :
-                        <p className='footer-list-item'> Could not load contact info... </p>
+                        <p className='footer-list-item'> `Could not load contact info...` </p>
                     }
                 </div>
                 <div>
