@@ -5,9 +5,14 @@ import { AuthContext } from "../contexts/AuthContext";
 import { validateNumber } from "./ui/meal/AddressesPage";
 import Button from "./ui/Button";
 
+export const convertIfNotEmptyToNumber = (value) => {
+    return value ? Number(value) : undefined;
+}
+
 const AddressesForm = ({ onClose, callback, update }) => {
     const [city, setCity] = useState(cities[0]);
     const [district, setDistrict] = useState(districts[0]);
+    const [title, setTitle] = useState('');
     const [avenue, setAvenue] = useState('');
     const [building, setBuilding] = useState('');
     const [block, setBlock] = useState('');
@@ -19,14 +24,23 @@ const AddressesForm = ({ onClose, callback, update }) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        const rightAvenu = rewriteEmpty(avenue);
+        const rightBuilding = rewriteEmpty(building);
+        const rightFloor = rewriteEmpty(floor);
+        const rightFlat = rewriteEmpty(flat);
+        const rightBlock = rewriteEmpty(block);
+        const rightDescription = rewriteEmpty(description);
+        const rightTitle = rewriteEmpty(title);
+
         const data = {
             city, district,
-            avenue: rewriteEmpty(avenue),
-            building: rewriteEmpty(building),
-            floor: rewriteEmpty(floor),
-            flat: rewriteEmpty(flat),
-            rewriteEmpty: block,
-            description: rewriteEmpty(description)
+            avenue: rightAvenu,
+            building: convertIfNotEmptyToNumber(building),
+            floor: convertIfNotEmptyToNumber(floor),
+            flat: convertIfNotEmptyToNumber(flat),
+            block: rightBlock,
+            description: rightDescription,
+            title: rightTitle
         }
 
         try {
@@ -84,6 +98,13 @@ const AddressesForm = ({ onClose, callback, update }) => {
                 </div>
                 <div className={"flex justify-between mb-7"}>
                     <div className={"flex justify-between w-[47%]"}>
+                        <input
+                            required={!update}
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            className={"cart-input"}
+                            placeholder={"Başliq"}
+                        />
                         <input
                             required={!update}
                             value={building}

@@ -5,6 +5,7 @@ import PasswordInput from "../../components/ui/PasswordInput";
 import { AxiosError } from 'axios';
 import { signup } from '../../api/signup';
 import MyModal from '../../components/MyModal';
+import { validateNumber } from './../../components/ui/meal/AddressesPage';
 
 const PASSWORD_MATCHING_ERROR = 'PASSWORDS_MATCHING_ERROR';
 const PASSWORD_LENGTH_ERROR = 'PASSWORD_LENGTH_ERROR';
@@ -41,6 +42,8 @@ const Signup = () => {
                     }
                     try {
                         await signup(data);
+                        setModal(true);
+                        setErrorMessage(null);
                     } catch (error) {
                         if (error instanceof AxiosError) {
                             if (error.response.status === 409) {
@@ -50,11 +53,9 @@ const Signup = () => {
                                 })
                             }
                         } else {
-                            setModalMessage('Something went wrong, please try again later on.')
+                            setModalMessage('Something went wrong, please try again later on.');
+                            setModal(true);
                         }
-                    } finally {
-                        setModal(true);
-                        setErrorMessage(null);
                     }
                 } else {
                     setErrorMessage({ status: INVALID_CHARS_ERROR });
@@ -115,7 +116,7 @@ const Signup = () => {
                             type="text"
                             id="phone"
                             value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            onChange={(e) => validateNumber(e, setPhone, true)}
                             required={true}
                             placeholder={'Enter your mobile number'}
                         />

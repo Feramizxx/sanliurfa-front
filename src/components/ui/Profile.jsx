@@ -11,6 +11,7 @@ import { STORAGE_BASE_URL } from "../../api/config";
 import Button from './Button';
 import { updateUser } from './../../api/updateUser';
 import { AxiosError } from 'axios';
+import { validateNumber } from './meal/AddressesPage';
 
 export const rewriteEmpty = (str) => {
   return str === '' ? undefined : str;
@@ -18,6 +19,7 @@ export const rewriteEmpty = (str) => {
 
 const Profile = () => {
   const navigate = useNavigate();
+  const [phoneFirstClick, setPhoneFirstClick] = useState(true);
   const [refetch, setRefetch] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const { currentUser, isUserLoading, userError } = useFetchCurrentUser(refetch);
@@ -79,6 +81,13 @@ const Profile = () => {
     }
   }
 
+  const onPhoneClick = () => {
+    if (phoneFirstClick) {
+      setPhone('+994');
+      setPhoneFirstClick(false);
+    }
+  }
+
   return (
     <>
       <div className="pt-[12em] w-[75%] mr-auto ml-auto">
@@ -86,7 +95,7 @@ const Profile = () => {
           <div className="xl:flex-col xl:mr-auto xl:ml-auto items-center ml-[80px] flex w-max-[350px] w-fit ">
             <div
               className="w-36 h-36 rounded-full bg-gray-200 bg-center bg-cover relative"
-              style={{ backgroundImage: `url(${STORAGE_BASE_URL + currentUser.imageUrl})` }}
+              style={{ backgroundImage: `url(${currentUser.imageUrl ? STORAGE_BASE_URL + currentUser.imageUrl : require('../../assets/img/default-avatar.png')})` }}
               onMouseEnter={onMouseEnter}
               onMouseLeave={onMouseLeave}
             >
@@ -109,7 +118,7 @@ const Profile = () => {
             </div>
             <div className="xl:flex xl:flex-col items-center xl:ml-[0px] ml-[8px]">
               <h1 className="mb-2 text-[32px] ">{currentUser.firstname} {currentUser.lastname}</h1>
-              {/* <span className="text-[16px] cursor-pointer xl:ml-2 ">Düzəliş etmək</span> */}
+              {/* <span classNa me="text-[16px] cursor-pointer xl:ml-2 ">Düzəliş etmək</span> */}
               <hr className="w-full" />
             </div>
           </div>
@@ -135,7 +144,8 @@ const Profile = () => {
                 className="profile-input"
                 placeholder={`${currentUser.phone_number || 'Mobil nömrə'}`}
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => validateNumber(e, setPhone, true)}
+                onClick={onPhoneClick}
               />
               <input
                 className="profile-input"

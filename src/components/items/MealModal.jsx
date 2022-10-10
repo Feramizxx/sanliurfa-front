@@ -54,7 +54,7 @@ const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image,
                     </div>
                     <p className={'font-light text-sm mb-8'}> {description} </p>
                     <form>
-                        <h3 className={'font-medium text-xl mb-2'}>Ölçü</h3>
+                        {/* <h3 className={'font-medium text-xl mb-2'}>Ölçü</h3> */}
                         {/* <div className={'flex mb-8'}>
                             <Radio size={'small'} label={'Kiçik'} name={'size'} />
                             <Radio size={'middle'} label={'Orta'} name={'size'} />

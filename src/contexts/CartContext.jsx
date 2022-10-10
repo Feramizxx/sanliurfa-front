@@ -47,7 +47,6 @@ const CartContextProvider = ({ children }) => {
     }
 
     const fetchCart = async () => {
-        console.log(cartToken)
         if (cartToken) {
             try {
                 const cart = await getCart(cartToken);

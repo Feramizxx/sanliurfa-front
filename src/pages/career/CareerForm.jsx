@@ -4,6 +4,7 @@ import FormData from 'form-data'
 import MyModal from './../../components/MyModal';
 import { postVacancyRequest } from './../../api/postVacancyRequest.';
 import Dropdown from '../../components/DropDown';
+import { validateNumber } from './../../components/ui/meal/AddressesPage';
 
 const NO_VACANCY_MESSAGE = 'Hazirda boş vakansiya yoxdur...'
 
@@ -73,7 +74,7 @@ const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
                         type="text"
                         id="telephone"
                         value={telephone}
-                        onChange={(e) => setTelephone(e.target.value)}
+                        onChange={(e) => validateNumber(e, setTelephone, true)}
                         required={true}
                     />
 

@@ -1,15 +1,15 @@
 import React from "react";
 
-const CartProduct = (props) => {
+const CartProduct = ({ item }) => {
     return (
         <div className={'flex justify-between py-4'}>
             <div className={'flex items-center'}>
-                <img src={props.data.picture} className={'w-[40px] mr-4'} />
-                <p>{props.data.name}</p>
+                <img src={item.meal.image} className={'w-[40px] mr-4'} />
+                <p>{item.meal.name}</p>
             </div>
             <div className={'flex justify-between w-1/3 pl-3 xs:w-1/2'}>
-                <p>(x{props.data.portion})</p>
-                <b>{props.data.price.toFixed(2)} ₼</b>
+                <p>(x{item.amount})</p>
+                <b>{item.price} ₼</b>
             </div>
         </div>
     )

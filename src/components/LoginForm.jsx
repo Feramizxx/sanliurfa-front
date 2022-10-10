@@ -6,7 +6,7 @@ import { login } from './../api/login';
 import { AuthContext } from '../contexts/AuthContext';
 import { NavLink } from 'react-router-dom';
 
-const LoginForm = ({ isVisible, setIsVisible, onLinkClick, authError }) => {
+const LoginForm = ({ isVisible, setIsVisible, onLinkClick, externalError }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
@@ -45,7 +45,7 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, authError }) => {
     }
 
     return (
-        <form onSubmit={onSubmit} className={`absolute w-[15em] ${authError && 'border-2 border-red'} bg-white p-3 mt-[15.8em] right-0 md:w-[20em] sm:right-[-2em] login-form`}
+        <form onSubmit={onSubmit} className={`absolute w-[15em] ${externalError && 'border-2 border-red'} bg-white p-3 mt-[15.8em] right-0 md:w-[20em] sm:right-[-2em] login-form`}
             style={{
                 display: isVisible ? 'block' : 'none',
             }}
@@ -55,8 +55,8 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, authError }) => {
             {errorMessage !== '' &&
                 <p className='form-error'> {errorMessage} </p>
             }
-            {authError !== '' &&
-                <p className='form-error'> Profil məlumatlarınızı əldə etmək üçün daxil olmalısınız </p>
+            {externalError &&
+                <p className='form-error'> {externalError} </p>
             }
             <input
                 className={'auth-form-input'}

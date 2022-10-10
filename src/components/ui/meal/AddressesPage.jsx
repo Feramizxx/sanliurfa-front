@@ -59,10 +59,12 @@ const AddressesPage = () => {
 };
 
 
-export const validateNumber = (e, setValue) => {
-  const value = parseInt(e.target.value);
+export const validateNumber = (e, setValue, forMobileNumber = false) => {
+  const newValue = e.target.value;
+  const convertedValue = parseInt(newValue);
+  const value = `${forMobileNumber ? '+' : ''}${convertedValue}`;
   if (!Number.isNaN(value)) {
-    setValue(value)
+    setValue(prev => newValue.length > 0 && !Number.isNaN(convertedValue) ? value : prev)
   }
 }
 

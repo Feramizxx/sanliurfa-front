@@ -1,31 +1,17 @@
-import React, {useState} from "react";
+import React, { useContext } from "react";
 import PageNav from "./PageNav";
 import CartProduct from "./CartProduct";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import SheetIcon from "../../assets/icons/cart/sheet.svg";
 import SeeAlso from "./SeeAlso";
+import { CartContext } from './../../contexts/CartContext';
 
 const Payment = () => {
-    const [products] = useState([
-        {
-            // picture: Sezar,
-            name: 'Salad',
-            portion: 1,
-            price: 15.00
-        },
-        {
-            // picture: Monastr,
-            name: 'Waffle',
-            portion: 1,
-            price: 20.00
-        }
-    ]);
-
-    const sum = products.reduce((total, currentValue) => total = total + currentValue.price, 0);
+    const { items, totalPrice } = useContext(CartContext)
 
     return (
         <div className={'mt-12 mb-2'}>
-            <PageNav prev={'Addresses'} next={'Confirm'}/>
+            <PageNav prev={'Addresses'} next={'Confirm'} />
             <div className={'pt-20 pb-10 px-48 lg2:px-10'}>
                 <div className={'flex items-start lg:flex-col-reverse'}>
                     <div className={'grow p-4 mr-5 border-2 rounded-lg lg:w-full'}>
@@ -44,7 +30,7 @@ const Payment = () => {
                     </div>
                     <div className={'p-4 border-2 rounded-lg w-2/3 lg:w-full lg:mb-4'}>
                         <div className={'flex mb-3'}>
-                            <img src={SheetIcon} className={'mr-4'}/>
+                            <img src={SheetIcon} className={'mr-4'} />
                             <h5 className={'font-medium'}>Səbətim</h5>
                         </div>
                         <div className={'flex justify-between mb-3'}>
@@ -54,16 +40,16 @@ const Payment = () => {
                                 <p className={'pr-3'}>Price</p>
                             </div>
                         </div>
-                        <hr/>
+                        <hr />
                         <div>
-                            {products.map((product, i) => {
+                            {items.map((item, index) => {
                                 return (
-                                    <CartProduct data={product} key={i}/>
+                                    <CartProduct item={item} key={index} />
                                 )
                             })}
                         </div>
-                        <hr className={'mt-2 mb-3'}/>
-                        <h4 className={'text-xl text-[#8F161A] text-end'}>Ümumi məbləğ: <b>{sum.toFixed(2)}</b> ₼</h4>
+                        <hr className={'mt-2 mb-3'} />
+                        <h4 className={'text-xl text-[#8F161A] text-end'}>Ümumi məbləğ: <b>{totalPrice}</b> ₼</h4>
                     </div>
                 </div>
                 <div className={'mt-6 flex flex-col items-end'}>
@@ -88,7 +74,7 @@ const Payment = () => {
             <div className={'px-16 mb-10'}>
                 <h3 className={'text-[32px] text-red font-bold'}>Həmçinin bax</h3>
             </div>
-            <SeeAlso/>
+            <SeeAlso />
         </div>
     )
 }

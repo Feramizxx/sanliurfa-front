@@ -57,7 +57,7 @@ const AdressItem = ({ address, setAddresses, selected = false }) => {
         }}
       >
         <div className="flex justify-between mb-2">
-          <h3 className="font-semibold">{address.city} {address.avenue}...</h3>
+          <h3 className="font-semibold">{address.title || `${address.city} ${address.avenue}...`}</h3>
           <div className="flex items-center">
             <svg
               className="mr-2"
