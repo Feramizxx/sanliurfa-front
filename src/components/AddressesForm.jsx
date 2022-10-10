@@ -2,6 +2,7 @@ import { cities, districts } from "../assets/storage/addresses";
 import { rewriteEmpty } from "./ui/Profile";
 import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { validateNumber } from "./ui/meal/AddressesPage";
 import Button from "./ui/Button";
 
 const AddressesForm = ({ onClose, callback, update }) => {

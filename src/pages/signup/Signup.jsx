@@ -16,7 +16,7 @@ export const validatePasswordCharacter = (password) => /^[A-Za-z0-9]*$/.test(pas
 const Signup = () => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
-    const [phone, setPhone] = useState('');
+    const [phone, setPhone] = useState('+994');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
