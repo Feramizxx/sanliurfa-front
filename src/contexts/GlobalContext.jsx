@@ -2,6 +2,7 @@ import AuthContextProvider from "./AuthContext"
 import LinkContextProvider from "./LinkContext";
 import CartContextProvider from "./CartContext"
 import LanguageContextProvider from "./LanguageContext";
+import SearchContextProvider from './SearchContext';
 
 const GlobalContextProvider = ({ children }) => {
     return (
@@ -9,7 +10,9 @@ const GlobalContextProvider = ({ children }) => {
             <LinkContextProvider>
                 <CartContextProvider>
                     <LanguageContextProvider>
-                        {children}
+                        <SearchContextProvider>
+                            {children}
+                        </SearchContextProvider>
                     </LanguageContextProvider >
                 </CartContextProvider >
             </LinkContextProvider >

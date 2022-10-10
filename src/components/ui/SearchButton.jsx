@@ -1,9 +1,12 @@
-import React from 'react';
+import { useContext } from 'react';
+import { useState } from 'react';
+import { SearchContext } from './../../contexts/SearchContext';
 
 const SearchButton = () => {
-    const [isOpen, setIsOpen] = React.useState(false);
-    const [search, setSearch] = React.useState('');
-    const [displayEnter, setDisplayEnter] = React.useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+    const [search, setSearch] = useState('');
+    const [displayEnter, setDisplayEnter] = useState(true);
+    const { searchData } = useContext(SearchContext);
 
     window.onclick = () => {
         setIsOpen(false);
@@ -40,7 +43,10 @@ const SearchButton = () => {
                 </svg>
             </button>
             <div className='absolute mt-7' onClick={onInputClick}>
-                <div className='relative'>
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    searchData(search);
+                }} className='relative'>
                     <input
                         className='outline-none py-1 px-3 transition-all rounded-3xl'
                         type="text"
@@ -57,7 +63,7 @@ const SearchButton = () => {
                     >
                         ENTER
                     </p>
-                </div>
+                </form>
             </div>
         </div>
     );

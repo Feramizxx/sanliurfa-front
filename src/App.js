@@ -22,6 +22,7 @@ import ResetPassword from './pages/reset-password/ResetPassword';
 import './index.css';
 import { AuthContext } from './contexts/AuthContext';
 import ForgotPassword from './pages/forgot-password/ForgotPassword';
+import SearchedMenu from './pages/searched-menu/SearchedMenu';
 
 
 const App = () => {
@@ -67,6 +68,7 @@ const Router = () => {
                 </Route>
             }
             <Route path='/inline-news/:id' element={<InlineNews />} />
+            <Route path='/searched-meals' element={<SearchedMenu />} />
             <Route path='*' element={<Navigate to="/" />} /> {/* NOTE: error page */}
         </Routes>
     )
