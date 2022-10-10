@@ -107,14 +107,14 @@ const Profile = () => {
                       <path d="M7.35 0L5.4285 2.11111H2.1C0.945 2.11111 0 3.06111 0 4.22222V16.8889C0 18.05 0.945 19 2.1 19H18.9C20.055 19 21 18.05 21 16.8889V4.22222C21 3.06111 20.055 2.11111 18.9 2.11111H15.5715L13.65 0H7.35ZM10.5 15.8333C7.602 15.8333 5.25 13.4689 5.25 10.5556C5.25 7.64222 7.602 5.27778 10.5 5.27778C13.398 5.27778 15.75 7.64222 15.75 10.5556C15.75 13.4689 13.398 15.8333 10.5 15.8333Z" fill="white" fillOpacity="0.48" />
                     </svg>
                   </div>
-                  <input
-                    type="file"
-                    style={{ display: 'none' }}
-                    onChange={onInputChange}
-                    ref={fileInputRef}
-                  />
                 </>
               }
+              <input
+                  type="file"
+                  style={{ display: 'none' }}
+                  onChange={onInputChange}
+                  ref={fileInputRef}
+              />
             </div>
             <div className="xl:flex xl:flex-col items-center xl:ml-[0px] ml-[8px]">
               <h1 className="mb-2 text-[32px] ">{currentUser.firstname} {currentUser.lastname}</h1>
