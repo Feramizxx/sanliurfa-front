@@ -55,7 +55,7 @@ const InlineNews = () => {
             <span className="text-white">{singleNews.date}</span>
           </div>
           <p className="mt-5 text-white">
-            {singleNews.description}
+            {singleNews.translations[0].description}
           </p>
         </div>
       </div>
@@ -74,7 +74,7 @@ const InlineNews = () => {
                     className="absolute text-[20px] leading-6 text-white  bottom-0 bg-black  bg-opacity-40 p-7 w-full hover:block "
                     id="grid-item-text"
                   >
-                    {recentNews.title}
+                    {recentNews.translations[0].title}
                   </div>
                 </div>
               );

@@ -22,7 +22,7 @@ const News = memo(() => {
               {gridNews.map((gn, index) => {
                 return (
                   <div key={gn.id} className={`news-grid-item-${index + 1} relative`}>
-                    <NewsCard id={gn.id} title={gn.title} img={gn.imageUrl} />
+                    <NewsCard id={gn.id} title={gn.translations[0].title} img={gn.imageUrl} />
                   </div>
                 )
               })}
@@ -35,7 +35,7 @@ const News = memo(() => {
                     {news.slice(4).map(singleNews => {
                       return (
                         <div key={singleNews.id} className="mt-2 min-h-[260px] sm:max-w-[400px] min-sm:mt-0 relative w-full min-sm:min-h-[35vh]">
-                          <NewsCard id={singleNews.id} title={singleNews.title} img={singleNews.imageUrl} />
+                          <NewsCard id={singleNews.id} title={singleNews.translations[0].title} img={singleNews.imageUrl} />
                         </div>
                       )
                     })}
