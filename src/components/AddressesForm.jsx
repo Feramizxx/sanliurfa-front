@@ -35,9 +35,9 @@ const AddressesForm = ({ onClose, callback, update }) => {
         const data = {
             city, district,
             avenue: rightAvenu,
-            building: convertIfNotEmptyToNumber(building),
-            floor: convertIfNotEmptyToNumber(floor),
-            flat: convertIfNotEmptyToNumber(flat),
+            building: convertIfNotEmptyToNumber(rightBuilding),
+            floor: convertIfNotEmptyToNumber(rightFloor),
+            flat: convertIfNotEmptyToNumber(rightFlat),
             block: rightBlock,
             description: rightDescription,
             title: rightTitle
