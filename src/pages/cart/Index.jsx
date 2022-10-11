@@ -6,8 +6,10 @@ import SeeAlso from "./SeeAlso";
 import { CartContext } from './../../contexts/CartContext';
 import { AuthContext } from './../../contexts/AuthContext';
 import { LinkContext } from './../../contexts/LinkContext';
+import useResetLink from './../../hooks/useResetLink';
 
 const Index = () => {
+    useResetLink();
     const { items, totalPrice } = useContext(CartContext);
     const { isAuth } = useContext(AuthContext);
     const { setLoginForm, setLoginFormErrorMessage, setMessageBox } = useContext(LinkContext);

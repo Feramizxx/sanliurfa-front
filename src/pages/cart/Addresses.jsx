@@ -9,8 +9,10 @@ import { CartContext } from './../../contexts/CartContext';
 import Button from './../../components/ui/Button';
 import { useNavigate } from 'react-router';
 import { scrollTop } from "../../helpers";
+import useResetLink from "../../hooks/useResetLink";
 
 const Addresses = () => {
+    useResetLink();
     const { token } = useContext(AuthContext);
     const { selectAddress } = useContext(CartContext);
     const { addresses, addressesAreLoading, setAddresses } = useFetchAddresses(token);

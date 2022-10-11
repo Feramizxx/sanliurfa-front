@@ -5,9 +5,11 @@ import Circles from "../../assets/icons/cart/circles.svg";
 import Ellipse from "../../assets/icons/cart/ellipse.svg";
 import Check from "../../assets/icons/cart/checkConfirm.svg";
 import { LinkContext } from './../../contexts/LinkContext';
+import useResetLink from './../../hooks/useResetLink';
 
 const Confirm = () => {
-    const { setValue } = useContext(LinkContext)
+    const { setValue } = useContext(LinkContext);
+    useResetLink();
 
     const onLinkClick = () => {
         setValue(3);

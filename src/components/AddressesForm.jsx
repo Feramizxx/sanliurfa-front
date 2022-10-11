@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { validateNumber } from "./ui/meal/AddressesPage";
 import Button from "./ui/Button";
+import useResetLink from './../hooks/useResetLink';
 
 export const convertIfNotEmptyToNumber = (value) => {
     return value ? Number(value) : undefined;
@@ -23,7 +24,6 @@ const AddressesForm = ({ onClose, callback, update }) => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-
         const rightAvenu = rewriteEmpty(avenue);
         const rightBuilding = rewriteEmpty(building);
         const rightFloor = rewriteEmpty(floor);
@@ -99,7 +99,6 @@ const AddressesForm = ({ onClose, callback, update }) => {
                 <div className={"flex justify-between mb-7"}>
                     <div className={"flex justify-between w-[47%]"}>
                         <input
-                            required={!update}
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             className={"cart-input"}

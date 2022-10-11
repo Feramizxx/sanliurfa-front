@@ -7,8 +7,10 @@ import { AuthContext } from './../../../contexts/AuthContext';
 import PageLoader from './../../PageLoader';
 import { createAddress } from './../../../api/createAddress';
 import AddressesForm from "../../AddressesForm";
+import useResetLink from "../../../hooks/useResetLink";
 
 const AddressesPage = () => {
+  useResetLink();
   const { token } = useContext(AuthContext);
   const { addresses, addressesAreLoading, addressesError, setAddresses } = useFetchAddresses(token);
   const [form, setForm] = useState(false);
@@ -61,10 +63,13 @@ const AddressesPage = () => {
 
 export const validateNumber = (e, setValue, forMobileNumber = false) => {
   const newValue = e.target.value;
+  const defaultValue = forMobileNumber ? '+' : '';
+
   const convertedValue = parseInt(newValue);
-  const value = `${forMobileNumber ? '+' : ''}${convertedValue}`;
+  const value = `${forMobileNumber ? defaultValue : ''}${convertedValue}`;
+
   if (!Number.isNaN(value)) {
-    setValue(prev => newValue.length > 0 && !Number.isNaN(convertedValue) ? value : prev)
+    setValue(prev => newValue.length >= 0 ? Number.isNaN(convertedValue) ? defaultValue : value : prev)
   }
 }
 

@@ -5,9 +5,11 @@ import { NavLink } from "react-router-dom";
 import SheetIcon from "../../assets/icons/cart/sheet.svg";
 import SeeAlso from "./SeeAlso";
 import { CartContext } from './../../contexts/CartContext';
+import useResetLink from './../../hooks/useResetLink';
 
 const Payment = () => {
-    const { items, totalPrice } = useContext(CartContext)
+    const { items, totalPrice } = useContext(CartContext);
+    useResetLink();
 
     return (
         <div className={'mt-12 mb-2'}>

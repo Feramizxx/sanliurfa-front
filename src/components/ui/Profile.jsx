@@ -12,12 +12,14 @@ import Button from './Button';
 import { updateUser } from './../../api/updateUser';
 import { AxiosError } from 'axios';
 import { validateNumber } from './meal/AddressesPage';
+import useResetLink from './../../hooks/useResetLink';
 
 export const rewriteEmpty = (str) => {
   return str === '' ? undefined : str;
 }
 
 const Profile = () => {
+  useResetLink();
   const navigate = useNavigate();
   const [phoneFirstClick, setPhoneFirstClick] = useState(true);
   const [refetch, setRefetch] = useState(false);
