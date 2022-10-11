@@ -1,7 +1,13 @@
-export const convertLinkToNumber = () => {
+export const getPageFromLink = () => {
     const url = window.location.href;
     const urlPartition = url.split('/');
     const page = urlPartition[urlPartition.length - 1];
+
+    return page;
+}
+
+export const convertLinkToNumber = () => {
+    const page = getPageFromLink();
 
     switch (page) {
         case '': return 1
@@ -14,6 +20,7 @@ export const convertLinkToNumber = () => {
         default: return 0
     }
 }
+
 
 export const getFooterTheme = (num) => {
     switch (num) {
