@@ -5,7 +5,6 @@ import { getCart } from './../api/getCart';
 import PageLoader from './../components/PageLoader';
 import { createCart } from '../api/createCart';
 import { updateCart } from './../api/updateCart';
-import { deleteCart } from '../api/deleteCart';
 
 export const CartContext = createContext();
 
@@ -17,10 +16,17 @@ const CartContextProvider = ({ children }) => {
     const [items, setItems] = useState([]);
     const [addressId, setAddressId] = useState(null);
 
+    const reset = () => {
+        setItems([]);
+        setAddressId(null);
+        setTotalAmount(0);
+        setTotalPrice(0);
+    }
+
     const saveCart = async (data) => {
         let token = cartToken;
         try {
-            if (!cartToken) {
+            if (!cartToken || cartToken === '') {
                 const data = await createCart();
                 token = data;
                 setCartToken(data);
@@ -34,12 +40,12 @@ const CartContextProvider = ({ children }) => {
         }
     }
 
-    const removeCart = async () => {
+    const removeCart = () => {
         if (cartToken) {
             try {
-                await deleteCart(cartToken);
                 setCartToken('');
                 localStorage.setItem('cart_token', '');
+                reset();
             } catch (error) {
                 alert(error);
             }
@@ -146,7 +152,9 @@ const CartContextProvider = ({ children }) => {
             removeProduct,
             decrementProduct,
             addressId,
-            selectAddress
+            selectAddress,
+            cartToken,
+            removeCart
         }}>
             {children}
         </CartContext.Provider>

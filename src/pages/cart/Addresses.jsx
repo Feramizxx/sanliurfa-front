@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import PageNav from "./PageNav";
-import { cities, districts } from './../../assets/storage/addresses';
 import { AuthContext } from './../../contexts/AuthContext';
 import useFetchAddresses from './../../hooks/useFetchAddresses';
 import PageLoader from './../../components/PageLoader';
