@@ -12,9 +12,10 @@ const SearchContextProvider = ({ children }) => {
 
     const [searchedMeals, setSearchedMeals] = useState([]);
     const [searchError, setSearchError] = useState(null);
+    const [target, setTarget] = useState(_search || '');
     const navigate = useNavigate();
 
-    const searchData = async (target) => {
+    const searchData = async () => {
         const page = getPageFromLink();
 
         if (target !== '') {
@@ -32,13 +33,8 @@ const SearchContextProvider = ({ children }) => {
         }
     }
 
-    useEffect(() => {
-        const target = _search || '';
-        searchData(target);
-    }, []);
-
     return (
-        <SearchContext.Provider value={{ searchedMeals, searchData, searchError, setSearchError }}>
+        <SearchContext.Provider value={{ searchedMeals, searchData, searchError, setSearchError, setTarget }}>
             {children}
         </SearchContext.Provider>
     );

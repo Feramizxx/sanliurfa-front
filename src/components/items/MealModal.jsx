@@ -21,13 +21,13 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image, description, additions }) => {
+const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image, description, additions, itemId }) => {
     const [totalPrice, setTotalPrice] = useState(price);
     const [currentAmount, setCurrentAmount] = useState(amount);
     const [display, setDisplay] = useState(additions ? additions.length / 4 : 0);
     const { addProduct } = useContext(CartContext);
-
-    // TODO: add selected additions
+    const [selectedAdditions, setSelectedAdditions] = useState([]);
+    const [orderDescription, setOrderDescription] = useState('');
 
     const onMoreClick = (e) => {
         e.preventDefault();
@@ -71,6 +71,9 @@ const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image,
                                                     name={addition.name}
                                                     price={addition.prices[0].price}
                                                     key={addition.sku}
+                                                    setSelectedAdditions={setSelectedAdditions}
+                                                    setTotalPrice={setTotalPrice}
+                                                    productId={addition.itemId}
                                                 />
                                             )
                                         }
@@ -85,7 +88,12 @@ const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image,
                             }
                         </div>
                         <h3 className={'font-medium text-xl mb-2'}>Qeydləriniz</h3>
-                        <input type={'text'} className={'bg-[#F1F1F1] w-full outline-red transition-colors mb-7 py-4 px-6 rounded-full'} />
+                        <input
+                            onChange={(e) => setOrderDescription(e.target.value)}
+                            value={orderDescription}
+                            type={'text'}
+                            className={'bg-[#F1F1F1] w-full outline-red transition-colors mb-7 py-4 px-6 rounded-full'}
+                        />
                         <div className={'flex justify-between items-center mb-4'}>
                             <h3 className={'font-medium text-xl mb-2'}>Ümumi məbləğ:</h3>
                             <p className={'text-[#8F161A] text-[40px] font-semibold'}>{totalPrice}₼</p>
@@ -103,7 +111,12 @@ const MealModal = ({ name, price, taste, closeModal, amount, modalIsOpen, image,
                                 type={'button'}
                                 className={'bg-red rounded-full grow ml-4 text-white text-2xl font-lights sm:text-lg'}
                                 onClick={async () => {
-                                    await addProduct({ name, image, description }, currentAmount, totalPrice)
+                                    await addProduct({
+                                        name,
+                                        image,
+                                        description,
+                                        additions: selectedAdditions,
+                                    }, currentAmount, totalPrice, itemId, orderDescription);
                                     closeModal();
                                 }}>
                                 Səbətə əlavə et

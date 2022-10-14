@@ -1,4 +1,3 @@
-
 import { createContext, useEffect } from 'react';
 import { useState } from 'react';
 import { roundPrice } from './../helpers/index';
@@ -27,8 +26,9 @@ const CartContextProvider = ({ children }) => {
                 setCartToken(data);
                 localStorage.setItem('cart_token', data);
             }
+            const address = data.addressId !== undefined ? data.addressId : addressId;
 
-            await updateCart(token, { ...data, addressId });
+            await updateCart(token, { ...data, addressId: address });
         } catch (error) {
             alert(error);
         }
@@ -61,10 +61,11 @@ const CartContextProvider = ({ children }) => {
         setIsCartLoading(false);
     }
 
-    const addProduct = async (meal, amount, price) => {
+    const addProduct = async (meal, amount, price, itemId, itemDescription) => {
         const newItems = [
             ...items,
-            { meal, amount, price }
+            { meal, amount, price, itemId, itemDescription },
+
         ]
         const newAmount = totalAmount + amount;
         const newPrice = roundPrice(totalPrice + price);
@@ -123,8 +124,10 @@ const CartContextProvider = ({ children }) => {
         await saveCart({ items: newItems, totalPrice: newPrice, totalAmount: newAmount });
     }
 
-    const selectAddress = (address) => {
-        setAddressId(address.id);
+    const selectAddress = async (address) => {
+        const addressId = address ? address.id : null;
+        setAddressId(addressId);
+        await saveCart({ items, totalPrice, totalAmount, addressId })
     }
 
     useEffect(() => {

@@ -33,7 +33,7 @@ const InlineNews = () => {
       <div className="w-[65%] lg:w-[95%] lg:ml-auto lg:mr-auto ml-[90px] flex flex-col">
         <div >
           <h1 className="mb-5 mt-10 sm:text-[32px] text-white text-[48px]">
-            {singleNews.title}
+            {singleNews.translations[0].title}
           </h1>
           <div className="object-cover w-full max-w-[900px] min-h-[70vh] bg-cover bg-no-repeat bg-center" style={{
             backgroundImage: `url(${STORAGE_BASE_URL + singleNews.imageUrl})`

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { SearchContext } from './../../contexts/SearchContext';
 import Meal from "../../components/items/Meal";
 import { AxiosError } from 'axios';
@@ -8,7 +8,7 @@ import useResetLink from './../../hooks/useResetLink';
 const errorMessage = 'No meals are found...';
 
 const SearchedMenu = () => {
-    const { searchedMeals, searchError, setSearchError } = useContext(SearchContext);
+    const { searchedMeals, searchError, setSearchError, searchData, target } = useContext(SearchContext);
     const [modal, setModal] = useState(false);
     useResetLink();
 
@@ -18,6 +18,10 @@ const SearchedMenu = () => {
             setSearchError(null);
         }
     }
+
+    useEffect(() => {
+        searchData();
+    }, [target]);
 
     return (
         <>

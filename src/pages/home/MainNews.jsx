@@ -37,10 +37,10 @@ const MainNews = () => {
                 >
                   <div className={`flex w-full h-full ${isEven ? 'pr-10' : 'pl-10'}  flex-col ${isEven ? 'items-end' : 'items-start'} justify-around`} >
                     <h1 className={`text-white xl:w-full w-3/5 lg:text-[28px] sm:text-[20px] text-5xl ${isEven ? 'text-end' : 'text-start'}`}>
-                      {singleNews.title}
+                      {singleNews.translations[0].title}
                     </h1>
                     <p className="text-white text-xl lg:text-[16px] sm:text-[12px] xl:w-full w-1/2 text-ellipsis overflow-hidden">
-                      {singleNews.description}
+                      {singleNews.translations[0].description}
                     </p>
                     <button onClick={() => onButtonClick(singleNews.id)} className="text-red font-bold lg:mt-0 mt-7 bg-white rounded-xl px-10 py-1">Ətraflı</button>
                   </div>

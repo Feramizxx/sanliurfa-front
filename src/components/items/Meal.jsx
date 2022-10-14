@@ -42,6 +42,7 @@ const Meal = ({ meal, type }) => {
                         image={image}
                         description={description}
                         additions={additions ? additions.items : null}
+                        itemId={meal.itemId}
                     />
                 </div>
             </div>
