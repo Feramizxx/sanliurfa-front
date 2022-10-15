@@ -19,10 +19,12 @@ import Profile from './components/ui/Profile';
 import InlineNews from './pages/news/InlineNews';
 import AddressesPage from './components/ui/meal/AddressesPage';
 import ResetPassword from './pages/reset-password/ResetPassword';
-import './index.css';
 import { AuthContext } from './contexts/AuthContext';
 import ForgotPassword from './pages/forgot-password/ForgotPassword';
 import SearchedMenu from './pages/searched-menu/SearchedMenu';
+import SingleOrder from './pages/single-order/SingleOrder';
+import './index.css';
+
 
 
 const App = () => {
@@ -64,6 +66,7 @@ const Router = () => {
                 <Route path='/profile'>
                     <Route index element={<Profile />} />
                     <Route path='orders' element={<Orders />} />
+                    <Route path='orders/:id' element={<SingleOrder />} />
                     <Route path='addresses' element={<AddressesPage />} />
                 </Route>
             }

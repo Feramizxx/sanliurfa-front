@@ -8,13 +8,10 @@ const Orders = () => {
   useResetLink();
 
   return (
-    <>
-      <div className="pb-12">
-        <h1 className="ml-[40px] pt-[170px] text-[32px] text-red">Sifarişlərim</h1>
-        <OrderItems />
-      </div>
-
-    </>
+    <div className="pb-12">
+      <h1 className="ml-[40px] pt-[170px] text-[32px] text-red">Sifarişlərim</h1>
+      <OrderItems />
+    </div>
   );
 };
 

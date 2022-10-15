@@ -1,288 +1,100 @@
 import React from "react";
-import img from "../../../assets/img/Children.png";
+import { ReactComponent as Done } from '../../../assets/icons/done.svg';
+import useFetchOrders from "../../../hooks/useFetchOrders";
+import PageLoader from '../../PageLoader';
+import useFetchAddress from "../../../hooks/useFetchAddress";
+import { fixDate } from "../../../pages/career/Vacancy";
+
 const OrderItems = () => {
+  const { orders, ordersAreLoading, ordersError } = useFetchOrders();
+  if (ordersAreLoading) return <PageLoader />
+
   return (
-    <>
-      <div className=" mt-[50px] mb-[40px] relative mr-auto ml-auto Orders  w-[80%]">
-        <div className="flex p-6 justify-between">
-          <div className="flex justify-between w-[550px] lg:flex-col">
-            <div>
-              <h1>Sifariş tarixi:</h1>
-              <p className="opacity-50 text-[12px]">28.01.2022</p>
-            </div>
-            <div>
-              <h1>Ünvan:</h1>
-              <p className="opacity-50 text-[12px]">Bəşir Səfəroğlu 215</p>
-            </div>
-            <div>
-              <h1>Qiymət:</h1>
-              <p className="opacity-50 text-[12px]">50.5</p>
-            </div>
-          </div>
-          <div className="text-end  ">
-            <h1 className="flex text-red">
-              <svg
-                className="mt-[5px] mr-1"
-                width="19"
-                height="13"
-                viewBox="0 0 19 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.8327 1L6.37446 12L1.16602 7"
-                  stroke="#BB2025"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Çatdırıldı
-            </h1>
-          </div>
-
-          <hr className="w-[96%] absolute top-[80px] lg:top-[155px]" />
+    <div>
+      {ordersError ?
+        <p className="text-red font-bold text-xl text-center"> Hələ heç bir sifariş verməmisiniz </p> :
+        <div>
+          {orders.map((order) => {
+            return <Order key={order.id} order={order} />
+          })}
         </div>
-        <div className="flex p-5 justify-between lg:flex-col items-center">
-          <div className="flex lg:flex-col items-center">
-            <div className="flex w-[150px]">
-              <img
-                className="w-[81px] h-[81px] border-white object-cover border-solid border-2  rounded-[14px]"
-                src={img}
-              />
-              <img
-                className="w-[81px] h-[81px] translate-x-[-40px]  border-white border-solid border-2   object-cover rounded-[14px]"
-                src={img}
-              />
-              <img
-                className="w-[81px] h-[81px] translate-x-[-80px]  border-white border-solid border-2   object-cover rounded-[14px]"
-                src={img}
-              />
-            </div>
-            <div className="sm:flex sm:flex-col lg:mt-2">
-              <span className="ml-5">Pasta(x1)</span>
-              <span className="ml-5">Burger(x2)</span>
-              <span className="ml-5">Lahmacun(x4)</span>
-            </div>
-          </div>
-          <div className="lg:mt-2">
-            <button className="bg-red px-[60px] py-2 rounded-[40px] text-white">
-              Ətraflı
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className=" mt-[50px] mb-[40px] relative mr-auto ml-auto Orders  w-[80%]">
-        <div className="flex p-6 justify-between">
-          <div className="flex justify-between w-[550px] lg:flex-col">
-            <div>
-              <h1>Sifariş tarixi:</h1>
-              <p className="opacity-50 text-[12px]">28.01.2022</p>
-            </div>
-            <div>
-              <h1>Ünvan:</h1>
-              <p className="opacity-50 text-[12px]">Bəşir Səfəroğlu 215</p>
-            </div>
-            <div>
-              <h1>Qiymət:</h1>
-              <p className="opacity-50 text-[12px]">50.5</p>
-            </div>
-          </div>
-          <div className="text-end  ">
-            <h1 className="flex text-red">
-              <svg
-                className="mt-[5px] mr-1"
-                width="19"
-                height="13"
-                viewBox="0 0 19 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.8327 1L6.37446 12L1.16602 7"
-                  stroke="#BB2025"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Çatdırıldı
-            </h1>
-          </div>
-
-          <hr className="w-[96%] absolute top-[80px] lg:top-[155px]" />
-        </div>
-        <div className="flex p-5 justify-between lg:flex-col items-center">
-          <div className="flex lg:flex-col items-center">
-            <div className="flex w-[150px]">
-              <img
-                className="w-[81px] h-[81px]    border-white object-cover border-solid border-2  rounded-[14px]"
-                src={img}
-              />
-              <img
-                className="w-[81px] h-[81px] translate-x-[-40px]  border-white border-solid border-2   object-cover rounded-[14px]"
-                src={img}
-              />
-              <img
-                className="w-[81px] h-[81px] translate-x-[-80px]  border-white border-solid border-2   object-cover rounded-[14px]"
-                src={img}
-              />
-            </div>
-            <div className="sm:flex sm:flex-col lg:mt-2">
-              <span className="ml-5">Pasta(x1)</span>
-              <span className="ml-5">Burger(x2)</span>
-              <span className="ml-5">Lahmacun(x4)</span>
-            </div>
-          </div>
-          <div className="lg:mt-2">
-            <button className="bg-red px-[60px] py-2 rounded-[40px] text-white">
-              Ətraflı
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className=" mt-[50px] mb-[40px] relative mr-auto ml-auto Orders  w-[80%]">
-        <div className="flex p-6 justify-between">
-          <div className="flex justify-between w-[550px] lg:flex-col">
-            <div>
-              <h1>Sifariş tarixi:</h1>
-              <p className="opacity-50 text-[12px]">28.01.2022</p>
-            </div>
-            <div>
-              <h1>Ünvan:</h1>
-              <p className="opacity-50 text-[12px]">Bəşir Səfəroğlu 215</p>
-            </div>
-            <div>
-              <h1>Qiymət:</h1>
-              <p className="opacity-50 text-[12px]">50.5</p>
-            </div>
-          </div>
-          <div className="text-end  ">
-            <h1 className="flex text-red">
-              <svg
-                className="mt-[5px] mr-1"
-                width="19"
-                height="13"
-                viewBox="0 0 19 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.8327 1L6.37446 12L1.16602 7"
-                  stroke="#BB2025"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Çatdırıldı
-            </h1>
-          </div>
-
-          <hr className="w-[96%] absolute top-[80px] lg:top-[155px]" />
-        </div>
-        <div className="flex p-5 justify-between lg:flex-col items-center">
-          <div className="flex lg:flex-col items-center">
-            <div className="flex w-[150px]">
-              <img
-                className="w-[81px] h-[81px]    border-white object-cover border-solid border-2  rounded-[14px]"
-                src={img}
-              />
-              <img
-                className="w-[81px] h-[81px] translate-x-[-40px]  border-white border-solid border-2   object-cover rounded-[14px]"
-                src={img}
-              />
-              <img
-                className="w-[81px] h-[81px] translate-x-[-80px]  border-white border-solid border-2   object-cover rounded-[14px]"
-                src={img}
-              />
-            </div>
-            <div className="sm:flex sm:flex-col lg:mt-2">
-              <span className="ml-5">Pasta(x1)</span>
-              <span className="ml-5">Burger(x2)</span>
-              <span className="ml-5">Lahmacun(x4)</span>
-            </div>
-          </div>
-          <div className="lg:mt-2">
-            <button className="bg-red px-[60px] py-2 rounded-[40px] text-white">
-              Ətraflı
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className=" mt-[50px] mb-[40px] relative mr-auto ml-auto Orders  w-[80%]">
-        <div className="flex p-6 justify-between">
-          <div className="flex justify-between w-[550px] lg:flex-col">
-            <div>
-              <h1>Sifariş tarixi:</h1>
-              <p className="opacity-50 text-[12px]">28.01.2022</p>
-            </div>
-            <div>
-              <h1>Ünvan:</h1>
-              <p className="opacity-50 text-[12px]">Bəşir Səfəroğlu 215</p>
-            </div>
-            <div>
-              <h1>Qiymət:</h1>
-              <p className="opacity-50 text-[12px]">50.5</p>
-            </div>
-          </div>
-          <div className="text-end  ">
-            <h1 className="flex text-red">
-              <svg
-                className="mt-[5px] mr-1"
-                width="19"
-                height="13"
-                viewBox="0 0 19 13"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.8327 1L6.37446 12L1.16602 7"
-                  stroke="#BB2025"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              Çatdırıldı
-            </h1>
-          </div>
-
-          <hr className="w-[96%] absolute top-[80px] lg:top-[155px]" />
-        </div>
-        <div className="flex p-5 justify-between lg:flex-col items-center">
-          <div className="flex lg:flex-col items-center">
-            <div className="flex w-[150px]">
-              <img
-                className="w-[81px] h-[81px]    border-white object-cover border-solid border-2  rounded-[14px]"
-                src={img}
-              />
-              <img
-                className="w-[81px] h-[81px] translate-x-[-40px]  border-white border-solid border-2   object-cover rounded-[14px]"
-                src={img}
-              />
-              <img
-                className="w-[81px] h-[81px] translate-x-[-80px]  border-white border-solid border-2   object-cover rounded-[14px]"
-                src={img}
-              />
-            </div>
-            <div className="sm:flex sm:flex-col lg:mt-2">
-              <span className="ml-5">Pasta(x1)</span>
-              <span className="ml-5">Burger(x2)</span>
-              <span className="ml-5">Lahmacun(x4)</span>
-            </div>
-          </div>
-          <div className="lg:mt-2">
-            <button className="bg-red px-[60px] py-2 rounded-[40px] text-white">
-              Ətraflı
-            </button>
-          </div>
-        </div>
-      </div>
-
-
-    </>
+      }
+    </div>
   );
 };
+
+export const Order = ({ order }) => {
+  const { address, addressError, isAddressLoading } = useFetchAddress(order.cart.addressId);
+  if (isAddressLoading) return <></>
+
+  return (
+    <>
+      {!addressError &&
+        <div div className=" mt-[50px] mb-[40px] relative mr-auto ml-auto Orders w-[80%]" >
+          <OrderHeader price={order.cart.totalPrice} createdAt={order.createdAt} address={address} isDelivered={order.isDelivered} />
+          <div className="flex p-5 justify-between lg:flex-col items-center">
+            <div className="flex lg:flex-col items-center">
+              <div className="flex w-[150px]">
+                {order.cart.items.map((item) => {
+                  const image = item.meal.image;
+                  return (
+                    <img
+                      key={item.itemId}
+                      className="w-[81px] h-[81px] border-white object-cover object-center border-solid border-2  rounded-[14px]"
+                      src={image}
+                    />
+                  )
+                })}
+              </div>
+              <div className="sm:flex sm:flex-col lg:mt-2">
+                {order.cart.items.map((item) => {
+                  return (
+                    <span key={item.itemId} className="ml-5"> {item.meal.name}(x{item.amount}) </span>
+                  )
+                })}
+              </div>
+            </div>
+            <div className="lg:mt-2">
+              <button className="bg-red px-[60px] py-2 rounded-[40px] text-white">
+                Ətraflı
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+    </>
+  );
+}
+
+export const OrderHeader = ({ createdAt, address, price, isDelivered }) => {
+  return (
+    <div className="flex p-6 justify-between">
+      <div className="flex justify-between w-[550px] lg:flex-col">
+        <div>
+          <p> Sifariş tarixi: </p>
+          <p className="opacity-50 text-[12px]"> {fixDate(createdAt)} </p>
+        </div>
+        <div>
+          <p> Ünvan: </p>
+          <p className="opacity-50 text-[12px]"> {address.avenue} {address.building} </p>
+        </div>
+        <div>
+          <p> Qiymət: </p>
+          <p className="opacity-50 text-[12px]"> {price}₼ </p>
+        </div>
+      </div>
+      <div className="text-end  ">
+        <p className="flex text-red">
+          {isDelivered &&
+            <>
+              <Done /> Çatdırıldı
+            </>
+          }
+        </p>
+      </div>
+      <hr className="w-[96%] absolute top-[80px] lg:top-[155px]" />
+    </div >
+  )
+}
 
 export default OrderItems;

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import Counter from "../../components/ui/meal/Counter";
 import { CartContext } from './../../contexts/CartContext';
 
-const Card = ({ index, meal, amount, price }) => {
+const Card = ({ index, meal, amount, price, clickable = true }) => {
     const [count, setCount] = useState(amount);
     const { incrementProduct, removeProduct, decrementProduct } = useContext(CartContext);
 
@@ -29,18 +29,24 @@ const Card = ({ index, meal, amount, price }) => {
                         minNumber={1}
                         defaultValue={amount}
                         countDecrease={async () => {
-                            await decrementProduct(meal.name);
-                            setCount(count - 1)
+                            if (clickable) {
+                                await decrementProduct(meal.name);
+                                setCount(count - 1)
+                            }
                         }}
                         countIncrease={async () => {
-                            await incrementProduct(meal.name);
-                            setCount(count + 1)
+                            if (clickable) {
+                                await incrementProduct(meal.name);
+                                setCount(count + 1);
+                            }
                         }}
                     />
                 </div>
-                <p className={'text-[#D21414] underline cursor-pointer'} onClick={async () => {
-                    await removeProduct(meal.name);
-                }}>Sil</p>
+                {clickable &&
+                    <p className={'text-[#D21414] underline cursor-pointer'} onClick={async () => {
+                        await removeProduct(meal.name);
+                    }}>Sil</p>
+                }
             </div>
         </div >
     )

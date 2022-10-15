@@ -1,6 +1,6 @@
 import React from 'react';
 
-const fixDate = (apiDate) => {
+export const fixDate = (apiDate) => {
     const partition = apiDate.split(':').join().split('T')
     return partition[0];
 }
