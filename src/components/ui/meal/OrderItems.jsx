@@ -4,6 +4,7 @@ import useFetchOrders from "../../../hooks/useFetchOrders";
 import PageLoader from '../../PageLoader';
 import useFetchAddress from "../../../hooks/useFetchAddress";
 import { fixDate } from "../../../pages/career/Vacancy";
+import { useNavigate } from "react-router";
 
 const OrderItems = () => {
   const { orders, ordersAreLoading, ordersError } = useFetchOrders();
@@ -25,7 +26,13 @@ const OrderItems = () => {
 
 export const Order = ({ order }) => {
   const { address, addressError, isAddressLoading } = useFetchAddress(order.cart.addressId);
+  const navigate = useNavigate();
   if (isAddressLoading) return <></>
+
+
+  const onClick = () => {
+    navigate('/profile/orders/' + address.id);
+  }
 
   return (
     <>
@@ -55,7 +62,7 @@ export const Order = ({ order }) => {
               </div>
             </div>
             <div className="lg:mt-2">
-              <button className="bg-red px-[60px] py-2 rounded-[40px] text-white">
+              <button onClick={onClick} className="bg-red px-[60px] py-2 rounded-[40px] text-white">
                 Ətraflı
               </button>
             </div>
