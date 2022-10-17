@@ -4,7 +4,6 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { validateNumber } from "./ui/meal/AddressesPage";
 import Button from "./ui/Button";
-import useResetLink from './../hooks/useResetLink';
 
 export const convertIfNotEmptyToNumber = (value) => {
     return value ? Number(value) : undefined;
@@ -54,7 +53,7 @@ const AddressesForm = ({ onClose, callback, update }) => {
     return (
         <div className="flex py-2 adresses-container w-fit mr-auto ml-auto flex-col  ">
             <div className="flex  w-[92%] ml-auto mr-auto justify-between  ">
-                <p className="text-red font-semibold text-[32px]"> Yeni Ünvan </p>
+                <p className="text-red font-semibold text-[32px]"> {update ? 'Ünvanı yenilə' : 'Yeni Ünvan'} </p>
                 <Button
                     theme={'default'}
                     onClick={() => onClose()}

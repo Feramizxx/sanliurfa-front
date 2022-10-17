@@ -23,18 +23,32 @@ const CartContextProvider = ({ children }) => {
         setTotalPrice(0);
     }
 
-    const saveCart = async (data) => {
+    const initCart = async (cartToken) => {
         let token = cartToken;
+        if (!cartToken || cartToken === '') {
+            const data = await createCart();
+            token = data;
+            setCartToken(data);
+            localStorage.setItem('cart_token', data);
+        }
+        return token;
+    }
+
+    const saveCart = async (data) => {
         try {
-            if (!cartToken || cartToken === '') {
-                const data = await createCart();
-                token = data;
-                setCartToken(data);
-                localStorage.setItem('cart_token', data);
-            }
+            const token = await initCart(cartToken);
             const address = data.addressId !== undefined ? data.addressId : addressId;
 
             await updateCart(token, { ...data, addressId: address });
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    const orderAgain = async (cart) => {
+        try {
+            const token = await initCart(cartToken);
+            await updateCart(token, cart);
         } catch (error) {
             alert(error);
         }
@@ -154,7 +168,8 @@ const CartContextProvider = ({ children }) => {
             addressId,
             selectAddress,
             cartToken,
-            removeCart
+            removeCart,
+            orderAgain
         }}>
             {children}
         </CartContext.Provider>

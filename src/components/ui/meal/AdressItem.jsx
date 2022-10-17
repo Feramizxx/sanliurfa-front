@@ -10,7 +10,7 @@ const defineFieldValue = (initial, current, fromApi) => {
   return initial === current ? fromApi : current;
 }
 
-const AdressItem = ({ address, setAddresses, selected = false }) => {
+const AdressItem = ({ address, setAddresses, selected = false, setRefetch = () => null }) => {
   const [modal, setModal] = useState(false);
   const [form, setForm] = useState(false);
   const { token } = useContext(AuthContext);
@@ -109,6 +109,7 @@ const AdressItem = ({ address, setAddresses, selected = false }) => {
           onClose={() => setForm(false)}
           callback={async (token, data) => {
             await updateAddress(token, data, address.id);
+            setRefetch(prev => !prev)
           }}
         />
       }

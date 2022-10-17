@@ -12,7 +12,7 @@ import useResetLink from "../../../hooks/useResetLink";
 const AddressesPage = () => {
   useResetLink();
   const { token } = useContext(AuthContext);
-  const { addresses, addressesAreLoading, addressesError, setAddresses } = useFetchAddresses(token);
+  const { addresses, addressesAreLoading, setRefetch, setAddresses } = useFetchAddresses(token);
   const [form, setForm] = useState(false);
 
   if (addressesAreLoading) return <PageLoader />
@@ -53,6 +53,7 @@ const AddressesPage = () => {
             address={address}
             key={address.id}
             setAddresses={setAddresses}
+            setRefetch={setRefetch}
           />
         )
       }
