@@ -47,4 +47,4 @@ export const sortLanguages = (languages, currentLanguage) => {
     return languages;
 }
 
-export const roundPrice = (price) => Math.round(price * 100) / 100
+export const roundPrice = (price) => Math.round(price * 1000) / 1000

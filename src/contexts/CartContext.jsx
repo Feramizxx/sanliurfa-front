@@ -15,6 +15,7 @@ const CartContextProvider = ({ children }) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [items, setItems] = useState([]);
     const [addressId, setAddressId] = useState(null);
+    const [paymentType, setPaymentType] = useState('');
 
     const reset = () => {
         setItems([]);
@@ -158,18 +159,11 @@ const CartContextProvider = ({ children }) => {
 
     return (
         <CartContext.Provider value={{
-            totalAmount,
-            totalPrice,
-            items,
-            addProduct,
-            incrementProduct,
-            removeProduct,
-            decrementProduct,
-            addressId,
-            selectAddress,
-            cartToken,
-            removeCart,
-            orderAgain
+            totalAmount, totalPrice, items,
+            addProduct, incrementProduct, removeProduct,
+            decrementProduct, addressId, selectAddress,
+            cartToken, removeCart, orderAgain,
+            paymentType, setPaymentType
         }}>
             {children}
         </CartContext.Provider>

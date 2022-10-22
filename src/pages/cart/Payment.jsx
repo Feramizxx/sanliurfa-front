@@ -9,6 +9,22 @@ import useResetLink from './../../hooks/useResetLink';
 import { AuthContext } from "../../contexts/AuthContext";
 import MyModal from "../../components/MyModal";
 import { createDelivery } from "../../api/createDelivery";
+import { createPayment } from "../../api/createPayments";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import { roundPrice } from "../../helpers";
+
+// TODO:
+// 1 --> if a payment type is card then send a request to the create payment
+//  # DTO:
+//      lang: "AZ" | "EN" | "RU",
+//      amount: totalAmount / 100
+// 2 --> you will get a response with a bank url => redirect to it
+// 3 --> if payment could not succeed add a related page which takes token as a param
+//  4 --> send a deletion request for token
+//  5 --> if deletion could not succeed then redirect to home page
+// 6 --> if payment could succeed redirect to congrats page with token in param
+//  7 --> if error returns on create delivery then redirect to home page
+
 
 const ERRORS = {
     PAYMENT_TYPE_IS_MISSING: "PAYMENT_TYPE_IS_MISSING",
@@ -16,9 +32,9 @@ const ERRORS = {
 }
 
 const Payment = () => {
-    const { items, totalPrice, cartToken, removeCart, addressId } = useContext(CartContext);
+    const { items, totalPrice, cartToken, removeCart, addressId, paymentType, setPaymentType } = useContext(CartContext);
     const { token } = useContext(AuthContext);
-    const [paymentType, setPaymentType] = useState('');
+    const { value, content } = useContext(LanguageContext);
     const [modal, setModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [error, setError] = useState(null);
@@ -38,11 +54,26 @@ const Payment = () => {
         if (paymentType !== '') {
             if (addressId !== null) {
                 try {
-                    await createDelivery(data, tokens);
-                    removeCart(cartToken);
-                    navigate('/cart/confirm');
+                    if (paymentType === 'Card') {
+                        ;
+                        const data = {
+                            language: value.toUpperCase(),
+                            amount: String(totalPrice)
+                        }
+                        const result = await createPayment(data, token);
+
+                        const sessionID = result.TKKPG.Response.Order.SessionID;
+                        const orderID = result.TKKPG.Response.Order.OrderID;
+                        const url = `${result.TKKPG.Response.Order.URL}?SessionID=${sessionID}&OrderID=${orderID}`;
+                        window.location.replace(url)
+                    } else {
+                        await createDelivery(data, tokens);
+                        removeCart(cartToken);
+                        navigate('/cart/confirm/' + process.env.REACT_APP_DEFAULT_PAYMENT_TOKEN);
+                    }
+
                 } catch (error) {
-                    setModalMessage('Sifarişinizi göndərmək olmadı, daha sonra yenidən cəhd edin...');
+                    setModalMessage(content.errors.deliveryFailed);
                     setModal(true);
                 }
             } else {
@@ -50,7 +81,6 @@ const Payment = () => {
             }
         } else {
             setError(ERRORS.PAYMENT_TYPE_IS_MISSING);
-
         }
     }
 

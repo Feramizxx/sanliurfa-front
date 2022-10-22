@@ -23,9 +23,8 @@ import { AuthContext } from './contexts/AuthContext';
 import ForgotPassword from './pages/forgot-password/ForgotPassword';
 import SearchedMenu from './pages/searched-menu/SearchedMenu';
 import SingleOrder from './pages/single-order/SingleOrder';
+import PaymentFailed from './pages/payment-failed/PaymentFailed';
 import './index.css';
-
-
 
 const App = () => {
     return (
@@ -58,7 +57,7 @@ const Router = () => {
                     <>
                         <Route path='addresses' element={<Addresses />} />
                         <Route path='payment' element={<Payment />} />
-                        <Route path='confirm' element={<Confirm />} />
+                        <Route path='confirm/:paymentToken' element={<Confirm />} />
                     </>
                 }
             </Route>
@@ -72,7 +71,9 @@ const Router = () => {
             }
             <Route path='/inline-news/:id' element={<InlineNews />} />
             <Route path='/searched-meals' element={<SearchedMenu />} />
+            <Route path='/payment-failed/:paymentToken' element={<PaymentFailed />} />
             <Route path='*' element={<Navigate to="/" />} /> {/* NOTE: error page */}
+
         </Routes>
     )
 }

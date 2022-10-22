@@ -1,43 +1,9 @@
 import React from 'react';
+import { az, ru, en } from '../assets/storage';
 
 export const LanguageContext = React.createContext();
 
-const dictionary = {
-    az: {
-        links: {
-            home: 'Əsas səhifə',
-            about: 'Haqqımızda ',
-            menu: ' Menyu',
-            campaigns: 'Kampaniyalar',
-            news: 'Xəbərlər',
-            career: 'Karyera',
-            contact: 'Əlaqə'
-        }
-    },
-    en: {
-        links: {
-            home: 'Home',
-            about: 'About Us',
-            menu: 'Menu',
-            campaigns: 'Campaigns',
-            news: 'News',
-            career: 'Career',
-            contact: 'Contacts'
-        }
-    },
-    ru: {
-        links: {
-            home: 'Домашняя Страница',
-            about: 'О нас',
-            menu: 'Меню',
-            campaigns: 'Компании',
-            news: 'Новости',
-            career: 'Карьера',
-            contact: 'Контакты'
-        }
-    }
-}
-
+const dictionary = { az, en, ru }
 const languages = ['en', 'az', 'ru'];
 
 const LanguageContextProvider = ({ children }) => {
