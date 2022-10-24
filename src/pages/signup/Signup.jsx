@@ -6,6 +6,8 @@ import { AxiosError } from 'axios';
 import { signup } from '../../api/signup';
 import MyModal from '../../components/MyModal';
 import { validateNumber } from './../../components/ui/meal/AddressesPage';
+import { useContext } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 const PASSWORD_MATCHING_ERROR = 'PASSWORDS_MATCHING_ERROR';
 const PASSWORD_LENGTH_ERROR = 'PASSWORD_LENGTH_ERROR';
@@ -24,6 +26,7 @@ const Signup = () => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [modalMessage, setModalMessage] = useState('Please confirm your account in your email inbox. We sent you a confirmation link...');
     const [modal, setModal] = useState(false);
+    const { content } = useContext(LanguageContext);
 
     const navigate = useNavigate();
 
@@ -83,9 +86,9 @@ const Signup = () => {
             </MyModal>
             <div className={'min-sm:flex min-sm:justify-center min-sm:items-center pt-40 px-3 pb-3 mb-8'}>
                 <form onSubmit={onSubmit} className={'flex justify-center items-center flex-col min-sm:max-w-[600px]'}>
-                    <h3 className='font-bold text-[1.5rem] text-primary-bg'> Sign Up </h3>
+                    <h3 className='font-bold text-[1.5rem] text-primary-bg'> {content.auth.signup} </h3>
                     <div>
-                        <label htmlFor="name"> First Name </label>
+                        <label htmlFor="name"> {content.inputs.firstName} </label>
                         <input
                             className='auth-form-input p-3'
                             type="text"
@@ -96,7 +99,7 @@ const Signup = () => {
                             placeholder={'Jezeniel'}
                         />
 
-                        <label htmlFor="surname"> Last Name </label>
+                        <label htmlFor="surname"> {content.inputs.secondName} </label>
                         <input
                             className='auth-form-input p-3'
                             type="text"
@@ -107,7 +110,7 @@ const Signup = () => {
                             placeholder={'Zapanta'}
                         />
 
-                        <label htmlFor="phone"> Mobile Number </label>
+                        <label htmlFor="phone"> {content.inputs.mobileNumber} </label>
                         {errorMessage && errorMessage.status === USER_ALREADY_EXIST_ERROR &&
                             <p className='form-error'> {errorMessage.message} </p>
                         }
@@ -118,10 +121,10 @@ const Signup = () => {
                             value={phone}
                             onChange={(e) => validateNumber(e, setPhone, true)}
                             required={true}
-                            placeholder={'Enter your mobile number'}
+                            placeholder={content.inputs.mobileNumber}
                         />
 
-                        <label htmlFor="email"> Email Address </label>
+                        <label htmlFor="email"> {content.inputs.email} </label>
                         {errorMessage && errorMessage.status === USER_ALREADY_EXIST_ERROR &&
                             <p className='form-error'> {errorMessage.message} </p>
                         }
@@ -132,23 +135,23 @@ const Signup = () => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required={true}
-                            placeholder={'Enter your email address'}
+                            placeholder={content.inputs.email}
                         />
 
-                        <label htmlFor="password"> Password </label>
+                        <label htmlFor="password"> {content.inputs.password} </label>
                         <PasswordInput
                             id="password"
                             value={password}
                             setValue={setPassword}
-                            placeholder={'Enter Password'}
+                            placeholder={content.inputs.password}
                         />
 
                         <ul className={'text-xs list-disc list-inside my-3'}>
-                            <li className={`${errorMessage && errorMessage.status === PASSWORD_LENGTH_ERROR ? 'form-error' : 'text-input-text'}`}> Password should be 8-20 characters </li>
-                            <li className={`${errorMessage && errorMessage.status === INVALID_CHARS_ERROR ? 'form-error' : 'text-input-text'}`}> Password should have a number or acceptable characters </li>
+                            <li className={`${errorMessage && errorMessage.status === PASSWORD_LENGTH_ERROR ? 'form-error' : 'text-input-text'}`}> {content.restrictions.passwordLength} </li>
+                            <li className={`${errorMessage && errorMessage.status === INVALID_CHARS_ERROR ? 'form-error' : 'text-input-text'}`}> {content.restrictions.passwordContent} </li>
                         </ul>
 
-                        <label htmlFor="confirmPassword"> Confirm Password </label>
+                        <label htmlFor="confirmPassword"> {content.inputs.confirmPassword} </label>
                         {errorMessage && errorMessage.status === PASSWORD_MATCHING_ERROR &&
                             <p className='form-error'> {errorMessage.message} </p>
                         }
@@ -157,7 +160,7 @@ const Signup = () => {
                             value={confirmPassword}
                             setValue={setConfirmPassword}
                             required={true}
-                            placeholder={'Re-type password'}
+                            placeholder={content.inputs.confirmPassword}
                         />
                     </div>
                     <div className={'w-full flex'}>
@@ -165,13 +168,13 @@ const Signup = () => {
                             onClick={onClick}
                             className={'hover:cursor-pointer w-full py-3 rounded font-bold flex items-center justify-center text-[#BB2025] border-2 border-[#BB2025]'}
                         >
-                            Back
+                            {content.buttons.back}
                         </div>
                         <Button
                             theme={'default'}
                             className={'w-full py-3 ml-1'}
                         >
-                            Sign Up
+                            {content.auth.signup}
                         </Button>
                     </div>
                 </form>

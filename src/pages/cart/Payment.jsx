@@ -71,7 +71,6 @@ const Payment = () => {
                         removeCart(cartToken);
                         navigate('/cart/confirm/' + process.env.REACT_APP_DEFAULT_PAYMENT_TOKEN);
                     }
-
                 } catch (error) {
                     setModalMessage(content.errors.deliveryFailed);
                     setModal(true);

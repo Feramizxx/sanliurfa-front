@@ -1,21 +1,24 @@
 import React from "react";
+import { useContext } from "react";
 import AppShop from "../../components/ui/AppShop";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const Mobile = () => {
+    const { content } = useContext(LanguageContext);
+
     return (
         <div className="p-12 mb-8">
             <div className="relative">
                 <div className="relative pl-6 pr-9 flex justify-between z-10 lg:flex-col lg:items-center lg:justify-end">
                     <div className="w-3/5 flex flex-col justify-center lg:h-5/6 lg:mb-3 lg:w-full">
                         <h3 className="font-medium text-[#8F161A] text-[48px] lg:text-[32px] leading-tight">
-                            Artıq Şanlıurfa mətbəxi yeni mobil tətbiqi ilə
+                            {content.pages.home.mobile.title1}
                         </h3>
                         <h3 className="font-medium text-[#8F161A] text-[48px] lg:text-[32px] leading-tight mb-10 lg:mb-5">
-                            Yükləyin və sifarişə başlayın.
+                            {content.pages.home.mobile.title2}
                         </h3>
                         <p className="font-light text-[24px] lg:text-[16px] mb-4 lg:mb-8">
-                            Eget etiam scelerisque ac volutpat orci enim ipsum velit. Gravida consectetur enim nunc
-                            interdum cras nisl quis. Tempus euismod leo nisl eros pellentesque ipsum et at.
+                            {content.pages.home.mobile.text}
                         </p>
                         <div className="flex items-center lg:justify-center xs:flex-col">
                             <AppShop

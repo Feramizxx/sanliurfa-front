@@ -8,7 +8,7 @@ import { LinkContext } from '../../contexts/LinkContext';
 
 
 const MainNews = () => {
-  const { value } = useContext(LanguageContext);
+  const { value, content } = useContext(LanguageContext);
   const { setValue } = useContext(LinkContext)
   const { news, newsAreLoading, newsError } = useFetchNews(value, 3);
   const navigate = useNavigate();
@@ -42,7 +42,7 @@ const MainNews = () => {
                     <p className="text-white text-xl lg:text-[16px] sm:text-[12px] xl:w-full w-1/2 text-ellipsis overflow-hidden">
                       {singleNews.translations[0].description}
                     </p>
-                    <button onClick={() => onButtonClick(singleNews.id)} className="text-red font-bold lg:mt-0 mt-7 bg-white rounded-xl px-10 py-1">Ətraflı</button>
+                    <button onClick={() => onButtonClick(singleNews.id)} className="text-red font-bold lg:mt-0 mt-7 bg-white rounded-xl px-10 py-1">{content.buttons.details}</button>
                   </div>
                 </div>
               )

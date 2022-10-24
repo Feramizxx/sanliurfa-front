@@ -5,6 +5,7 @@ import { AxiosError } from 'axios';
 import { login } from './../api/login';
 import { AuthContext } from '../contexts/AuthContext';
 import { NavLink } from 'react-router-dom';
+import { LanguageContext } from '../contexts/LanguageContext';
 
 const LoginForm = ({ isVisible, setIsVisible, onLinkClick, externalError }) => {
     const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, externalError }) => {
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('')
     const { loginUser } = useContext(AuthContext);
+    const { content } = useContext(LanguageContext);
 
 
     const onClick = () => {
@@ -62,7 +64,7 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, externalError }) => {
                 className={'auth-form-input'}
                 type="email"
                 required={true}
-                placeholder={'Email'}
+                placeholder={content.inputs.email}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
@@ -70,7 +72,7 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, externalError }) => {
                 className={'auth-form-input'}
                 type="password"
                 required={true}
-                placeholder={'Şifrə'}
+                placeholder={content.inputs.password}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
@@ -79,12 +81,12 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, externalError }) => {
                     theme={'default'}
                     className={'py-1 px-6 mt-2'}
                 >
-                    Daxil Ol
+                    {content.auth.login}
                 </Button>
                 <NavLink to="/forgot-password" style={{
                     color: '#007AFF',
                     fontSize: '12px'
-                }}> Forgot Password? </NavLink>
+                }}> {content.auth.forgotPassword} </NavLink>
             </div>
             <hr className={'my-3'} />
             <Button
@@ -92,7 +94,7 @@ const LoginForm = ({ isVisible, setIsVisible, onLinkClick, externalError }) => {
                 onClick={onClick}
                 className={'w-full py-1'}
             >
-                Qeydiyyatdan Keç
+                {content.auth.signup}
             </Button>
         </form>
     );
