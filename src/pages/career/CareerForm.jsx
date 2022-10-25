@@ -5,8 +5,9 @@ import MyModal from './../../components/MyModal';
 import { postVacancyRequest } from './../../api/postVacancyRequest.';
 import Dropdown from '../../components/DropDown';
 import { validateNumber } from './../../components/ui/meal/AddressesPage';
+import { useContext } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext';
 
-const NO_VACANCY_MESSAGE = 'Hazirda boş vakansiya yoxdur...'
 
 const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -14,7 +15,8 @@ const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
     const [name, setName] = useState('');
     const [telephone, setTelephone] = useState('+994');
     const [email, setEmail] = useState('');
-    const [vacancy, setVacancy] = useState(vacancies[0].vacancy || NO_VACANCY_MESSAGE);
+    const { content } = useContext(LanguageContext);
+    const [vacancy, setVacancy] = useState(vacancies.length !== 0 ? vacancies[0].vacancy : content.errors.noVacancies);
     const [file, setFile] = useState(null);
     const [modal, setModal] = useState(false);
     const fileInputRef = useRef({});
@@ -56,9 +58,9 @@ const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
                 <p className='text-xl text-red font-bold bg-white rounded-2xl p-6'> {modalMessage} </p>
             </MyModal>
             <form className='bg-primary-bg text-white lg:px-12 px-24 py-12' onSubmit={onSubmit}>
-                <h1 className='title font-medium text-white'> Ərizə forması </h1>
+                <h1 className='title font-medium text-white'> {content.titles.careerForm} </h1>
                 <div>
-                    <label htmlFor="name">Ad, Soyad</label>
+                    <label htmlFor="name">{content.inputs.firstName}, {content.inputs.secondName}</label>
                     <input
                         className='career-input'
                         type="text"
@@ -68,7 +70,7 @@ const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
                         required={true}
                     />
 
-                    <label htmlFor="telephone">Əlaqə nömrəsi</label>
+                    <label htmlFor="telephone">{content.inputs.mobileNumber}</label>
                     <input
                         className='career-input'
                         type="text"
@@ -78,7 +80,7 @@ const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
                         required={true}
                     />
 
-                    <label htmlFor="email">E-mail</label>
+                    <label htmlFor="email">{content.inputs.email}</label>
                     <input
                         className='career-input'
                         type="email"
@@ -88,7 +90,7 @@ const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
                         required={true}
                     />
 
-                    <label htmlFor="vacancy">Vakansiya</label>
+                    <label htmlFor="vacancy">{content.inputs.vacancy}</label>
                     {vacanciesError || vacancies.length === 0 ?
                         <input
                             className='career-input'
@@ -120,7 +122,7 @@ const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
                                 className='bg-white text-primary-bg rounded-3xl px-6 py-1 hover:cursor-pointer'
                                 onClick={onCVButtonClick}
                             >
-                                Yüklə
+                                {content.buttons.upload}
                             </div>
                             <input
                                 type="file"
@@ -133,7 +135,7 @@ const CareerForm = ({ vacancies, setVacancies, vacanciesError }) => {
                             <p className='font-bold mt-3 mx-2'> {errorMessage} </p>
                         }
                     </div>
-                    <button className='text-primary-bg bg-white rounded-3xl py-2 px-12 font-bold'> Göndər </button>
+                    <button className='text-primary-bg bg-white rounded-3xl py-2 px-12 font-bold'> {content.buttons.send} </button>
                 </div>
             </form >
         </>

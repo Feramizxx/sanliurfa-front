@@ -2,6 +2,8 @@ import React from "react";
 import Modal from 'react-modal';
 import Radio from "../ui/input/Radio";
 import CloseButton from "../ui/CloseButton";
+import { useContext } from "react";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const customStyles = {
     content: {
@@ -17,16 +19,18 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const SortModal = ({ modalIsOpen, closeModal, setMeals }) => {
+    const { content } = useContext(LanguageContext);
+
     return (
         <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
             <div className={'max-w-[646px] relative px-8 pb-6 pt-20'}>
                 <CloseButton close={closeModal} theme={'red'} />
-                <h2 className={'text-4xl font-bold text-center mb-8'}>Sort</h2>
+                <h2 className={'text-4xl font-bold text-center mb-8'}>{content.pages.menu.sort.heading}</h2>
                 <form>
                     <div className={'min-w-[280px] mb-5'}>
                         <Radio
                             size={'a-z'}
-                            label={'A-dan Z-yə'}
+                            label={content.pages.menu.sort.byAlphaAsc}
                             onClick={(e) => {
                                 e.preventDefault();
                                 setMeals(prev => prev.sort((a, b) => {
@@ -36,7 +40,7 @@ const SortModal = ({ modalIsOpen, closeModal, setMeals }) => {
                         />
                         <Radio
                             size={'z-a'}
-                            label={'Z-dən A-ya'}
+                            label={content.pages.menu.sort.byAlphaDesc}
                             onClick={(e) => {
                                 e.preventDefault();
                                 setMeals(prev => prev.sort((a, b) => {
@@ -46,7 +50,7 @@ const SortModal = ({ modalIsOpen, closeModal, setMeals }) => {
                         />
                         <Radio
                             size={'cheap-expensive'}
-                            label={'Ucuzdan bahaya'}
+                            label={content.pages.menu.sort.byCostAsc}
                             onClick={(e) => {
                                 e.preventDefault();
                                 setMeals(prev => prev.sort((a, b) => {
@@ -58,7 +62,7 @@ const SortModal = ({ modalIsOpen, closeModal, setMeals }) => {
                         />
                         <Radio
                             size={'expensive-cheap'}
-                            label={'Bahadan ucuza'}
+                            label={content.pages.menu.sort.byCostDesc}
                             onClick={(e) => {
                                 e.preventDefault();
                                 setMeals(prev => prev.sort((a, b) => {
@@ -73,7 +77,7 @@ const SortModal = ({ modalIsOpen, closeModal, setMeals }) => {
                         <button type={'button'}
                             className={'bg-red rounded-full grow text-white text-2xl font-light py-4'}
                             onClick={closeModal}>
-                            Çeşidləməni tamamla
+                            {content.buttons.finishSort}
                         </button>
                     </div>
                 </form>
