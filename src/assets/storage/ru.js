@@ -26,6 +26,7 @@ export const ru = {
         mobileNumber: 'Мобильный номер',
         confirmPassword: 'Подтвердите пароль',
         vacancy: 'Вакансия',
+        message: 'Сообщение'
     },
     titles: {
         links: 'Ссылки',
@@ -37,6 +38,8 @@ export const ru = {
         delivery: 'Доставка',
         careerForm: 'Форма заявки',
         activeVacancies: 'Свободные вакансии',
+        suggestions: 'Предложения и жалобы',
+        contactUs: 'Свяжитесь с нами'
     },
     buttons: {
         back: 'Назад',

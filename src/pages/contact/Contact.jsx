@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import ContactForm from "./ContactForm";
 import ContactData from "./ContactData";
 import { routerStyle, mapStyle, iframeStyle } from './open-street-map-style'
+
 const Contact = memo(() => {
     return (
         <div className='flex justify-center mb-20'>

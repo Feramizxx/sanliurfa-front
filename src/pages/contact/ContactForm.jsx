@@ -1,10 +1,13 @@
+import { useContext } from 'react';
 import { useState } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext';
 import { postContactRequest } from './../../api/postContactRequest';
 import MyModal from './../../components/MyModal';
 
 const ContactForm = () => {
     const [modal, setModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const { content } = useContext(LanguageContext);
 
     const onClose = () => {
         setModal(false);
@@ -43,9 +46,9 @@ const ContactForm = () => {
             </MyModal>
             <div className='bg-contact-form bg-no-repeat p-10 shadow-contact-form bg-contain rounded-l-[40px] bg-white'>
                 <form onSubmit={onSubmit}>
-                    <h1 className='title text-primary-bg'> Təklif və şikayətlər </h1>
+                    <h1 className='title text-primary-bg'> {content.titles.suggestions} </h1>
 
-                    <label htmlFor="name">Ad, Soyad</label>
+                    <label htmlFor="name">{content.inputs.firstName}, {content.inputs.secondName}</label>
                     <input
                         className='contact-input'
                         type="text"
@@ -55,7 +58,7 @@ const ContactForm = () => {
                         required={true}
                     />
 
-                    <label htmlFor="telephone">Əlaqə nömrəsi</label>
+                    <label htmlFor="telephone"> {content.inputs.mobileNumber} </label>
                     <input
                         className='contact-input'
                         type="text"
@@ -65,7 +68,7 @@ const ContactForm = () => {
                         required={true}
                     />
 
-                    <label htmlFor="email">E-mail</label>
+                    <label htmlFor="email"> {content.inputs.email} </label>
                     <input
                         className='contact-input'
                         type="email"
@@ -75,7 +78,7 @@ const ContactForm = () => {
                         required={true}
                     />
 
-                    <label htmlFor="message">Mesajınız</label>
+                    <label htmlFor="message"> {content.inputs.message} </label>
                     <textarea
                         className='contact-input resize-none'
                         id="message"
@@ -84,7 +87,7 @@ const ContactForm = () => {
                         onChange={(e) => setMessage(e.target.value)}
                         required={true}
                     />
-                    <button className='text-white bg-primary-bg rounded-3xl p-2 w-44'> Göndər </button>
+                    <button className='text-white bg-primary-bg rounded-3xl p-2 w-44'> {content.buttons.send} </button>
                 </form>
             </div>
         </>

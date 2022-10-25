@@ -7,7 +7,7 @@ import { LanguageContext } from './../../contexts/LanguageContext';
 import PageLoader from './../../components/PageLoader';
 
 const ContactData = () => {
-    const { value } = useContext(LanguageContext)
+    const { value, content } = useContext(LanguageContext)
     const { contactInfo, isContactInfoLoading, contactInfoError } = useFetchContactInfo(value);
     const { socialMediaLinks, areSocialMediaLinksLoading, socialMediaLinksErrors } = useFetchSocialMediaLinks();
 
@@ -15,7 +15,7 @@ const ContactData = () => {
 
     return (
         <div className='bg-primary-bg p-10 text-white bg-contact-data bg-right bg-contain bg-no-repeat rounded-br-[40px]'>
-            <h1 className='title'> Bizimlə əlaqə </h1>
+            <h1 className='title'> {content.titles.contactUs} </h1>
             {!contactInfoError ?
                 <ul>
                     <li className='contact-data-list-item'>

@@ -25,7 +25,8 @@ export const en = {
         secondName: 'Second name',
         mobileNumber: 'Mobile number',
         confirmPassword: 'Confirm password',
-        vacancy: 'Vacancy'
+        vacancy: 'Vacancy',
+        message: 'Message'
     },
     titles: {
         links: 'Quick Links',
@@ -36,7 +37,9 @@ export const en = {
         address: 'Our address',
         delivery: 'Delvery',
         careerForm: 'Career form',
-        activeVacancies: 'Active vacancies'
+        activeVacancies: 'Active vacancies',
+        suggestions: 'Suggestions and complaints',
+        contactUs: 'Contact us'
     },
     buttons: {
         back: 'Back',

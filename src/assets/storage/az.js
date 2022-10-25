@@ -26,6 +26,7 @@ export const az = {
         mobileNumber: 'Mobil nömrə',
         confirmPassword: 'Şifrəni təstiqlə',
         vacancy: 'Vakansiya',
+        message: 'Mesajınız'
     },
     titles: {
         links: 'Keçidlər',
@@ -37,6 +38,8 @@ export const az = {
         delivery: 'Çatdırılma',
         careerForm: 'Ərizə forması',
         activeVacancies: 'Aktiv vakansiyalar',
+        suggestions: 'Təklif və şikayətlər',
+        contactUs: 'Bizimlə əlaqə'
     },
     buttons: {
         back: 'Geri',
