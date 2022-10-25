@@ -4,6 +4,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { validateNumber } from "./ui/meal/AddressesPage";
 import Button from "./ui/Button";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 export const convertIfNotEmptyToNumber = (value) => {
     return value ? Number(value) : undefined;
@@ -20,6 +21,7 @@ const AddressesForm = ({ onClose, callback, update }) => {
     const [flat, setFlat] = useState('');
     const [description, setDescription] = useState('');
     const { token } = useContext(AuthContext);
+    const { content } = useContext(LanguageContext);
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -53,7 +55,7 @@ const AddressesForm = ({ onClose, callback, update }) => {
     return (
         <div className="flex py-2 adresses-container w-fit mr-auto ml-auto flex-col  ">
             <div className="flex  w-[92%] ml-auto mr-auto justify-between  ">
-                <p className="text-red font-semibold text-[32px]"> {update ? 'Ünvanı yenilə' : 'Yeni Ünvan'} </p>
+                <p className="text-red font-semibold text-[32px]"> {update ? content.buttons.editAddress : content.buttons.newAddress} </p>
                 <Button
                     theme={'default'}
                     onClick={() => onClose()}
@@ -85,14 +87,14 @@ const AddressesForm = ({ onClose, callback, update }) => {
                         value={avenue}
                         onChange={(e) => setAvenue(e.target.value)}
                         className={"cart-input"}
-                        placeholder={"Küçə"}
+                        placeholder={content.address.street}
                     />
                     <input
                         required={!update}
                         value={flat}
                         onChange={(e) => { validateNumber(e, setFlat) }}
                         className={"cart-input"}
-                        placeholder={"Mənzil"}
+                        placeholder={content.address.flat}
                     />
                 </div>
                 <div className={"flex justify-between mb-7"}>
@@ -101,14 +103,14 @@ const AddressesForm = ({ onClose, callback, update }) => {
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             className={"cart-input"}
-                            placeholder={"Başliq"}
+                            placeholder={content.address.title}
                         />
                         <input
                             required={!update}
                             value={building}
                             onChange={(e) => { validateNumber(e, setBuilding) }}
                             className={"cart-input"}
-                            placeholder={"Bina"}
+                            placeholder={content.address.building}
                         />
                     </div>
                     <div className={"flex justify-between w-[47%]"}>
@@ -117,14 +119,14 @@ const AddressesForm = ({ onClose, callback, update }) => {
                             value={block}
                             onChange={(e) => setBlock(e.target.value)}
                             className={"cart-input"}
-                            placeholder={"Blok"}
+                            placeholder={content.address.block}
                         />
                         <input
                             required={!update}
                             value={floor}
                             onChange={(e) => { validateNumber(e, setFloor) }}
                             className={"cart-input"}
-                            placeholder={"Mərtəbə"}
+                            placeholder={content.address.floor}
                         />
                     </div>
                 </div>
@@ -134,7 +136,7 @@ const AddressesForm = ({ onClose, callback, update }) => {
                         rows={6}
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        placeholder={"Qeyd"}
+                        placeholder={content.inputs.note}
                     ></textarea>
                 </div>
                 <div className={"flex justify-end"}>
@@ -143,7 +145,7 @@ const AddressesForm = ({ onClose, callback, update }) => {
                             "bg-red py-4 px-32 rounded-full text-white text-2xl font-light"
                         }
                     >
-                        Yadda Saxla
+                        {content.buttons.save}
                     </button>
                 </div>
             </form >

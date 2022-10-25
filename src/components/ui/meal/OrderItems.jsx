@@ -5,6 +5,8 @@ import PageLoader from '../../PageLoader';
 import useFetchAddress from "../../../hooks/useFetchAddress";
 import { fixDate } from "../../../pages/career/Vacancy";
 import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { LanguageContext } from "../../../contexts/LanguageContext";
 
 const OrderItems = () => {
   const { orders, ordersAreLoading, ordersError } = useFetchOrders();
@@ -26,6 +28,7 @@ const OrderItems = () => {
 
 export const Order = ({ order }) => {
   const { address, addressError, isAddressLoading } = useFetchAddress(order.cart.addressId);
+  const { content } = useContext(LanguageContext);
   const navigate = useNavigate();
   if (isAddressLoading) return <></>
 
@@ -63,7 +66,7 @@ export const Order = ({ order }) => {
             </div>
             <div className="lg:mt-2">
               <button onClick={onClick} className="bg-red px-[60px] py-2 rounded-[40px] text-white">
-                Ətraflı
+                {content.buttons.details}
               </button>
             </div>
           </div>
@@ -74,19 +77,20 @@ export const Order = ({ order }) => {
 }
 
 export const OrderHeader = ({ createdAt, address, price, isDelivered }) => {
+  const { content } = useContext(LanguageContext);
   return (
     <div className="flex p-6 justify-between">
       <div className="flex justify-between w-[550px] lg:flex-col">
         <div>
-          <p> Sifariş tarixi: </p>
+          <p> {content.titles.orderDate}: </p>
           <p className="opacity-50 text-[12px]"> {fixDate(createdAt)} </p>
         </div>
         <div>
-          <p> Ünvan: </p>
+          <p> {content.titles.address}: </p>
           <p className="opacity-50 text-[12px]"> {address.avenue} {address.building} </p>
         </div>
         <div>
-          <p> Qiymət: </p>
+          <p> {content.titles.price}: </p>
           <p className="opacity-50 text-[12px]"> {price}₼ </p>
         </div>
       </div>

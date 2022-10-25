@@ -5,6 +5,7 @@ import Button from './../Button';
 import { deleteAddress } from './../../../api/deleteAddress';
 import AddressesForm from './../../AddressesForm';
 import { updateAddress } from './../../../api/updateAddress';
+import { LanguageContext } from "../../../contexts/LanguageContext";
 
 const defineFieldValue = (initial, current, fromApi) => {
   return initial === current ? fromApi : current;
@@ -14,6 +15,7 @@ const AdressItem = ({ address, setAddresses, selected = false, setRefetch = () =
   const [modal, setModal] = useState(false);
   const [form, setForm] = useState(false);
   const { token } = useContext(AuthContext);
+  const { content } = useContext(LanguageContext);
 
   const onDelete = async () => {
     try {
@@ -73,7 +75,7 @@ const AdressItem = ({ address, setAddresses, selected = false, setRefetch = () =
               />
             </svg>
             <div>
-              <button onClick={() => setForm(true)}> Düzəliş et </button>
+              <button onClick={() => setForm(true)}> {content.buttons.edit} </button>
               <hr className="text-black" />
             </div>
 
@@ -83,21 +85,21 @@ const AdressItem = ({ address, setAddresses, selected = false, setRefetch = () =
         <div className="flex justify-between mt-4 w-[100%] sm:grid grid-cols-2 xs:block">
           <div className="flex justify-center xs:block">
             <div className="flex flex-col">
-              <p>Şəhər: {address.city}</p>
-              <p>Rayon: {address.district}</p>
-              <p>Küçə: {address.avenue}</p>
+              <p>{content.address.city}: {address.city}</p>
+              <p>{content.address.district}: {address.district}</p>
+              <p>{content.address.street}: {address.avenue}</p>
             </div>
           </div>
           <div className="flex justify-center xs:block xs:mt-2">
             <div className="flex flex-col">
-              <p>Bina: {address.building}</p>
-              <p>Mərtəbə: {address.floor}</p>
-              <p>Blok: {address.block}</p>
+              <p>{content.address.building}: {address.building}</p>
+              <p>{content.address.floor}: {address.floor}</p>
+              <p>{content.address.block}: {address.block}</p>
             </div>
           </div>
           <div className="text-red flex items-end sm:mt-2">
             <button onClick={() => setModal(true)}>
-              Sil
+              {content.buttons.delete}
               <hr />
             </button>
           </div>

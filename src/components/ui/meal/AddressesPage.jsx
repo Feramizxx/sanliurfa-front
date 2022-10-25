@@ -8,25 +8,27 @@ import PageLoader from './../../PageLoader';
 import { createAddress } from './../../../api/createAddress';
 import AddressesForm from "../../AddressesForm";
 import useResetLink from "../../../hooks/useResetLink";
+import { LanguageContext } from "../../../contexts/LanguageContext";
 
 const AddressesPage = () => {
   useResetLink();
   const { token } = useContext(AuthContext);
   const { addresses, addressesAreLoading, setRefetch, setAddresses } = useFetchAddresses(token);
   const [form, setForm] = useState(false);
+  const { content } = useContext(LanguageContext);
 
   if (addressesAreLoading) return <PageLoader />
 
   return (
     <div className="pt-[180px] pb-20">
       <div className="relative w-[95%] mr-auto ml-auto justify-between flex flex-row md:flex-col items-center mb-10 ">
-        <h1 className="text-[32px] md:mb-1 text-red"> Ünvanlarım </h1>
+        <h1 className="text-[32px] md:mb-1 text-red"> {content.titles.addresses} </h1>
         <Button
           theme={'default'}
           className="py-2 px-4 rounded-2xl"
           onClick={() => setForm(true)}
         >
-          + Yeni ünvan
+          + {content.buttons.newAddress}
         </Button>
       </div>
 

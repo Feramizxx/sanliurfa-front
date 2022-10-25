@@ -165,7 +165,7 @@ const Profile = () => {
               theme={'default'}
               className="py-2 rounded-2xl absolute right-0 px-4"
             >
-              Yadda saxla
+              {content.buttons.save}
             </Button>
           </div>
         </form>

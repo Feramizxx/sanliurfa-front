@@ -26,7 +26,8 @@ export const az = {
         mobileNumber: 'Mobil nömrə',
         confirmPassword: 'Şifrəni təstiqlə',
         vacancy: 'Vakansiya',
-        message: 'Mesajınız'
+        message: 'Mesajınız',
+        note: 'Qeyd'
     },
     titles: {
         links: 'Keçidlər',
@@ -39,7 +40,13 @@ export const az = {
         careerForm: 'Ərizə forması',
         activeVacancies: 'Aktiv vakansiyalar',
         suggestions: 'Təklif və şikayətlər',
-        contactUs: 'Bizimlə əlaqə'
+        contactUs: 'Bizimlə əlaqə',
+        profile: 'Şəxsi məlumatlarım',
+        orderDate: 'Sifariş tarixi',
+        address: 'Ünvan',
+        price: 'Qiymət',
+        orders: 'Sifarişlərim',
+        addresses: 'Ünvanlarım'
     },
     buttons: {
         back: 'Geri',
@@ -47,7 +54,12 @@ export const az = {
         upload: 'Yüklə',
         send: 'Göndər',
         finishSort: 'Çeşidləməni tamamla',
-        finishFilter: 'Filtrləməni tamamla'
+        finishFilter: 'Filtrləməni tamamla',
+        save: 'Yadda saxla',
+        newAddress: 'Yeni ünvan',
+        editAddress: 'Ünvanı yenilə',
+        edit: 'Düzəliş et',
+        delete: 'Sil'
     },
     errors: {
         paymentFailed: 'Ödəniş alınmadı',
@@ -95,5 +107,15 @@ export const az = {
     footer: {
         socialMediaText: 'Be the first one to know  about discounts, offers, news, giveaways and events',
         companyText: 'Suspendisse vitae sollicitudin nunc velit. Suspendisse ante posuere a massa.Consequat hac aliquam felis netus lacus at.'
+    },
+    address: {
+        city: 'Şəhər',
+        district: 'Rayon',
+        street: 'Küçə',
+        building: 'Bina',
+        floor: 'Mərtəbə',
+        block: 'Blok',
+        title: 'Başliq',
+        flat: 'Mənzil'
     }
 }

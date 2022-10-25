@@ -26,7 +26,8 @@ export const ru = {
         mobileNumber: 'Мобильный номер',
         confirmPassword: 'Подтвердите пароль',
         vacancy: 'Вакансия',
-        message: 'Сообщение'
+        message: 'Сообщение',
+        note: 'Заметка'
     },
     titles: {
         links: 'Ссылки',
@@ -39,7 +40,13 @@ export const ru = {
         careerForm: 'Форма заявки',
         activeVacancies: 'Свободные вакансии',
         suggestions: 'Предложения и жалобы',
-        contactUs: 'Свяжитесь с нами'
+        contactUs: 'Свяжитесь с нами',
+        profile: 'Личные данные',
+        orderDate: 'Дата заказа',
+        address: 'Адресс доставки',
+        price: 'Цена',
+        orders: 'Ваши заказы',
+        addresses: 'Мои адесса'
     },
     buttons: {
         back: 'Назад',
@@ -47,7 +54,12 @@ export const ru = {
         upload: 'Загрузить',
         send: 'Отправить',
         finishSort: 'Çeşidləməni tamamla',
-        finishFilter: 'Filtrləməni tamamla'
+        finishFilter: 'Filtrləməni tamamla',
+        save: 'Сохранить',
+        newAddress: 'Новый адресс',
+        editAddress: 'Обновить адресс',
+        edit: 'Изменить',
+        delete: 'Удалить'
     },
     errors: {
         paymentFailed: 'Оплата прошла не успешно',
@@ -95,5 +107,15 @@ export const ru = {
     footer: {
         socialMediaText: 'Be the first one to know  about discounts, offers, news, giveaways and events',
         companyText: 'Suspendisse vitae sollicitudin nunc velit. Suspendisse ante posuere a massa.Consequat hac aliquam felis netus lacus at.'
+    },
+    address: {
+        city: 'Город',
+        district: 'Район',
+        street: 'Улица',
+        building: 'Здание',
+        floor: 'Этаж',
+        block: 'Блок',
+        title: 'Başliq',
+        flat: 'Квартира'
     }
 }

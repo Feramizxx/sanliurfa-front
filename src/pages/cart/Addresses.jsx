@@ -9,11 +9,13 @@ import Button from './../../components/ui/Button';
 import { useNavigate } from 'react-router';
 import { scrollTop } from "../../helpers";
 import useResetLink from "../../hooks/useResetLink";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const Addresses = () => {
     useResetLink();
     const { token } = useContext(AuthContext);
     const { selectAddress } = useContext(CartContext);
+    const { content } = useContext(LanguageContext);
     const { addresses, addressesAreLoading, setAddresses } = useFetchAddresses(token);
     const [selected, setSelected] = useState(null);
     const navigate = useNavigate();

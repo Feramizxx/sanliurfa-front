@@ -26,7 +26,8 @@ export const en = {
         mobileNumber: 'Mobile number',
         confirmPassword: 'Confirm password',
         vacancy: 'Vacancy',
-        message: 'Message'
+        message: 'Message',
+        note: 'Note'
     },
     titles: {
         links: 'Quick Links',
@@ -39,7 +40,13 @@ export const en = {
         careerForm: 'Career form',
         activeVacancies: 'Active vacancies',
         suggestions: 'Suggestions and complaints',
-        contactUs: 'Contact us'
+        contactUs: 'Contact us',
+        profile: 'Personal data',
+        orderDate: 'Order\'s date',
+        address: 'Address',
+        price: 'Price',
+        orders: 'Your orders',
+        addresses: 'My addresses'
     },
     buttons: {
         back: 'Back',
@@ -47,7 +54,12 @@ export const en = {
         upload: 'Upload',
         send: 'Send',
         finishSort: 'Çeşidləməni tamamla',
-        finishFilter: 'Filtrləməni tamamla'
+        finishFilter: 'Filtrləməni tamamla',
+        save: 'Save',
+        newAddress: 'New address',
+        editAddress: 'Edit address',
+        edit: 'Edit',
+        delete: 'Delete',
     },
     errors: {
         paymentFailed: 'Payment was failed',
@@ -95,5 +107,15 @@ export const en = {
     footer: {
         socialMediaText: 'Be the first one to know  about discounts, offers, news, giveaways and events',
         companyText: 'Suspendisse vitae sollicitudin nunc velit. Suspendisse ante posuere a massa.Consequat hac aliquam felis netus lacus at.'
+    },
+    address: {
+        city: 'City',
+        district: 'District',
+        street: 'Street',
+        building: 'Building',
+        floor: 'Floor',
+        block: 'Block',
+        title: 'Başliq',
+        flat: 'Flat'
     }
 }
