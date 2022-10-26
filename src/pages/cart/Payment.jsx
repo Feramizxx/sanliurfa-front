@@ -83,11 +83,11 @@ const Payment = () => {
                 <p className="bg-white p-6 text-red text-xl rounded-2xl font-bold max-w-[700px]"> {modalMessage} </p>
             </MyModal>
             <div className={'mt-12 mb-2'}>
-                <PageNav prev={'Addresses'} next={'Confirm'} onClick={onSubmit} />
+                <PageNav prev={content.pages.cart.nav.addresses} next={content.pages.cart.nav.confirm} onClick={onSubmit} />
                 <div className={'pt-20 pb-10 px-48 lg2:px-10'}>
                     <div className={'flex items-start lg:flex-col-reverse'}>
                         <div className={'grow p-4 mr-5 border-2 rounded-lg lg:w-full'}>
-                            <h5 className={'font-medium'}>Ödəmə üsulu</h5>
+                            <h5 className={'font-medium'}>{content.pages.cart.payment.paymentType}</h5>
                             <hr className={'my-3'} />
                             <form onSubmit={onSubmit}>
                                 <div>
@@ -102,7 +102,7 @@ const Payment = () => {
                                             name={'payment-method'}
                                             onChange={() => setPaymentType("Card")}
                                         />
-                                        <label htmlFor={'by-card'}>Kartla</label>
+                                        <label htmlFor={'by-card'}>{content.pages.cart.payment.byCard}</label>
                                     </div>
                                     <div>
                                         <input
@@ -112,7 +112,7 @@ const Payment = () => {
                                             name={'payment-method'}
                                             onChange={() => setPaymentType("Cash")}
                                         />
-                                        <label htmlFor={'by-cash'}>Nağd pulla</label>
+                                        <label htmlFor={'by-cash'}>{content.pages.cart.payment.byCash}</label>
                                     </div>
                                 </div>
                             </form>
@@ -120,13 +120,13 @@ const Payment = () => {
                         <div className={'p-4 border-2 rounded-lg w-2/3 lg:w-full lg:mb-4'}>
                             <div className={'flex mb-3'}>
                                 <img src={SheetIcon} className={'mr-4'} />
-                                <h5 className={'font-medium'}>Səbətim</h5>
+                                <h5 className={'font-medium'}>{content.pages.cart.nav.cart}</h5>
                             </div>
                             <div className={'flex justify-between mb-3'}>
-                                <p>Product name</p>
+                                <p>{content.pages.cart.payment.productName}</p>
                                 <div className={'flex justify-between w-1/3 xs:w-1/2'}>
-                                    <p>Portion</p>
-                                    <p className={'pr-3'}>Price</p>
+                                    <p>{content.pages.cart.payment.portion}</p>
+                                    <p className={'pr-3'}>{content.titles.price}</p>
                                 </div>
                             </div>
                             <hr />
@@ -138,21 +138,21 @@ const Payment = () => {
                                 })}
                             </div>
                             <hr className={'mt-2 mb-3'} />
-                            <h4 className={'text-xl text-[#8F161A] text-end'}>Ümumi məbləğ: <b>{totalPrice}</b> ₼</h4>
+                            <h4 className={'text-xl text-[#8F161A] text-end'}>{content.pages.cart.totalAmount}: <b>{totalPrice}</b> ₼</h4>
                         </div>
                     </div>
                     <div className={'mt-6 flex flex-col items-end'}>
                         <div className={'mb-6 w-1/3 lg:w-full'}>
                             <NavLink to={'/cart'}>
-                                <div className={'text-red text-lg font-medium rounded-full border-2 border-red w-full py-4 flex items-center justify-center'}>Review
-                                    your order
+                                <div className={'text-red text-lg font-medium rounded-full border-2 border-red w-full py-4 flex items-center justify-center'}>
+                                    {content.buttons.reviewOrder}
                                 </div>
                             </NavLink>
                         </div>
                         <div className={'w-1/3 lg:w-full'}>
                             <div>
                                 <button onClick={onSubmit} className={'text-white text-lg font-medium rounded-full bg-red w-full py-4'}>
-                                    Complete your order
+                                    {content.buttons.completeOrder}
                                 </button>
                                 {error && error === ERRORS.ADDRESS_IS_MISSING &&
                                     <p className="form-error text-center"> Çatdırılma ünvanını seçin </p>
@@ -162,7 +162,7 @@ const Payment = () => {
                     </div>
                 </div>
                 <div className={'px-16 mb-10'}>
-                    <h3 className={'text-[32px] text-red font-bold'}>Həmçinin bax</h3>
+                    <h3 className={'text-[32px] text-red font-bold'}>{content.titles.seeAlso}</h3>
                 </div>
                 <SeeAlso />
             </div >

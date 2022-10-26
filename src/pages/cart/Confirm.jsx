@@ -64,14 +64,14 @@ const Confirm = () => {
                         <img src={Ellipse} className={'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'} />
                         <img src={Check} className={'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'} />
                     </div>
-                    <h1 className={'text-red text-5xl font-bold mb-4'}>Congrats!</h1>
-                    <p className={'mb-7'}>You booked successfully</p>
+                    <h1 className={'text-red text-5xl font-bold mb-4'}>{content.titles.congrats}</h1>
+                    <p className={'mb-7'}>{content.pages.cart.successfullBooking}</p>
                     <NavLink onClick={onLinkClick} to={'/menu'}>
-                        <button className={'text-red text-lg font-medium rounded-full border-2 border-red w-full py-4 px-32 xs:px-24'}>Menyuya keç</button>
+                        <button className={'text-red text-lg font-medium rounded-full border-2 border-red w-full py-4 px-32 xs:px-24'}>{content.buttons.gotoMenu}</button>
                     </NavLink>
                 </div>
                 <div className={'px-16 mb-10'}>
-                    <h3 className={'text-[32px] text-red font-bold'}>Həmçinin bax</h3>
+                    <h3 className={'text-[32px] text-red font-bold'}>{content.titles.seeAlso}</h3>
                 </div>
                 <SeeAlso />
             </div>

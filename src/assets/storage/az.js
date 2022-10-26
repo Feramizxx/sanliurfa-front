@@ -46,7 +46,9 @@ export const az = {
         address: 'Ünvan',
         price: 'Qiymət',
         orders: 'Sifarişlərim',
-        addresses: 'Ünvanlarım'
+        addresses: 'Ünvanlarım',
+        seeAlso: 'Həmçinin bax',
+        congrats: 'Congrats!'
     },
     buttons: {
         back: 'Geri',
@@ -59,7 +61,11 @@ export const az = {
         newAddress: 'Yeni ünvan',
         editAddress: 'Ünvanı yenilə',
         edit: 'Düzəliş et',
-        delete: 'Sil'
+        delete: 'Sil',
+        confirmDelivery: 'Sifarişi təsdiqlə',
+        completeOrder: 'Complete order',
+        reviewOrder: 'Review order',
+        gotoMenu: 'Menyuya Keç'
     },
     errors: {
         paymentFailed: 'Ödəniş alınmadı',
@@ -102,6 +108,24 @@ export const az = {
                 heading: 'Phasellus risus lorem dignissim arcu.Viverra ut magna eu enim tellus.',
                 text: 'Ut risus neque praesent amet elementum nunc, non pharetra egestas.Vitae amet maecenas pellentesque donec molestie posuere dui feugiat lacus.Cursus tortor adipiscing curabitur sit blandit.Lacus urna ut dictumst maecenas volutpat faucibus pellentesque.Id pretium, justo, in nunc eu morbi pharetra felis.Eros, tellus eu eget egestas at egestas.Phasellus risus lorem dignissim arcu.Viverra ut magna eu enim tellus.Amet consectetur id id ut in eu.Faucibus laoreet non maecenas semper sollicitudin magna morbi.Amet, euismod pulvinar metus senectus.Pellentesque et interdum quam lectus porttitor senectus mauris quis.Lorem elementum aliquam sit eleifend mattis.Non aliquet id magna non ornare in ullamcorper mattis fringilla.Nullam eleifend faucibus ultrices faucibus pellentesque congue.Egestas arcu, laoreet pellentesque tincidunt rhoncus.Nibh ultrices eget netus morbi nullam.Nisl egestas vitae massa nibh tristique fringilla sem tellus, donec.Bibendum eu pretium ipsum sit.Aenean sed convallis sed vel est magna.'
             }
+        },
+        cart: {
+            nav: {
+                cart: 'Cart',
+                addresses: 'Addresses',
+                payment: 'Payment',
+                confirm: 'Confirm'
+            },
+            payment: {
+                productName: 'Product name',
+                portion: 'Portion',
+                paymentType: 'Ödəmə üsulu',
+                byCard: 'Kartla',
+                byCash: 'Nağdla'
+            },
+            free: 'Ödənişsiz',
+            totalAmount: 'Ümumi məbləğ',
+            successfullBooking: 'You booked successfully'
         }
     },
     footer: {

@@ -24,7 +24,7 @@ const Addresses = () => {
 
     return (
         <div className={"mt-12 mb-2"}>
-            <PageNav prev={"Cart"} next={"Payment"} />
+            <PageNav prev={content.pages.cart.nav.cart} next={content.pages.cart.nav.payment} />
             <div className={"py-20 px-48 lg2:px-10"}>
                 {Array.isArray(addresses) && addresses.length !== 0 ? addresses.map((address) =>
                     <div key={address.id}
@@ -56,7 +56,7 @@ const Addresses = () => {
                         navigate('/profile/addresses')
                     }}
                     className="py-2 px-4 rounded-2xl float-right"
-                > Mənim ünvanlarım </Button>
+                > {content.links.addresses} </Button>
             </div>
         </div >
     );
