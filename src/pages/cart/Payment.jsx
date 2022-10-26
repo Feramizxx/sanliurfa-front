@@ -45,32 +45,26 @@ const Payment = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const data = { paymentType }
-        const tokens = {
-            access_token: token,
-            cart_token: cartToken
-        }
-
         if (paymentType !== '') {
             if (addressId !== null) {
                 try {
-                    if (paymentType === 'Card') {
-                        ;
-                        const data = {
-                            language: value.toUpperCase(),
-                            amount: String(totalPrice)
-                        }
-                        const result = await createPayment(data, token);
-
-                        const sessionID = result.TKKPG.Response.Order.SessionID;
-                        const orderID = result.TKKPG.Response.Order.OrderID;
-                        const url = `${result.TKKPG.Response.Order.URL}?SessionID=${sessionID}&OrderID=${orderID}`;
-                        window.location.replace(url)
-                    } else {
-                        await createDelivery(data, tokens);
-                        removeCart(cartToken);
-                        navigate('/cart/confirm/' + process.env.REACT_APP_DEFAULT_PAYMENT_TOKEN);
+                    const data = {
+                        paymentType,
+                        language: value.toUpperCase(),
+                        amount: String(totalPrice)
                     }
+                    const result = await createPayment(data, token);
+
+                    if (paymentType === 'Cash') {
+                        navigate('/cart/confirm/' + result.payment_token);
+                        return;
+                    }
+
+                    const { TKKPG } = result;
+                    const sessionID = TKKPG.Response.Order.SessionID;
+                    const orderID = TKKPG.Response.Order.OrderID;
+                    const url = `${TKKPG.Response.Order.URL}?SessionID=${sessionID}&OrderID=${orderID}`;
+                    window.location.replace(url)
                 } catch (error) {
                     setModalMessage(content.errors.deliveryFailed);
                     setModal(true);

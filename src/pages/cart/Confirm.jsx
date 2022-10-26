@@ -31,31 +31,25 @@ const Confirm = () => {
     }
 
     const sendDeliveryRequest = async () => {
-        if (paymentType === 'Cash') {
-            if (paymentToken !== process.env.REACT_APP_DEFAULT_PAYMENT_TOKEN) navigate('/');
-        } else if (paymentType === 'Card') {
-            const data = { paymentType, paymentToken }
-            const tokens = {
-                access_token: token,
-                cart_token: cartToken
-            }
-            try {
-                await createDelivery(data, tokens);
-            } catch (error) {
-                if (error instanceof AxiosError && error.code === 403) {
-                    navigate('/');
-                } else {
-                    setModal(true)
-                }
-            }
+        const data = { paymentType, paymentToken }
+        const tokens = {
+            access_token: token,
+            cart_token: cartToken
+        }
+        try {
+            await createDelivery(data, tokens);
             removeCart(cartToken);
-        } else {
-            navigate('/');
+        } catch (error) {
+            if (error instanceof AxiosError && error.response.status === 403) {
+                navigate('/');
+            } else {
+                setModal(true)
+            }
         }
     }
 
     useEffect(() => {
-
+        sendDeliveryRequest();
     }, []);
 
     return (
