@@ -3,6 +3,9 @@ import CloseButton from "../../components/ui/CloseButton";
 import Modal from "react-modal";
 import CareerForm from "./CareerForm";
 import SmallCareerForm from "./SmallCareerForm";
+import { useContext } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext';
+import { fixDate } from './Vacancy';
 
 const customStyles = {
     content: {
@@ -18,6 +21,8 @@ const customStyles = {
 Modal.setAppElement('#root');
 
 const InfoBox = ({ onClose, vacancy }) => {
+    const { content } = useContext(LanguageContext);
+
     return (
         <div className='bg-white relative pl-14 overflow-y-scroll'
             style={{
@@ -33,11 +38,11 @@ const InfoBox = ({ onClose, vacancy }) => {
                         <path d="M16.033 31.066C24.3355 31.066 31.066 24.3355 31.066 16.033C31.066 7.7305 24.3355 1 16.033 1C7.7305 1 1 7.7305 1 16.033C1 24.3355 7.7305 31.066 16.033 31.066Z" stroke="#BB2025" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                         <path d="M22.6339 19.8174L16.0978 16.0435M16.0605 4.92102V16.0324V4.92102Z" stroke="#BB2025" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <p className={'text-primary-bg pr-6'}> Bitmə tarixi: {vacancy.expiresAt || 'Expiration date is not provided...'} </p>
+                    <p className={'text-primary-bg pr-6'}> {content.titles.expirationDate}: {fixDate(vacancy.expiresAt) || 'Expiration date is not provided...'} </p>
                 </div>
             </div>
             <div className={'underline text-lg'}>
-                <h3 className={'text-primary-bg font-bold mb-6'}> İş barədə məlumat: </h3>
+                <h3 className={'text-primary-bg font-bold mb-6'}> {content.titles.vacancyInformation}: </h3>
                 {(Array.isArray(vacancy.information) && vacancy.information.length === 0) ?
                     <p> Information is not provided... </p> :
                     <ul className='info-box-list'>
@@ -47,7 +52,7 @@ const InfoBox = ({ onClose, vacancy }) => {
 
             </div>
             <div className={'underline text-lg'}>
-                <h3 className={'text-primary-bg font-bold my-6'}> Namizədə tələblər: </h3>
+                <h3 className={'text-primary-bg font-bold my-6'}> {content.titles.requirements}: </h3>
                 {(Array.isArray(vacancy.requirements) && vacancy.requirements.length === 0) ?
                     <p> Requirements are not provided... </p> :
                     <ul className='info-box-list'>

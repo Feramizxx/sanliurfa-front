@@ -10,6 +10,7 @@ import { LanguageContext } from "../../../contexts/LanguageContext";
 
 const OrderItems = () => {
   const { orders, ordersAreLoading, ordersError } = useFetchOrders();
+  console.log(orders);
   if (ordersAreLoading) return <PageLoader />
 
   return (
@@ -34,7 +35,7 @@ export const Order = ({ order }) => {
 
 
   const onClick = () => {
-    navigate('/profile/orders/' + address.id);
+    navigate('/profile/orders/' + order.id);
   }
 
   return (

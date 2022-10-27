@@ -48,7 +48,8 @@ export const ru = {
         orders: 'Ваши заказы',
         addresses: 'Мои адесса',
         seeAlso: 'Посмотрите еще',
-        congrats: 'Поздравляем!'
+        congrats: 'Поздравляем!',
+        orderDetails: 'Подробности заказа'
     },
     buttons: {
         back: 'Назад',
@@ -65,7 +66,11 @@ export const ru = {
         confirmDelivery: 'Подтвердить заказ',
         completeOrder: 'Завершить заказ',
         reviewOrder: 'Посмотреть заказ',
-        gotoMenu: 'Перейти в меню'
+        gotoMenu: 'Перейти в меню',
+        orderAgain: 'Заказать еще раз',
+        expirationDate: 'Истечение срока',
+        requirements: 'Требования',
+        vacancyInformation: 'Информация о работе'
     },
     errors: {
         paymentFailed: 'Оплата прошла не успешно',

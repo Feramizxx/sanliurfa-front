@@ -1,10 +1,12 @@
 import React, { useState, useContext } from "react";
 import Counter from "../../components/ui/meal/Counter";
+import { LanguageContext } from "../../contexts/LanguageContext";
 import { CartContext } from './../../contexts/CartContext';
 
 const Card = ({ index, meal, amount, price, clickable = true }) => {
     const [count, setCount] = useState(amount);
     const { incrementProduct, removeProduct, decrementProduct } = useContext(CartContext);
+    const { content } = useContext(LanguageContext);
 
     return (
         <div
@@ -45,7 +47,7 @@ const Card = ({ index, meal, amount, price, clickable = true }) => {
                 {clickable &&
                     <p className={'text-[#D21414] underline cursor-pointer'} onClick={async () => {
                         await removeProduct(meal.name);
-                    }}>Sil</p>
+                    }}>{content.buttons.delete}</p>
                 }
             </div>
         </div >

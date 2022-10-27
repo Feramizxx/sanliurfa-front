@@ -48,7 +48,11 @@ export const az = {
         orders: 'Sifarişlərim',
         addresses: 'Ünvanlarım',
         seeAlso: 'Həmçinin bax',
-        congrats: 'Congrats!'
+        congrats: 'Congrats!',
+        orderDetails: 'Sifarişin detalları',
+        expirationDate: 'Bitmə tarixi',
+        requirements: 'Namizədə tələblər',
+        vacancyInformation: 'İş barədə məlumat'
     },
     buttons: {
         back: 'Geri',
@@ -65,7 +69,8 @@ export const az = {
         confirmDelivery: 'Sifarişi təsdiqlə',
         completeOrder: 'Complete order',
         reviewOrder: 'Review order',
-        gotoMenu: 'Menyuya Keç'
+        gotoMenu: 'Menyuya Keç',
+        orderAgain: 'Yenidən sifariş et'
     },
     errors: {
         paymentFailed: 'Ödəniş alınmadı',

@@ -9,9 +9,11 @@ import useFetchAddress from "../../hooks/useFetchAddress";
 import Button from '../../components/ui/Button';
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const SingleOrder = () => {
     const { id } = useParams();
+    const { content } = useContext(LanguageContext);
     if (id) {
         if (Number.isNaN(Number(id))) {
             return <Navigate to='/' />
@@ -22,15 +24,15 @@ const SingleOrder = () => {
     if (isOrderLoading) return <PageLoader />
 
     if (orderError && orderError instanceof AxiosError) {
-        if (orderError.code === 404) {
+        if (orderError.response.status === 404) {
             return <Navigate to='/' />
         }
     }
 
     return (
-        <div className="pt-40 flex justify-center">
+        <div className="pt-40 flex justify-center w-full">
             <div>
-                <h2 className="text-red font-bold text-[30px] ml-12 my-6"> Sifarişin detalları </h2>
+                <h2 className="text-red font-bold text-[30px] ml-12 my-6"> {content.titles.orderDetails} </h2>
                 <div className="w-full flex items-center flex-col">
                     <SingleOrderHeader
                         addressId={order.cart.addressId}
@@ -52,7 +54,7 @@ const SingleOrder = () => {
                     </div>
                     <SingleOrderFooter cart={order.cart} />
                 </div>
-                <h2 className="text-red font-bold text-[30px] ml-12 my-6"> Həmçinin bax </h2>
+                <h2 className="text-red font-bold text-[30px] ml-12 my-6"> {content.titles.seeAlso} </h2>
                 <SeeAlso />
             </div>
         </div>
@@ -78,6 +80,7 @@ const SingleOrderHeader = ({ addressId, price, createdAt, isDelivered }) => {
 
 const SingleOrderFooter = ({ cart }) => {
     const { orderAgain } = useContext(CartContext);
+    const { content } = useContext(LanguageContext);
 
     return (
         <div className="w-screen max-w-[1400px]">
@@ -89,11 +92,11 @@ const SingleOrderFooter = ({ cart }) => {
             <div>
                 <div className="p-6">
                     <div className="flex justify-between text-xl font-semibold my-6">
-                        <span> Çatdırılma </span>
-                        <span> Ödənişsiz </span>
+                        <span> {content.titles.delivery} </span>
+                        <span> {content.pages.cart.free} </span>
                     </div>
                     <div className="flex justify-between text-[2rem] font-semibold">
-                        <span> Ümumi məbləğ </span>
+                        <span> {content.pages.cart.totalAmount} </span>
                         <span className="text-red"> {cart.totalPrice}₼ </span>
                     </div>
                 </div>
@@ -103,7 +106,7 @@ const SingleOrderFooter = ({ cart }) => {
                         className='py-2 px-12 rounded-full font-medium'
                         onClick={() => orderAgain(cart)}
                     >
-                        Yenidən sifariş et
+                        {content.buttons.orderAgain}
                     </Button>
                 </div>
             </div>

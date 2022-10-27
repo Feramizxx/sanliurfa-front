@@ -48,7 +48,11 @@ export const en = {
         orders: 'Your orders',
         addresses: 'My addresses',
         seeAlso: 'See also',
-        congrats: 'Congrats!'
+        congrats: 'Congrats!',
+        orderDetails: 'Order\'s details',
+        expirationDate: 'Expiration date',
+        requirements: 'Vacancy requirements',
+        vacancyInformation: 'Vacancy information'
     },
     buttons: {
         back: 'Back',
@@ -65,7 +69,8 @@ export const en = {
         confirmDelivery: 'Confirm delivery',
         completeOrder: 'Complete order',
         reviewOrder: 'Review order',
-        gotoMenu: 'Back to menu'
+        gotoMenu: 'Back to menu',
+        orderAgain: 'Order again'
     },
     errors: {
         paymentFailed: 'Payment was failed',
