@@ -51,13 +51,11 @@ const Footer = memo(() => {
                 <div>
                     <Logo theme={themes[theme].logo} />
                     <p className='w-56 text-sm mt-3'>
-                        Suspendisse vitae sollicitudin nunc velit.
-                        Suspendisse ante posuere a massa. Consequat
-                        hac aliquam felis netus lacus at.
+                        {content.footer.companyText}
                     </p>
                 </div>
                 <div>
-                    <p className='footer-list-title'> Keçidlər </p>
+                    <p className='footer-list-title'> {content.titles.links} </p>
                     <ul>
                         <li className='footer-list-item'> <NavLink to={'/'} onClick={() => onClick(1)}> {content.links.home} </NavLink> </li>
                         <li className='footer-list-item'> <NavLink to={'menu'} onClick={() => onClick(3)}> {content.links.menu} </NavLink> </li>
@@ -66,7 +64,7 @@ const Footer = memo(() => {
                     </ul>
                 </div>
                 <div>
-                    <p className='footer-list-title'> Əlaqə </p>
+                    <p className='footer-list-title'> {content.titles.contacts} </p>
                     {!contactInfoError ?
                         <>
                             {isContactInfoLoading ||
@@ -81,8 +79,8 @@ const Footer = memo(() => {
                     }
                 </div>
                 <div>
-                    <p className='footer-list-title mb-2'> Social Media </p>
-                    <p className='max-w-96 text-sm'> Be the first one to know  about discounts, offers, news, giveaways and events </p>
+                    <p className='footer-list-title mb-2'> {content.titles.socialMedias} </p>
+                    <p className='max-w-96 text-sm'> {content.footer.socialMediaText} </p>
                     {!socialMediaLinksError ?
                         <>
                             {areSocialMediaLinksLoading ||

@@ -14,7 +14,7 @@ import useFetchMenu from './../../hooks/useFetchMenu';
 import PageLoader from './../../components/PageLoader';
 
 const Menu = () => {
-    const { value } = useContext(LanguageContext);
+    const { value, content } = useContext(LanguageContext);
     const { setValue } = useContext(LinkContext);
     const { contactInfo, contactInfoError, isContactInfoLoading } = useFetchContactInfo(value);
     const { menu, isMenuLoading, menuError } = useFetchMenu(8);
@@ -33,10 +33,10 @@ const Menu = () => {
                 <div className='pt-14 pb-20'>
                     <div className={'px-14'}>
                         <div className='flex justify-between items-end mb-8'>
-                            <h2 className="font-bold text-[64px] md:text-[40px] text-[#BB2025]">Menyu</h2>
+                            <h2 className="font-bold text-[64px] md:text-[40px] text-[#BB2025]">{content.titles.menu}</h2>
                             <NavLink to="/menu" onClick={onLinkClick}
-                                className="font-light text-[32px] md:text-[20px] text-[#8F161A] underline decoration-2 underline-offset-2">Daha
-                                çox
+                                className="font-light text-[32px] md:text-[20px] text-[#8F161A] underline decoration-2 underline-offset-2">
+                                {content.links.more}
                             </NavLink>
                         </div>
                         <CategoriesCarousel theme={'white'} categories={menu} setMeals={setMeals} />
@@ -61,9 +61,9 @@ const Menu = () => {
                         </div>
                     </div>
                     <div className={'flex justify-center md:flex-col md:items-center'}>
-                        <Card heading={isContactInfoLoading ? 'Loading...' : contactInfo.contacts.working_hours || 'Working hours are not provided...'} subheading={'İş saatları'} icon={Clock} />
-                        <Card heading={isContactInfoLoading ? 'Loading...' : contactInfo.contacts.address || 'Address is not provided...'} subheading={'Adresimiz'} icon={Location} central={true} />
-                        <Card heading={'7/24'} subheading={'Çatdırılma'} icon={Van} />
+                        <Card heading={isContactInfoLoading ? 'Loading...' : contactInfo.contacts.working_hours || 'Working hours are not provided...'} subheading={content.titles.workingHours} icon={Clock} />
+                        <Card heading={isContactInfoLoading ? 'Loading...' : contactInfo.contacts.address || 'Address is not provided...'} subheading={content.titles.address} icon={Location} central={true} />
+                        <Card heading={'7/24'} subheading={content.titles.delivery} icon={Van} />
                     </div>
                 </div> :
                 <div className="w-full text-xl font-bold items-center justify-center flex text-red bg-white h-[30vh]">

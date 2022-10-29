@@ -6,12 +6,15 @@ import Filter from "../../assets/icons/buttons/filter.svg";;
 import useFetchMenu from './../../hooks/useFetchMenu';
 import PageLoader from './../../components/PageLoader';
 import Meal from './../../components/items/Meal';
+import { useContext } from "react";
+import { LanguageContext } from '../../contexts/LanguageContext';
 
 const Menu = memo(() => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [sortModalIsOpen, setSortModalIsOpen] = useState(false);
     const { menu, isMenuLoading, menuError } = useFetchMenu();
     const [meals, setMeals] = useState([]);
+    const { content } = useContext(LanguageContext);
 
     if (isMenuLoading) return <PageLoader />
 
@@ -40,11 +43,11 @@ const Menu = memo(() => {
                             <CategoriesCarousel theme={'red'} categories={menu} setMeals={setMeals} />
                             <div className={'flex justify-start items-center mb-8'}>
                                 <div className={'flex cursor-pointer pr-6 border-r border-white xs:mt-0'} onClick={openModal}>
-                                    <p className={'text-white mr-4'}>Filtrlə</p>
+                                    <p className={'text-white mr-4'}>{content.pages.menu.filter.heading}</p>
                                     <img src={Filter} />
                                 </div>
                                 <div className={'flex cursor-pointer pl-6'} onClick={openSortModal}>
-                                    <p className={'text-white mr-4'}>Sort</p>
+                                    <p className={'text-white mr-4'}>{content.pages.menu.sort.heading}</p>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrows-sort text-white"
                                         width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor"
                                         fill="none" strokeLinecap="round" strokeLinejoin="round">

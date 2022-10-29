@@ -7,7 +7,7 @@ const LayOut = ({ children }) => {
     return (
         <GlobalContextProvider>
             <Header />
-            <main className='font-Roboto'>
+            <main className='font-Roboto overflow-x-hidden'>
                 {children}
             </main>
             <Footer />

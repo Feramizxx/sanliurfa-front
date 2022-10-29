@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Plus from "../../../assets/icons/buttons/plus.svg";
 import MealModal from "../../items/MealModal";
 
-const MealPlus = ({ price, amount, name, taste, image, description, additions }) => {
+const MealPlus = ({ price, amount, name, taste, image, description, additions, itemId }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
 
     function openModal() {
@@ -28,6 +28,7 @@ const MealPlus = ({ price, amount, name, taste, image, description, additions })
                 taste={taste}
                 description={description}
                 additions={additions}
+                itemId={itemId}
             />
         </>
     )

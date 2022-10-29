@@ -7,24 +7,28 @@ import { AuthContext } from './../../../contexts/AuthContext';
 import PageLoader from './../../PageLoader';
 import { createAddress } from './../../../api/createAddress';
 import AddressesForm from "../../AddressesForm";
+import useResetLink from "../../../hooks/useResetLink";
+import { LanguageContext } from "../../../contexts/LanguageContext";
 
 const AddressesPage = () => {
+  useResetLink();
   const { token } = useContext(AuthContext);
-  const { addresses, addressesAreLoading, addressesError, setAddresses } = useFetchAddresses(token);
+  const { addresses, addressesAreLoading, setRefetch, setAddresses } = useFetchAddresses(token);
   const [form, setForm] = useState(false);
+  const { content } = useContext(LanguageContext);
 
   if (addressesAreLoading) return <PageLoader />
 
   return (
     <div className="pt-[180px] pb-20">
       <div className="relative w-[95%] mr-auto ml-auto justify-between flex flex-row md:flex-col items-center mb-10 ">
-        <h1 className="text-[32px] md:mb-1 text-red"> Ünvanlarım </h1>
+        <h1 className="text-[32px] md:mb-1 text-red"> {content.titles.addresses} </h1>
         <Button
           theme={'default'}
           className="py-2 px-4 rounded-2xl"
           onClick={() => setForm(true)}
         >
-          + Yeni ünvan
+          + {content.buttons.newAddress}
         </Button>
       </div>
 
@@ -51,6 +55,7 @@ const AddressesPage = () => {
             address={address}
             key={address.id}
             setAddresses={setAddresses}
+            setRefetch={setRefetch}
           />
         )
       }
@@ -61,10 +66,13 @@ const AddressesPage = () => {
 
 export const validateNumber = (e, setValue, forMobileNumber = false) => {
   const newValue = e.target.value;
+  const defaultValue = forMobileNumber ? '+' : '';
+
   const convertedValue = parseInt(newValue);
-  const value = `${forMobileNumber ? '+' : ''}${convertedValue}`;
+  const value = `${forMobileNumber ? defaultValue : ''}${convertedValue}`;
+
   if (!Number.isNaN(value)) {
-    setValue(prev => newValue.length > 0 && !Number.isNaN(convertedValue) ? value : prev)
+    setValue(prev => newValue.length >= 0 ? Number.isNaN(convertedValue) ? defaultValue : value : prev)
   }
 }
 

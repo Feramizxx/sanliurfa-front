@@ -3,11 +3,12 @@ import Stars from "../ui/meal/Stars";
 import MealPlus from "../ui/meal/MealPlus";
 import Counter from "../ui/meal/Counter";
 import Taste from "../ui/meal/Taste";
+import { STORAGE_BASE_URL } from "../../api/config";
 
 const Meal = ({ meal, type }) => {
     const [count, setCount] = useState(0);
     const price = meal.itemSizes[0].prices[0].price;
-    const image = meal.itemSizes[0].buttonImageUrl;
+    const image = meal.imageUrl ? STORAGE_BASE_URL + meal.imageUrl : null;
     const description = meal.description || 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores sint ipsa vero minus est?';
     const additions = meal.itemSizes[0].itemModifierGroups[0];
 
@@ -42,6 +43,7 @@ const Meal = ({ meal, type }) => {
                         image={image}
                         description={description}
                         additions={additions ? additions.items : null}
+                        itemId={meal.itemId}
                     />
                 </div>
             </div>

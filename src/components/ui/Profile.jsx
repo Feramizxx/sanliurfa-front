@@ -12,19 +12,23 @@ import Button from './Button';
 import { updateUser } from './../../api/updateUser';
 import { AxiosError } from 'axios';
 import { validateNumber } from './meal/AddressesPage';
+import useResetLink from './../../hooks/useResetLink';
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 export const rewriteEmpty = (str) => {
   return str === '' ? undefined : str;
 }
 
 const Profile = () => {
+  useResetLink();
   const navigate = useNavigate();
   const [phoneFirstClick, setPhoneFirstClick] = useState(true);
   const [refetch, setRefetch] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const { currentUser, isUserLoading, userError } = useFetchCurrentUser(refetch);
   const [hover, onMouseEnter, onMouseLeave] = useHover();
-  const { token, logOut } = useContext(AuthContext)
+  const { token, logOut } = useContext(AuthContext);
+  const { content } = useContext(LanguageContext);
   const fileInputRef = useRef({});
   const [onButtonClick, onInputChange] = useFileUpload(
     fileInputRef,
@@ -126,7 +130,7 @@ const Profile = () => {
             <p className="font-bold text-red max-w-[300px] text-center p-2"> {errorMessage} </p>
           }
           <div className="xl:flex  xl:flex-col w-[100%]  mt-[50px]">
-            <span className="xl:ml-[0px] ml-[100px] lg:ml-[60px] font-semibold">Şəxsi məlumatlarım</span>
+            <span className="xl:ml-[0px] ml-[100px] lg:ml-[60px] font-semibold">{content.titles.profile}</span>
             <div id="profil-divBox" className="xl:flex xl:flex-col mt-[20px] grid   gap-y-5 grid-cols-2 place-items-center" >
               <input
                 className="profile-input"
@@ -161,7 +165,7 @@ const Profile = () => {
               theme={'default'}
               className="py-2 rounded-2xl absolute right-0 px-4"
             >
-              Yadda saxla
+              {content.buttons.save}
             </Button>
           </div>
         </form>

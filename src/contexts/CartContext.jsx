@@ -1,4 +1,3 @@
-
 import { createContext, useEffect } from 'react';
 import { useState } from 'react';
 import { roundPrice } from './../helpers/index';
@@ -6,7 +5,6 @@ import { getCart } from './../api/getCart';
 import PageLoader from './../components/PageLoader';
 import { createCart } from '../api/createCart';
 import { updateCart } from './../api/updateCart';
-import { deleteCart } from '../api/deleteCart';
 
 export const CartContext = createContext();
 
@@ -17,29 +15,52 @@ const CartContextProvider = ({ children }) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [items, setItems] = useState([]);
     const [addressId, setAddressId] = useState(null);
+    const [paymentType, setPaymentType] = useState('');
+
+    const reset = () => {
+        setItems([]);
+        setAddressId(null);
+        setTotalAmount(0);
+        setTotalPrice(0);
+    }
+
+    const initCart = async (cartToken) => {
+        let token = cartToken;
+        if (!cartToken || cartToken === '') {
+            const data = await createCart();
+            token = data;
+            setCartToken(data);
+            localStorage.setItem('cart_token', data);
+        }
+        return token;
+    }
 
     const saveCart = async (data) => {
-        let token = cartToken;
         try {
-            if (!cartToken) {
-                const data = await createCart();
-                token = data;
-                setCartToken(data);
-                localStorage.setItem('cart_token', data);
-            }
+            const token = await initCart(cartToken);
+            const address = data.addressId !== undefined ? data.addressId : addressId;
 
-            await updateCart(token, { ...data, addressId });
+            await updateCart(token, { ...data, addressId: address });
         } catch (error) {
             alert(error);
         }
     }
 
-    const removeCart = async () => {
+    const orderAgain = async (cart) => {
+        try {
+            const token = await initCart(cartToken);
+            await updateCart(token, cart);
+        } catch (error) {
+            alert(error);
+        }
+    }
+
+    const removeCart = () => {
         if (cartToken) {
             try {
-                await deleteCart(cartToken);
                 setCartToken('');
                 localStorage.setItem('cart_token', '');
+                reset();
             } catch (error) {
                 alert(error);
             }
@@ -61,10 +82,11 @@ const CartContextProvider = ({ children }) => {
         setIsCartLoading(false);
     }
 
-    const addProduct = async (meal, amount, price) => {
+    const addProduct = async (meal, amount, price, itemId, itemDescription) => {
         const newItems = [
             ...items,
-            { meal, amount, price }
+            { meal, amount, price, itemId, itemDescription },
+
         ]
         const newAmount = totalAmount + amount;
         const newPrice = roundPrice(totalPrice + price);
@@ -123,8 +145,10 @@ const CartContextProvider = ({ children }) => {
         await saveCart({ items: newItems, totalPrice: newPrice, totalAmount: newAmount });
     }
 
-    const selectAddress = (address) => {
-        setAddressId(address.id);
+    const selectAddress = async (address) => {
+        const addressId = address ? address.id : null;
+        setAddressId(addressId);
+        await saveCart({ items, totalPrice, totalAmount, addressId })
     }
 
     useEffect(() => {
@@ -135,15 +159,11 @@ const CartContextProvider = ({ children }) => {
 
     return (
         <CartContext.Provider value={{
-            totalAmount,
-            totalPrice,
-            items,
-            addProduct,
-            incrementProduct,
-            removeProduct,
-            decrementProduct,
-            addressId,
-            selectAddress
+            totalAmount, totalPrice, items,
+            addProduct, incrementProduct, removeProduct,
+            decrementProduct, addressId, selectAddress,
+            cartToken, removeCart, orderAgain,
+            paymentType, setPaymentType
         }}>
             {children}
         </CartContext.Provider>

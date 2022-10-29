@@ -4,9 +4,8 @@ import { SearchContext } from './../../contexts/SearchContext';
 
 const SearchButton = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [search, setSearch] = useState('');
     const [displayEnter, setDisplayEnter] = useState(true);
-    const { searchData } = useContext(SearchContext);
+    const { searchData, setTarget, target } = useContext(SearchContext);
 
     window.onclick = () => {
         setIsOpen(false);
@@ -18,9 +17,10 @@ const SearchButton = () => {
     }
 
     const onChange = (e) => {
-        setSearch(e.target.value);
+        const value = e.target.value;
+        setTarget(value);
 
-        if (search.length >= 19) {
+        if (value >= 19) {
             setDisplayEnter(false);
         } else {
             setDisplayEnter(true);
@@ -45,14 +45,14 @@ const SearchButton = () => {
             <div className='absolute mt-7' onClick={onInputClick}>
                 <form onSubmit={(e) => {
                     e.preventDefault();
-                    searchData(search);
+                    searchData();
                 }} className='relative'>
                     <input
                         className='outline-none py-1 px-3 transition-all rounded-3xl'
                         type="text"
                         style={style}
                         onChange={onChange}
-                        value={search}
+                        value={target}
                     />
                     <p
                         className='text-[12px] absolute text-gray-400 right-3 top-2'

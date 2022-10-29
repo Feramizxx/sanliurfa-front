@@ -25,6 +25,7 @@ Modal.setAppElement('#root');
 const Vacancies = ({ vacancies, vacanciesError }) => {
     const [modal, setModal] = useState(false);
     const [clickedVacancy, setClickedVacancy] = useState(null);
+    const { content } = useContext(LanguageContext);
 
     const onVacancyClick = (vacancy) => {
         setClickedVacancy(vacancy)
@@ -37,7 +38,7 @@ const Vacancies = ({ vacancies, vacanciesError }) => {
 
     return (
         <div className={`overflow-y-hidden  overflow-x-hidden bg-white h-[40em] mt-12 mb-1 min-sm:mb-0 flex justify-start flex-col`}>
-            <h1 className='title text-primary-bg font-medium mx-12 mt-6'> Aktiv vakansiyalar </h1>
+            <h1 className='title text-primary-bg font-medium mx-12 mt-6'> {content.titles.activeVacancies} </h1>
             <Modal isOpen={modal} onRequestClose={onClose} style={customStyles}>
                 <InfoBox onClose={onClose} vacancy={clickedVacancy} />
             </Modal>

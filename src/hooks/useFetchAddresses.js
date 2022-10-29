@@ -3,6 +3,7 @@ import useFetch from './useFetch';
 import { getAddresses } from './../api/getAddresses';
 
 const useFetchAddresses = (token) => {
+    const [refetch, setRefetch] = useState(false);
     const [addresses, setAddresses] = useState([]);
     const [fetchAddresses, addressesAreLoading, addressesError] = useFetch(async () => {
         const data = await getAddresses(token);
@@ -11,9 +12,9 @@ const useFetchAddresses = (token) => {
 
     useEffect(() => {
         fetchAddresses();
-    }, [token]);
+    }, [token, refetch]);
 
-    return { addresses, addressesAreLoading, addressesError, setAddresses };
+    return { addresses, addressesAreLoading, addressesError, setAddresses, setRefetch };
 }
 
 export default useFetchAddresses;

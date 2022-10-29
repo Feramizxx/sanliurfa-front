@@ -1,6 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import PageNav from "./PageNav";
-import { cities, districts } from './../../assets/storage/addresses';
 import { AuthContext } from './../../contexts/AuthContext';
 import useFetchAddresses from './../../hooks/useFetchAddresses';
 import PageLoader from './../../components/PageLoader';
@@ -9,10 +8,14 @@ import { CartContext } from './../../contexts/CartContext';
 import Button from './../../components/ui/Button';
 import { useNavigate } from 'react-router';
 import { scrollTop } from "../../helpers";
+import useResetLink from "../../hooks/useResetLink";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const Addresses = () => {
+    useResetLink();
     const { token } = useContext(AuthContext);
     const { selectAddress } = useContext(CartContext);
+    const { content } = useContext(LanguageContext);
     const { addresses, addressesAreLoading, setAddresses } = useFetchAddresses(token);
     const [selected, setSelected] = useState(null);
     const navigate = useNavigate();
@@ -21,7 +24,7 @@ const Addresses = () => {
 
     return (
         <div className={"mt-12 mb-2"}>
-            <PageNav prev={"Cart"} next={"Payment"} />
+            <PageNav prev={content.pages.cart.nav.cart} next={content.pages.cart.nav.payment} />
             <div className={"py-20 px-48 lg2:px-10"}>
                 {Array.isArray(addresses) && addresses.length !== 0 ? addresses.map((address) =>
                     <div key={address.id}
@@ -53,7 +56,7 @@ const Addresses = () => {
                         navigate('/profile/addresses')
                     }}
                     className="py-2 px-4 rounded-2xl float-right"
-                > Mənim ünvanlarım </Button>
+                > {content.links.addresses} </Button>
             </div>
         </div >
     );

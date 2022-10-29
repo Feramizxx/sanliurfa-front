@@ -4,10 +4,12 @@ import Button from "./ui/Button";
 import LoginForm from "./LoginForm";
 import { AuthContext } from './../contexts/AuthContext';
 import { LinkContext } from './../contexts/LinkContext';
+import { LanguageContext } from './../contexts/LanguageContext';
 
 const MessageBox = ({ isVisible, onLinkClick }) => {
     const { isAuth, logOut } = useContext(AuthContext);
     const { loginForm, setLoginForm, loginFormErrorMessage, setLoginFormErrorMessage } = useContext(LinkContext);
+    const { content } = useContext(LanguageContext)
     const navigate = useNavigate();
 
     const onClick = (link) => {
@@ -33,7 +35,6 @@ const MessageBox = ({ isVisible, onLinkClick }) => {
         e.stopPropagation();
     }
 
-    // NOTE: Change error message for unauthorized user
 
     return (
         <>
@@ -51,18 +52,18 @@ const MessageBox = ({ isVisible, onLinkClick }) => {
                     </div>
                     <div className={`bg-white px-6 py-2 w-48`}>
                         <ul>
-                            <li className='message-box-link' > <a className='cursor-pointer' onClick={() => onClick('/profile')}> Profilim </a> </li>
-                            <li className='message-box-link'> <a className='cursor-pointer' onClick={() => onClick('/profile/orders')} > Sifarişlərim </a> </li>
-                            <li className='message-box-link'> <a className='cursor-pointer' onClick={() => onClick('/profile/addresses')}> Ünvanlarım </a> </li>
+                            <li className='message-box-link' > <a className='cursor-pointer' onClick={() => onClick('/profile')}> {content.links.profile} </a> </li>
+                            <li className='message-box-link'> <a className='cursor-pointer' onClick={() => onClick('/profile/orders')} > {content.links.orders} </a> </li>
+                            <li className='message-box-link'> <a className='cursor-pointer' onClick={() => onClick('/profile/addresses')}> {content.links.addresses}  </a> </li>
                             <li className={'message-box-link border-b-0'}>
                                 <div className={`flex ${!isAuth ? 'flex-col' : 'flex-row'} ${!isAuth ? 'justify-center' : 'items-center'}`}>
-                                    {isAuth ? <button onClick={logOut} className='mr-3'> Çıxış </button> :
+                                    {isAuth ? <button onClick={logOut} className='mr-3'> {content.auth.logout} </button> :
                                         <Button
                                             onMouseEnter={onMouseEnter}
                                             onMouseLeave={onMouseLeave}
                                             theme={'default'}
                                         >
-                                            Giriş
+                                            {content.auth.login}
                                         </Button>}
                                     {isAuth &&
                                         <svg onClick={logOut} className='hover:cursor-pointer' width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
